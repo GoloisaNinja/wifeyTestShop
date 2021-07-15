@@ -14,8 +14,13 @@ const query = graphql`
     allShopifyProduct {
       edges {
         node {
-          ...ShopifyProductFields
           ...ProductTileFields
+          description
+          shopifyId
+          title
+          images {
+            gatsbyImageData(placeholder: "BLURRED")
+          }
         }
       }
     }
@@ -23,7 +28,6 @@ const query = graphql`
       edges {
         node {
           products {
-            ...ShopifyProductFields
             ...ProductTileFields
           }
           description

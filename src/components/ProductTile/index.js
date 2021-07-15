@@ -10,11 +10,10 @@ import {
 } from "./styles";
 
 export function ProductTile({ product }) {
-  const imageIndex = product.images.findIndex(image => image !== null);
   return (
     <ProductTileWrapper>
       <GatsbyImage
-        image={product.images[imageIndex].gatsbyImageData}
+        image={product.images[0].gatsbyImageData}
         alt={product.handle}
       />
       <ProductTileContentWrapper>

@@ -1,4 +1,4 @@
-require(`dotenv`).config({ path: `.env` })
+require(`dotenv`).config({ path: `.env` });
 module.exports = {
   siteMetadata: {
     title: `Wifey Shopify`,
@@ -7,6 +7,9 @@ module.exports = {
     siteUrl: `https://jcodes.page`,
   },
   plugins: [
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
     `gatsby-plugin-react-helmet`,
     `gatsby-optional-chaining`,
     {
@@ -15,7 +18,6 @@ module.exports = {
         fonts: ["inter:200, 200i, 400, 400i, 700, 700i, 800, 800i, 900, 900i"],
       },
     },
-    `gatsby-plugin-image`,
     {
       resolve: "gatsby-source-shopify",
       options: {
@@ -31,8 +33,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -50,4 +50,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
