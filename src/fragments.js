@@ -6,8 +6,8 @@ export const productFields = graphql`
     title
     description
     images {
+      gatsbyImageData(placeholder: "BLURRED", width: 300)
       id
-      gatsbyImageData(placeholder: "BLURRED")
     }
   }
 `;
