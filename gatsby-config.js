@@ -1,13 +1,29 @@
+require(`dotenv`).config({ path: `.env` })
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `Wifey Shopify`,
+    description: `Test Concept for Wifey Shopify Shop`,
+    author: `@goloisaninja`,
+    siteUrl: `https://jcodes.page`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-optional-chaining`,
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: ["inter:200, 200i, 400, 400i, 700, 700i, 800, 800i, 900, 900i"],
+      },
+    },
     `gatsby-plugin-image`,
+    {
+      resolve: "gatsby-source-shopify",
+      options: {
+        password: process.env.GATSBY_SHOPIFY_PASSWORD,
+        storeUrl: process.env.GATSBY_SHOP_URL,
+        shopifyConnections: ["orders", "collections"],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
