@@ -23,7 +23,7 @@ export function ProductTile({ product }) {
           from $
           {parseFloat(product.priceRangeV2.minVariantPrice.amount).toFixed(2)}
         </ProductTilePrice>
-        <Button width={`100%`}>Go to Product</Button>
+        <Button width={`100%`}>View Product</Button>
       </ProductTileContentWrapper>
     </ProductTileWrapper>
   );

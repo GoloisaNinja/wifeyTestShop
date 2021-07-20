@@ -5,3 +5,6 @@ export * from "./ProductTile";
 export * from "./ProductGrid";
 export * from "./Button";
 export * from "./CollectionTile";
+export * from "./HeroCollectionTile";
+export * from "./HeroProductTile";
+export * from "./GradientText";

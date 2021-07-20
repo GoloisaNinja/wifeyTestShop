@@ -22,6 +22,8 @@ export const Title = styled.h2`
   padding: 10px;
   color: #fff;
   font-weight: bold;
+  font-family: "Abril Fatface", cursive;
+  color: #c800cf;
   font-size: 2.5em;
   text-shadow: 2px 2px 2px #030303;
   text-align: center;

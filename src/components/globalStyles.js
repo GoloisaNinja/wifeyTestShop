@@ -12,7 +12,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   body{
-    font-family: 'Inter', sans-serif;
     line-height: 1.2;
   }
   strong{

@@ -4,12 +4,10 @@ export const ProductTileWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid black;
+  border: 1px solid #ff00f7;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
-    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
-    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  box-shadow: 10px 7px rgba(247, 0, 255, 0.5);
   > div {
     flex-grow: 1;
     border-top-left-radius: 5px;
@@ -21,12 +19,17 @@ export const ProductTileContentWrapper = styled.section`
 `;
 export const ProductTileTitle = styled.h4`
   font-weight: bold;
+  font-family: "Abril Fatface", cursive;
+  color: #c800cf;
+  text-transform: uppercase;
 `;
 export const ProductTileDescription = styled.p`
-  color: #949494;
+  color: #be8ed4;
   margin-bottom: 10px;
 `;
 export const ProductTilePrice = styled.p`
   font-style: italic;
+  font-family: "Abril Fatface", cursive;
+  color: #c800cf;
   margin-bottom: 30px;
 `;
