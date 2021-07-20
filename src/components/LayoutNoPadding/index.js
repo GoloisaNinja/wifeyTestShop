@@ -2,7 +2,7 @@ import React from "react";
 import { Header } from "../Header";
 import { LayoutWrapper } from "./styles";
 
-const Layout = ({ children }) => {
+const LayoutNoPadding = ({ children }) => {
   return (
     <>
       <Header />
@@ -12,4 +12,4 @@ const Layout = ({ children }) => {
     </>
   );
 };
-export { Layout };
+export { LayoutNoPadding };

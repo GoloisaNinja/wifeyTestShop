@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
 import ProductContext from "../context/ProductContext";
-import { Layout } from "../components/Layout";
+import { LayoutNoPadding } from "../components/LayoutNoPadding";
 import { CollectionTile } from "../components/CollectionTile";
 
 const AllCollectionPage = () => {
   const { collections } = useContext(ProductContext);
   return (
-    <Layout>
+    <LayoutNoPadding>
       {collections.map(collection => (
         <CollectionTile key={collection.shopifyId} collection={collection} />
       ))}
-    </Layout>
+    </LayoutNoPadding>
   );
 };
 export default AllCollectionPage;
