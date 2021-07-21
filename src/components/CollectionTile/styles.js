@@ -15,15 +15,14 @@ export const CollectionTileContent = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
 `;
 export const Title = styled.h2`
   text-transform: uppercase;
   padding: 10px;
-  color: #fff;
   font-weight: bold;
   font-family: "Abril Fatface", cursive;
-  color: #c800cf;
+  color: #f700ff;
   font-size: 2.5em;
   text-shadow: 2px 2px 2px #030303;
   text-align: center;

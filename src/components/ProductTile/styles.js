@@ -24,7 +24,7 @@ export const ProductTileTitle = styled.h4`
   text-transform: uppercase;
 `;
 export const ProductTileDescription = styled.p`
-  color: #be8ed4;
+  color: #966da8;
   margin-bottom: 10px;
 `;
 export const ProductTilePrice = styled.p`
@@ -32,4 +32,5 @@ export const ProductTilePrice = styled.p`
   font-family: "Abril Fatface", cursive;
   color: #c800cf;
   margin-bottom: 30px;
+  letter-spacing: 1px;
 `;

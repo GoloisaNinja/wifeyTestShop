@@ -4,6 +4,7 @@ export const Button = styled.button`
   width: ${props => props.width};
   border: 1px solid #c800cf;
   font-weight: bold;
+  font-size: 16px;
   text-align: center;
   padding: 8px 10px;
   cursor: pointer;

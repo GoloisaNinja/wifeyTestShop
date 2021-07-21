@@ -4,6 +4,7 @@ export const ProductGridWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px;
+  margin-bottom: 25px;
   @media (min-width: 480px) {
     grid-template-columns: 1fr 1fr;
   }
