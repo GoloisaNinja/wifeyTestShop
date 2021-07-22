@@ -19,6 +19,7 @@ const query = graphql`
           shopifyId
           title
           images {
+            id
             gatsbyImageData(placeholder: "BLURRED")
           }
         }

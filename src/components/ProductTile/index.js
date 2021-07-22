@@ -1,4 +1,5 @@
 import React from "react";
+import { navigate } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Button } from "../Button";
 import {
@@ -23,7 +24,14 @@ export function ProductTile({ product }) {
           from $
           {parseFloat(product.priceRangeV2.minVariantPrice.amount).toFixed(2)}
         </ProductTilePrice>
-        <Button width={`100%`}>View Product</Button>
+        <Button
+          width={`100%`}
+          onClick={() =>
+            navigate(`/products/${encodeURIComponent(product.handle)}`)
+          }
+        >
+          View Product
+        </Button>
       </ProductTileContentWrapper>
     </ProductTileWrapper>
   );
