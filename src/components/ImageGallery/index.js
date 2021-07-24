@@ -3,7 +3,11 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { ImageThumbnail } from "./ImageThumbnail";
 import { ImageGalleryWrapper } from "./styles";
 
-export function ImageGallery({ images, selectedImageVariantIdSrc }) {
+export function ImageGallery({
+  images,
+  selectedImageVariantIdSrc,
+  selectedImageVariantId,
+}) {
   const [activeImageThumbnail, setActiveImageThumbnail] = useState(
     images.find(({ src }) => src === selectedImageVariantIdSrc) || images[0]
   );
@@ -11,7 +15,12 @@ export function ImageGallery({ images, selectedImageVariantIdSrc }) {
     setActiveImageThumbnail(
       images.find(({ src }) => src === selectedImageVariantIdSrc) || images[0]
     );
-  }, [selectedImageVariantIdSrc, setActiveImageThumbnail, images]);
+  }, [
+    selectedImageVariantIdSrc,
+    setActiveImageThumbnail,
+    images,
+    selectedImageVariantId,
+  ]);
   const handleClick = image => {
     setActiveImageThumbnail(image);
   };

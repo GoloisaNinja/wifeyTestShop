@@ -8,7 +8,7 @@ export const Grid = styled.div`
   grid-gap: 20px;
   margin-top: 20px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 600px) {
     grid-template-columns: 1fr 1fr;
     > div:first-child {
       order: 2;
@@ -22,6 +22,7 @@ export const ProductText = styled.section`
   > p {
     color: #966da8;
     font-size: 1.25rem;
+    font-family: "Lato", sans-serif;
   }
   > h2 {
     margin-top: 0;
@@ -32,5 +33,6 @@ export const SelectWrapper = styled.div`
   > strong {
     display: block;
     margin-bottom: 8px;
+    font-family: "Lato", sans-serif;
   }
 `;

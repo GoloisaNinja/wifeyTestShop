@@ -19,6 +19,7 @@ module.exports = {
         fonts: [
           "inter:200, 200i, 400, 400i, 700, 700i, 800, 800i, 900, 900i",
           "abril fatface:400",
+          "lato:300,400,400i,700, 700i, 900, 900i",
         ],
       },
     },

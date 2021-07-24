@@ -26,6 +26,7 @@ export const ProductTileTitle = styled.h4`
 export const ProductTileDescription = styled.p`
   color: #966da8;
   margin-bottom: 10px;
+  font-family: "Lato", sans-serif;
 `;
 export const ProductTilePrice = styled.p`
   font-style: italic;
