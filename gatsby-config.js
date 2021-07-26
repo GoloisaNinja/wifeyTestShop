@@ -14,6 +14,14 @@ module.exports = {
     `gatsby-optional-chaining`,
     "gatsby-plugin-styled-components",
     {
+      resolve: "gatsby-source-shopify",
+      options: {
+        password: process.env.GATSBY_SHOPIFY_PASSWORD,
+        storeUrl: process.env.GATSBY_SHOP_URL,
+        shopifyConnections: ["orders", "collections"],
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
@@ -35,14 +43,6 @@ module.exports = {
       options: {
         name: `assets`,
         path: `${__dirname}/src/images/assets`,
-      },
-    },
-    {
-      resolve: "gatsby-source-shopify",
-      options: {
-        password: process.env.GATSBY_SHOPIFY_PASSWORD,
-        storeUrl: process.env.GATSBY_SHOP_URL,
-        shopifyConnections: ["orders", "collections"],
       },
     },
     {

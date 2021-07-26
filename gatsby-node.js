@@ -1,14 +1,5 @@
 const path = require("path");
 
-var fs = require("fs");
-var dir = "./.cache/caches/gatsby-source-shopify";
-
-exports.onPreBootstrap = () => {
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir);
-  }
-};
-
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
@@ -27,6 +18,11 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             shopifyId
             handle
+            images {
+              id
+              src
+              gatsbyImageData
+            }
           }
         }
       }

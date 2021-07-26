@@ -25,7 +25,7 @@ export const query = graphql`
           images {
             id
             src
-            gatsbyImageData(placeholder: "BLURRED")
+            gatsbyImageData
           }
         }
       }
