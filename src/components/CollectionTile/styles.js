@@ -22,9 +22,9 @@ export const Title = styled.h2`
   padding: 10px;
   font-weight: bold;
   font-family: "Abril Fatface", cursive;
-  color: #f700ff;
+  color: #ff94fb;
   font-size: 2.5em;
-  text-shadow: 2px 2px 2px #030303;
+  text-shadow: 2px 2px 2px #590056;
   text-align: center;
   @media (min-width: 500px) {
     font-size: 3.2em;

@@ -10,3 +10,4 @@ export * from "./HeroCollectionTile";
 export * from "./HeroProductTile";
 export * from "./GradientText";
 export * from "./ImageGallery";
+export * from "./CollectionProductTemplate";

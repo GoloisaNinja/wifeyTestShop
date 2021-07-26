@@ -55,7 +55,6 @@ export default function ProductTemplate({ data }) {
       try {
         const result = await getProductById(data.shopifyProduct.storefrontId);
         setProduct(result);
-        console.log(result);
         setSelectedVariant(
           result.variants.find(({ id }) => id === variantId) ||
             result.variants[0]
@@ -65,7 +64,6 @@ export default function ProductTemplate({ data }) {
       }
     };
     idResult();
-    console.log("id result ran");
   }, [
     getProductById,
     setProduct,

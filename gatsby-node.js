@@ -21,6 +21,14 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allShopifyCollection {
+        edges {
+          node {
+            shopifyId
+            handle
+          }
+        }
+      }
     }
   `);
 
@@ -31,6 +39,15 @@ exports.createPages = async ({ graphql, actions }) => {
         shopifyId: node.shopifyId,
       },
       component: path.resolve(`./src/templates/ProductTemplate/index.js`),
+    });
+  });
+  data.allShopifyCollection.edges.forEach(({ node }) => {
+    createPage({
+      path: `collection/${node.handle}`,
+      context: {
+        shopifyId: node.shopifyId,
+      },
+      component: path.resolve(`./src/templates/CollectionTemplate/index.js`),
     });
   });
 };
