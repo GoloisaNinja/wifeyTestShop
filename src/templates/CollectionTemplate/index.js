@@ -11,14 +11,22 @@ export const query = graphql`
     shopifyCollection(shopifyId: { eq: $shopifyId }) {
       description
       title
-      products {
-        shopifyId
-        storefrontId
-        handle
-        images {
-          id
-          src
-          gatsbyImageData(placeholder: "BLURRED")
+    }
+    allShopifyProduct(
+      filter: { collections: { elemMatch: { shopifyId: { eq: $shopifyId } } } }
+    ) {
+      edges {
+        node {
+          shopifyId
+          storefrontId
+          description
+          title
+          handle
+          images {
+            id
+            src
+            gatsbyImageData(placeholder: "BLURRED")
+          }
         }
       }
     }
@@ -36,13 +44,13 @@ export default function CollectionTemplate({ data }) {
         {data.shopifyCollection.title}
       </GradientH1>
 
-      {data.shopifyCollection.products.map(product => (
+      {data.allShopifyProduct.edges.map(({ node }) => (
         <CollectionProductTemplate
-          key={product.storefrontId}
-          productShopifyId={product.shopifyId}
-          productStorefrontId={product.storefrontId}
-          images={product.images}
-          handle={product.handle}
+          key={node.storefrontId}
+          productShopifyId={node.shopifyId}
+          productStorefrontId={node.storefrontId}
+          images={node.images}
+          handle={node.handle}
         />
       ))}
     </LayoutPadding>

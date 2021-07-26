@@ -20,6 +20,7 @@ const query = graphql`
           title
           images {
             id
+            src
             gatsbyImageData(placeholder: "BLURRED")
           }
         }
@@ -36,6 +37,7 @@ const query = graphql`
           shopifyId
           handle
           image {
+            id
             gatsbyImageData(placeholder: "BLURRED", width: 1000)
           }
         }
