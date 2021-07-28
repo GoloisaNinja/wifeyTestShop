@@ -9,7 +9,9 @@ export const Grid = styled.div`
   padding: 25px;
   margin-top: 20px;
   margin-bottom: 50px;
-  box-shadow: 0 0 10px 5px #ff00a2;
+  //box-shadow: 0 0 10px 5px #ff00a2;
+  border: 1px solid #ff00f7;
+  box-shadow: 10px 7px rgba(247, 0, 255, 0.5);
   @media (min-width: 600px) {
     grid-template-columns: 1fr 1fr;
     > div:first-child {

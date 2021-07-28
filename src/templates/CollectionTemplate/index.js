@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { graphql } from "gatsby";
+import { graphql, navigate } from "gatsby";
 import {
   LayoutPadding,
   CollectionProductTemplate,
   GradientH1,
+  Button,
 } from "../../components";
+import { ButtonWrapper, CollectionText } from "./styles";
 
 export const query = graphql`
   query CollectionQuery($shopifyId: String) {
@@ -44,14 +46,21 @@ export default function CollectionTemplate({ data }) {
 
   return (
     <LayoutPadding>
+      <ButtonWrapper>
+        <Button onClick={() => navigate(`/all-collections`)}>
+          back to collections
+        </Button>
+      </ButtonWrapper>
       <GradientH1
-        style={{ textAlign: "center", marginBottom: "3rem" }}
+        style={{ textAlign: "center", marginBottom: "8px" }}
         font={`'Abril Fatface', cursive`}
         color={`#ff00f7, #035efc`}
       >
         {data.shopifyCollection.title}
       </GradientH1>
-
+      <CollectionText>
+        <p>{data.shopifyCollection.description}</p>
+      </CollectionText>
       {data.allShopifyProduct.edges.map(({ node }) => (
         <CollectionProductTemplate
           key={node.storefrontId}
