@@ -6,8 +6,10 @@ export const Grid = styled.div`
   align-items: flex-start;
   grid-template-columns: 1fr;
   grid-gap: 20px;
+  padding: 25px;
   margin-top: 20px;
-
+  margin-bottom: 50px;
+  box-shadow: 0 0 10px 5px #ff00a2;
   @media (min-width: 600px) {
     grid-template-columns: 1fr 1fr;
     > div:first-child {

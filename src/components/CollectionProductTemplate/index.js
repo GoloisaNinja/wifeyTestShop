@@ -10,23 +10,22 @@ export function CollectionProductTemplate({
   productStorefrontId,
   images,
   handle,
+  handleVariantQueryStrings,
+  variantQueryStrings,
 }) {
   const { getProductById } = useContext(CartContext);
   const [product, setProduct] = useState(null);
   const [selectedVariant, setSelectedVariant] = useState(null);
   const { search, origin, pathname } = useLocation();
 
-  const variantId = queryString.parse(search).handle;
-
+  const parsedVariantId = queryString.parse(search);
+  const variantId = decodeURIComponent(parsedVariantId[handle]);
   const handleVariantChange = e => {
     const newVariant = product?.variants.find(
       variant => variant.id === e.target.value
     );
     setSelectedVariant(newVariant);
-    navigate(
-      `${origin}${pathname}?${handle}=${encodeURIComponent(newVariant.id)}`,
-      { replace: true }
-    );
+    handleVariantQueryStrings(handle, newVariant.id);
   };
   useEffect(() => {
     const idResult = async () => {
@@ -45,10 +44,18 @@ export function CollectionProductTemplate({
   }, [
     getProductById,
     setProduct,
-    setSelectedVariant,
     productStorefrontId,
     variantId,
+    setSelectedVariant,
   ]);
+  useEffect(() => {
+    const updatedQs = queryString.stringify(variantQueryStrings);
+    if (Object.keys(updatedQs).length > 0) {
+      navigate(`${origin}${pathname}?${updatedQs}`, {
+        replace: true,
+      });
+    }
+  }, [selectedVariant]);
   return (
     <Grid>
       <div>

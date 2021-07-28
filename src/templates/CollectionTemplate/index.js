@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { graphql } from "gatsby";
 import {
   LayoutPadding,
@@ -34,6 +34,14 @@ export const query = graphql`
 `;
 
 export default function CollectionTemplate({ data }) {
+  const [variantQueryStrings, setVariantQueryStrings] = useState({});
+  const handleVariantQueryStrings = (handle, variant) => {
+    setVariantQueryStrings({
+      ...variantQueryStrings,
+      [handle]: encodeURIComponent(variant),
+    });
+  };
+
   return (
     <LayoutPadding>
       <GradientH1
@@ -51,6 +59,8 @@ export default function CollectionTemplate({ data }) {
           productStorefrontId={node.storefrontId}
           images={node.images}
           handle={node.handle}
+          handleVariantQueryStrings={handleVariantQueryStrings}
+          variantQueryStrings={variantQueryStrings}
         />
       ))}
     </LayoutPadding>
