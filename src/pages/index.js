@@ -16,7 +16,7 @@ const IndexPage = () => {
           node {
             name
             childImageSharp {
-              gatsbyImageData
+              gatsbyImageData(placeholder: BLURRED)
             }
           }
         }

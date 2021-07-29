@@ -9,7 +9,7 @@ const AllCollectionPage = () => {
     <LayoutNoPadding>
       {collections.map(
         collection =>
-          collection.title !== "SALE" && (
+          collection.title.slice(0, 4) === "Luci" && (
             <CollectionTile
               key={collection.storefrontId}
               collection={collection}

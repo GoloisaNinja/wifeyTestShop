@@ -45,13 +45,33 @@ const AllProductsPage = () => {
 
   return (
     <LayoutPadding>
-      <div style={{ marginBottom: "35px" }}>
+      <div
+        style={{
+          display: "flex",
+          textAlign: "center",
+          alignItems: "center",
+          marginBottom: "35px",
+        }}
+      >
+        <span
+          style={{
+            display: "flex",
+            background: "#ff00f7",
+            borderRadius: "50px",
+            padding: "5px 10px",
+            marginRight: "5px",
+            color: "#fff",
+            fontSize: "1.15rem",
+          }}
+        >
+          {filteredProducts.length}
+        </span>{" "}
         <GradientH4
-          style={{ marginTop: "0", fontWeight: "bold" }}
+          style={{ marginTop: "0", marginBottom: "0", fontWeight: "bold" }}
           font={"'Lato', sans-serif"}
           color={"#f700ff, #7000a1"}
         >
-          Displaying {filteredProducts.length} products
+          products
         </GradientH4>
       </div>
 

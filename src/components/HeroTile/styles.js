@@ -9,7 +9,7 @@ export const HeroWrapper = styled.div`
   align-items: center;
   background-color: #ff00dd;
   color: #fff;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 `;
 export const HeroContentWrapper = styled.div`
   display: flex;
