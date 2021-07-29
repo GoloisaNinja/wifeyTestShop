@@ -7,9 +7,15 @@ const AllCollectionPage = () => {
   const { collections } = useContext(ProductContext);
   return (
     <LayoutNoPadding>
-      {collections.map(collection => (
-        <CollectionTile key={collection.shopifyId} collection={collection} />
-      ))}
+      {collections.map(
+        collection =>
+          collection.title !== "SALE" && (
+            <CollectionTile
+              key={collection.storefrontId}
+              collection={collection}
+            />
+          )
+      )}
     </LayoutNoPadding>
   );
 };
