@@ -1,9 +1,14 @@
-import * as React from "react";
+import React, { useContext } from "react";
+import ProductContext from "../context/ProductContext";
 import { graphql, useStaticQuery } from "gatsby";
 import { LayoutNoPadding, HeroTile } from "../components";
 import { Link } from "gatsby";
 
 const IndexPage = () => {
+  const { collections } = useContext(ProductContext);
+  const saleCollection = collections.find(
+    collection => collection.title === "SALE"
+  );
   const data = useStaticQuery(graphql`
     {
       allFile(filter: { relativeDirectory: { eq: "assets" } }) {
@@ -59,13 +64,19 @@ const IndexPage = () => {
           overlayColor={productGirl.overlayColor}
         />
       </Link>
-      <HeroTile
-        image={celebration.image.node.childImageSharp.gatsbyImageData}
-        altText={celebration.altText}
-        titleText={celebration.titleText}
-        subText={celebration.subText}
-        overlayColor={celebration.overlayColor}
-      />
+      <Link
+        to={`/all-products?c=${encodeURIComponent(
+          saleCollection.storefrontId
+        )}`}
+      >
+        <HeroTile
+          image={celebration.image.node.childImageSharp.gatsbyImageData}
+          altText={celebration.altText}
+          titleText={celebration.titleText}
+          subText={celebration.subText}
+          overlayColor={celebration.overlayColor}
+        />
+      </Link>
     </LayoutNoPadding>
   );
 };

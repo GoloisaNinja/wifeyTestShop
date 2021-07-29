@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from "gatsby";
 const query = graphql`
   fragment ProductTileFields on ShopifyProduct {
     handle
+    storefrontId
     priceRangeV2 {
       minVariantPrice {
         amount
@@ -17,6 +18,7 @@ const query = graphql`
           ...ProductTileFields
           description
           shopifyId
+          storefrontId
           title
           images {
             id
@@ -35,6 +37,7 @@ const query = graphql`
           description
           title
           shopifyId
+          storefrontId
           handle
           image {
             id
