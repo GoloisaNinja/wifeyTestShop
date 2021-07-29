@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import queryString from "query-string";
 import { useLocation } from "@reach/router";
 import ProductContext from "../context/ProductContext";
-import { LayoutPadding, ProductGrid, GradientH3 } from "../components";
+import { LayoutPadding, ProductGrid, GradientH4 } from "../components";
 
 const AllProductsPage = () => {
   const { products, collections } = useContext(ProductContext);
@@ -45,15 +45,14 @@ const AllProductsPage = () => {
 
   return (
     <LayoutPadding>
-      <div style={{ marginBottom: "35px", borderBottom: "2px solid #7000a1" }}>
-        <GradientH3
-          style={{ marginTop: "0" }}
-          font={"'Abril Fatface', cursive"}
-          color={"#7000a1, #f700ff"}
+      <div style={{ marginBottom: "35px" }}>
+        <GradientH4
+          style={{ marginTop: "0", fontWeight: "bold" }}
+          font={"'Lato', sans-serif"}
+          color={"#f700ff, #7000a1"}
         >
-          Neon Unicorn's unique product line is eclectic, trendy, and sexy. Just
-          like you!
-        </GradientH3>
+          Displaying {filteredProducts.length} products
+        </GradientH4>
       </div>
 
       <ProductGrid products={filteredProducts} />
