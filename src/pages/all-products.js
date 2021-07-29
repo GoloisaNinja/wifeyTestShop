@@ -62,6 +62,8 @@ const AllProductsPage = () => {
             marginRight: "5px",
             color: "#fff",
             fontSize: "1.15rem",
+            fontWeight: "bold",
+            fontFamily: `'Lato', sans-serif`,
           }}
         >
           {filteredProducts.length}
