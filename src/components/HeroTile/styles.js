@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeroProductsWrapper = styled.div`
+export const HeroWrapper = styled.div`
   width: 100%;
   display: flex;
   position: relative;
@@ -9,20 +9,22 @@ export const HeroProductsWrapper = styled.div`
   align-items: center;
   background-color: #ff00dd;
   color: #fff;
+  margin-bottom: 25px;
 `;
-export const HeroProductsContentWrapper = styled.div`
+export const HeroContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(112, 0, 161, 0.5);
+  background: ${props => props.overlayColor};
+  //background: rgba(189, 0, 164, 0.5);
   > div {
-    padding: 35px;
+    padding: 20px;
   }
 `;
-export const HeroProductsText = styled.h1`
+export const HeroTitleText = styled.h1`
   font-family: "Abril Fatface", cursive;
   font-weight: bold;
   font-size: 3em;
@@ -38,12 +40,12 @@ export const HeroProductsText = styled.h1`
     font-size: 4em;
   }
 `;
-export const HeroProductsSubText = styled.h4`
+export const HeroSubText = styled.h4`
   //font-family: "Abril Fatface", cursive;
-  font-weight: bold;
   font-size: 1em;
-  text-shadow: 2px 2px 2px #030303;
+  font-weight: bold;
   text-align: center;
+  text-shadow: 2px 2px 2px #030303;
   @media (max-width: 400px) {
     font-size: 0.85em;
   }
