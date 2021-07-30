@@ -10,3 +10,5 @@ export * from "./GradientText";
 export * from "./ImageGallery";
 export * from "./CollectionProductTemplate";
 export * from "./HeroTile";
+export * from "./Checkbox";
+export * from "./Filters";

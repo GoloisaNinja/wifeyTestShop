@@ -2,7 +2,13 @@ import React, { useContext } from "react";
 import queryString from "query-string";
 import { useLocation } from "@reach/router";
 import ProductContext from "../context/ProductContext";
-import { LayoutPadding, ProductGrid, GradientH4 } from "../components";
+import {
+  LayoutPadding,
+  ProductGrid,
+  GradientH4,
+  Filters,
+  Button,
+} from "../components";
 
 const AllProductsPage = () => {
   const { products, collections } = useContext(ProductContext);
@@ -77,7 +83,43 @@ const AllProductsPage = () => {
         </GradientH4>
       </div>
 
-      <ProductGrid products={filteredProducts} />
+      <div
+        style={{
+          display: "grid",
+          gridGap: "20px",
+          marginTop: "20px",
+          gridTemplateColumns: "1fr 3fr",
+        }}
+      >
+        <Filters />
+        {!filteredProducts.length && (
+          <div>
+            <h3>
+              <span>Heckin Bamboozled! No matches for</span>
+              &nbsp;
+              <strong>'{searchTerm}'</strong>
+            </h3>
+            <div>
+              Here are some tips:
+              <br />
+              <br />
+              <br />
+              <ul>
+                <li>Don't be weird</li>
+                <li>Search for real things</li>
+                <li>We don't sell Graphics Cards</li>
+                <li>Unplug the search bar and reboot</li>
+                <li>Check your spelling</li>
+              </ul>
+            </div>
+          </div>
+        )}
+        {!!filteredProducts.length && (
+          <div>
+            <ProductGrid products={filteredProducts} />
+          </div>
+        )}
+      </div>
     </LayoutPadding>
   );
 };
