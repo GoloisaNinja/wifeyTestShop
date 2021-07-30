@@ -7,5 +7,6 @@ export const CategoryFilterItemWrapper = styled.div`
   > div:last-child {
     padding-left: 8px;
     color: #ff00f7;
+    font-family: "Lato", sans-serif;
   }
 `;
