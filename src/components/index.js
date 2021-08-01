@@ -12,3 +12,5 @@ export * from "./CollectionProductTemplate";
 export * from "./HeroTile";
 export * from "./Checkbox";
 export * from "./Filters";
+export * from "./Selectors";
+export * from "./Input";

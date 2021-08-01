@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Button = styled.button`
   width: ${props => props.width};
+  margin: ${props => props.margin};
   border: 1px solid #c800cf;
   font-weight: bold;
   font-size: 16px;

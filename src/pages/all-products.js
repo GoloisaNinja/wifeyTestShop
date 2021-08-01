@@ -8,6 +8,7 @@ import {
   GradientH4,
   Filters,
   Button,
+  Selectors,
 } from "../components";
 
 const AllProductsPage = () => {
@@ -48,6 +49,12 @@ const AllProductsPage = () => {
   };
 
   const filteredProducts = products.filter(filterByCategory);
+  const toggleFilters = () => {
+    const filters = document.getElementById("filters");
+    const overlay = document.getElementById("overlay");
+    filters.classList.toggle("show");
+    overlay.classList.toggle("show");
+  };
 
   return (
     <LayoutPadding>
@@ -56,7 +63,7 @@ const AllProductsPage = () => {
           display: "flex",
           textAlign: "center",
           alignItems: "center",
-          marginBottom: "35px",
+          marginBottom: "5px",
         }}
       >
         <span
@@ -82,44 +89,16 @@ const AllProductsPage = () => {
           products
         </GradientH4>
       </div>
-
-      <div
-        style={{
-          display: "grid",
-          gridGap: "20px",
-          marginTop: "20px",
-          gridTemplateColumns: "1fr 3fr",
-        }}
-      >
-        <Filters />
-        {!filteredProducts.length && (
-          <div>
-            <h3>
-              <span>Heckin Bamboozled! No matches for</span>
-              &nbsp;
-              <strong>'{searchTerm}'</strong>
-            </h3>
-            <div>
-              Here are some tips:
-              <br />
-              <br />
-              <br />
-              <ul>
-                <li>Don't be weird</li>
-                <li>Search for real things</li>
-                <li>We don't sell Graphics Cards</li>
-                <li>Unplug the search bar and reboot</li>
-                <li>Check your spelling</li>
-              </ul>
-            </div>
-          </div>
-        )}
-        {!!filteredProducts.length && (
-          <div>
-            <ProductGrid products={filteredProducts} />
-          </div>
-        )}
-      </div>
+      <Selectors
+        numberOfFilters={Object.keys(selectedCollectionIdsMap).length}
+        toggleFilters={toggleFilters}
+      />
+      <Filters toggleFilters={toggleFilters} />
+      {!!filteredProducts.length && (
+        <div>
+          <ProductGrid products={filteredProducts} />
+        </div>
+      )}
     </LayoutPadding>
   );
 };
