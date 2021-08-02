@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
+import { Link } from "gatsby";
 import { FaTimes } from "react-icons/fa";
 import { CategoryFilterItem } from "./CategoryFilterItem";
+import { OverlayWrapper } from "../Overlay";
 import { Input } from "../Input";
-import { FiltersWrapper, OverlayWrapper } from "./styles";
+import { FiltersWrapper } from "./styles";
 import ProductContext from "../../context/ProductContext";
 
 export function Filters({ toggleFilters }) {
@@ -18,12 +20,19 @@ export function Filters({ toggleFilters }) {
           <p>Filter Categories</p>
           <FaTimes onClick={handleToggle} />
         </div>
-        <div style={{ marginTop: "1rem" }}>
+        <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
           <Input
+            style={{ marginBottom: "15px" }}
             value={searchTerm}
             onChange={e => setSearchTerm(e.currentTarget.value)}
             placeholder="Search"
           />
+          <Link
+            to={`/all-products`}
+            alt={`Removes filters and returns all products`}
+          >
+            Clear Filters
+          </Link>
         </div>
         {collections
           .sort(function (a, b) {
@@ -46,7 +55,7 @@ export function Filters({ toggleFilters }) {
               )
           )}
       </FiltersWrapper>
-      <OverlayWrapper id="overlay"></OverlayWrapper>
+      <OverlayWrapper id="overlay" zvalue={"4"}></OverlayWrapper>
     </>
   );
 }

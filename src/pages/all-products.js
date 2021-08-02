@@ -7,7 +7,6 @@ import {
   ProductGrid,
   GradientH4,
   Filters,
-  Button,
   Selectors,
 } from "../components";
 

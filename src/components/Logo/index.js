@@ -9,7 +9,7 @@ export function Logo() {
         childImageSharp {
           gatsbyImageData(
             placeholder: BLURRED
-            width: 280
+            width: 250
             quality: 80
             formats: [AUTO, WEBP]
           )
