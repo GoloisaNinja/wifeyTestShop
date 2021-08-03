@@ -6,6 +6,12 @@ export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+  html {
+    &.menuIsOpen {
+      height: 100%;
+      overflow-y: hidden
+    }
+  }
   select{
     height: 40px;
     font-size: 16px;
@@ -14,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
   body{
     line-height: 1.2;
     &.menuIsOpen {
+      height: 100%;
       overflow-y: hidden;
     }
   }
