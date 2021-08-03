@@ -13,6 +13,9 @@ export const GlobalStyle = createGlobalStyle`
   
   body{
     line-height: 1.2;
+    &.menuIsOpen {
+      overflow-y: hidden;
+    }
   }
   strong{
     font-weight: bold;

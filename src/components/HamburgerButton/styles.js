@@ -19,11 +19,6 @@ export const HamburgerButtonWrapper = styled.div`
   margin-bottom: 5px;
   transition: all 0.5s ease-in-out;
   z-index: 4;
-  &.engaged {
-    transform: translateX(50px);
-    //transform: rotate(180deg);
-    background: transparent;
-  }
 `;
 export const Hamburger = styled.div`
   width: 30px;
@@ -32,8 +27,9 @@ export const Hamburger = styled.div`
   border-radius: 5px;
   background-color: #ff00f7;
   transition: all 0.5s ease-in-out;
+  pointer-events: none;
   &.engaged {
-    //transform: translateX(0px);
+    transform: translateX(50px);
     background: transparent;
     &::before {
       transform: rotate(45deg) translate(-35px, 35px);
