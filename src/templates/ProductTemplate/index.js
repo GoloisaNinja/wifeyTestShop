@@ -3,12 +3,7 @@ import CartContext from "../../context/CartContext";
 import { navigate, useLocation } from "@reach/router";
 import queryString from "query-string";
 import { graphql } from "gatsby";
-import {
-  LayoutPadding,
-  ImageGallery,
-  Button,
-  GradientH2,
-} from "../../components";
+import { Layout, ImageGallery, Button, GradientH2 } from "../../components";
 import { ProductText, Grid, SelectWrapper } from "./styles";
 
 export const query = graphql`
@@ -72,7 +67,7 @@ export default function ProductTemplate({ data }) {
     variantId,
   ]);
   return (
-    <LayoutPadding>
+    <Layout paddingValues={true}>
       <Button onClick={() => navigate(-1)}>GO BACK</Button>
       <Grid>
         <div>
@@ -113,6 +108,6 @@ export default function ProductTemplate({ data }) {
           />
         </div>
       </Grid>
-    </LayoutPadding>
+    </Layout>
   );
 }

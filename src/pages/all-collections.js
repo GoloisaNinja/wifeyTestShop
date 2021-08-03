@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import ProductContext from "../context/ProductContext";
-import { LayoutNoPadding } from "../components/LayoutNoPadding";
+import { Layout } from "../components/Layout";
 import { CollectionTile } from "../components/CollectionTile";
 
 const AllCollectionPage = () => {
   const { collections } = useContext(ProductContext);
   return (
-    <LayoutNoPadding>
+    <Layout>
       {collections.map(
         collection =>
           collection.title.slice(0, 4) === "Luci" && (
@@ -16,7 +16,7 @@ const AllCollectionPage = () => {
             />
           )
       )}
-    </LayoutNoPadding>
+    </Layout>
   );
 };
 export default AllCollectionPage;

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import ProductContext from "../context/ProductContext";
 import { graphql, useStaticQuery } from "gatsby";
-import { LayoutNoPadding, HeroTile } from "../components";
+import { Layout, HeroTile } from "../components";
 import { Link } from "gatsby";
 
 const IndexPage = () => {
@@ -45,7 +45,7 @@ const IndexPage = () => {
     overlayColor: `rgba(0, 122, 86, 0.5)`,
   };
   return (
-    <LayoutNoPadding>
+    <Layout>
       <Link to="/all-collections">
         <HeroTile
           image={floralGirl.image.node.childImageSharp.gatsbyImageData}
@@ -77,7 +77,7 @@ const IndexPage = () => {
           overlayColor={celebration.overlayColor}
         />
       </Link>
-    </LayoutNoPadding>
+    </Layout>
   );
 };
 

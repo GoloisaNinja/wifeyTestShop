@@ -3,7 +3,7 @@ import queryString from "query-string";
 import { useLocation } from "@reach/router";
 import ProductContext from "../context/ProductContext";
 import {
-  LayoutPadding,
+  Layout,
   ProductGrid,
   GradientH4,
   Filters,
@@ -56,7 +56,7 @@ const AllProductsPage = () => {
   };
 
   return (
-    <LayoutPadding>
+    <Layout paddingValues={true}>
       <div
         style={{
           display: "flex",
@@ -98,7 +98,7 @@ const AllProductsPage = () => {
           <ProductGrid products={filteredProducts} />
         </div>
       )}
-    </LayoutPadding>
+    </Layout>
   );
 };
 export default AllProductsPage;

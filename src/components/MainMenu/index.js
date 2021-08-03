@@ -1,5 +1,5 @@
 import React from "react";
-import { navigate } from "@reach/router";
+import { navigate } from "gatsby";
 import { OverlayWrapper } from "../Overlay";
 import { MenuWrapper, NavButton } from "./styles";
 

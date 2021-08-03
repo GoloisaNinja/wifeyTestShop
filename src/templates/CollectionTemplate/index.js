@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { graphql, navigate } from "gatsby";
 import {
-  LayoutPadding,
+  Layout,
   CollectionProductTemplate,
   GradientH1,
   Button,
@@ -45,7 +45,7 @@ export default function CollectionTemplate({ data }) {
   };
 
   return (
-    <LayoutPadding>
+    <Layout paddingValues={true}>
       <ButtonWrapper>
         <Button onClick={() => navigate(`/all-collections`)}>
           back to collections
@@ -72,6 +72,6 @@ export default function CollectionTemplate({ data }) {
           variantQueryStrings={variantQueryStrings}
         />
       ))}
-    </LayoutPadding>
+    </Layout>
   );
 }
