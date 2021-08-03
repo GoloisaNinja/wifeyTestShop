@@ -27,10 +27,12 @@ export const MenuWrapper = styled.div`
   > div:first-child {
     display: flex;
     flex-direction: column;
-    //justify-content: center;
-    //align-items: center;
     margin-top: 100px;
-    > p:first-child {
+    > div {
+      width: 100%;
+      margin: 0 auto;
+    }
+    > p {
       color: #035efc;
       font-size: 20px;
       font-weight: 900;
@@ -56,4 +58,10 @@ export const NavButton = styled.button`
   margin-bottom: 15px;
   text-align: left;
   cursor: pointer;
+  > svg {
+    vertical-align: middle;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    color: #ff00f7;
+  }
 `;

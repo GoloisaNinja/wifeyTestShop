@@ -16,3 +16,4 @@ export * from "./Input";
 export * from "./HamburgerButton";
 export * from "./Overlay";
 export * from "./MainMenu";
+export * from "./MenuLogo";
