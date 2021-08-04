@@ -1,7 +1,7 @@
 import React from "react";
 import { navigate } from "gatsby";
 import { OverlayWrapper } from "../Overlay";
-import { MenuLogo } from "../MenuLogo";
+import { BlueUnicornLogo } from "../BlueUnicornLogo";
 import {
   FaHome,
   FaThLarge,
@@ -23,7 +23,7 @@ export function MainMenu({ handleToggle }) {
     <>
       <MenuWrapper id="menu-drawer">
         <div>
-          <MenuLogo />
+          <BlueUnicornLogo />
           <p>Site Navigation</p>
           <NavButton onClick={e => handleNav("/")} alt="Home Page">
             Home
@@ -44,7 +44,7 @@ export function MainMenu({ handleToggle }) {
             <FaTshirt />
           </NavButton>
           <NavButton onClick={e => handleNav("/")} alt="Cart Overview Page">
-            Cart
+            Shopping Bag
             <FaShoppingBag />
           </NavButton>
           <NavButton
