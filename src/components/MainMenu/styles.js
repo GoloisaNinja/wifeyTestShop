@@ -31,6 +31,7 @@ export const MenuWrapper = styled.div`
     > div {
       width: 100%;
       margin: 0 auto;
+      filter: drop-shadow(3px 5px 5px #ff00f7);
     }
     > p {
       color: #035efc;
@@ -41,6 +42,7 @@ export const MenuWrapper = styled.div`
       text-align: center;
       width: 100%;
       padding-bottom: 5px;
+      margin-top: 15px;
       margin-bottom: 15px;
       border-bottom: 1px solid #ff00f7;
     }

@@ -30,7 +30,7 @@ export function Footer() {
             </ul>
           </div>
         </FooterInfoWrapper>
-        <PurpleUnicornLogo />
+        <PurpleUnicornLogo id="logo" />
         <FooterSocialWrapper>
           <div>
             <p>Follow Us!</p>

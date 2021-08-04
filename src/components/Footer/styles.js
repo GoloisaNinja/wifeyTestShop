@@ -16,16 +16,17 @@ export const FooterWrapper = styled.footer`
     margin-top: 10px;
     > p {
       font-family: "Lato", sans-serif;
-      font-size: 14px;
-      font-weight: 400;
+      font-size: 12px;
+      font-weight: 900;
       color: #ff00f7;
       margin-top: 18px;
     }
     > svg {
       color: #ff66c4;
-      margin-top: 18px;
+      margin-top: 16px;
       margin-left: 3px;
-      margin-right: 8px;
+      margin-right: 3px;
+      font-size: 12px;
     }
   }
 `;
@@ -38,6 +39,7 @@ export const FooterGrid = styled.div`
   > div {
     margin-left: 2rem;
     margin-right: 2rem;
+    filter: drop-shadow(3px 5px 8px #ff00f7);
     @media (min-width: 500px) {
       margin-left: 5rem;
       margin-right: 5rem;
