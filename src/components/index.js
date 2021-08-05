@@ -19,3 +19,5 @@ export * from "./MainMenu";
 export * from "./Footer";
 export * from "./FooterLogo";
 export * from "./BlueUnicornLogo";
+export * from "./ProductQuantityAdder";
+export * from "./Modal";

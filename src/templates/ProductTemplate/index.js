@@ -3,8 +3,15 @@ import CartContext from "../../context/CartContext";
 import { navigate, useLocation } from "@reach/router";
 import queryString from "query-string";
 import { graphql } from "gatsby";
-import { Layout, ImageGallery, Button, GradientH2 } from "../../components";
-import { ProductText, Grid, SelectWrapper } from "./styles";
+import {
+  Layout,
+  ImageGallery,
+  Button,
+  GradientH2,
+  ProductQuantityAdder,
+  Modal,
+} from "../../components";
+import { ProductText, Grid, SelectWrapper, Price } from "./styles";
 
 export const query = graphql`
   query ProductQuery($shopifyId: String) {
@@ -31,6 +38,8 @@ export default function ProductTemplate({ data }) {
   const { getProductById } = useContext(CartContext);
   const [product, setProduct] = useState(null);
   const [selectedVariant, setSelectedVariant] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [modalContent, setModalContent] = useState({});
   const { search, origin, pathname } = useLocation();
 
   const variantId = queryString.parse(search).variant;
@@ -44,6 +53,23 @@ export default function ProductTemplate({ data }) {
       `${origin}${pathname}?variant=${encodeURIComponent(newVariant.id)}`,
       { replace: true }
     );
+  };
+
+  const handleModal = ({ variantId, quantity }) => {
+    const addedVariant = product?.variants.find(
+      variant => variant.id === variantId
+    );
+    const content = {
+      product: data.shopifyProduct.title,
+      addedVariant: addedVariant.title,
+      quantity,
+    };
+    setModalContent(content);
+    setShowModal(true);
+  };
+
+  const handleDismiss = () => {
+    setShowModal(false);
   };
   useEffect(() => {
     const idResult = async () => {
@@ -66,6 +92,7 @@ export default function ProductTemplate({ data }) {
     data.shopifyProduct.storefrontId,
     variantId,
   ]);
+
   return (
     <Layout paddingValues={true}>
       <Button onClick={() => navigate(-1)}>GO BACK</Button>
@@ -97,6 +124,16 @@ export default function ProductTemplate({ data }) {
                   </select>
                 </SelectWrapper>
               )}
+              {!!selectedVariant && (
+                <>
+                  <Price>$ {selectedVariant.price} USD</Price>
+                  <ProductQuantityAdder
+                    variantId={selectedVariant.id}
+                    available={selectedVariant.available}
+                    handleModal={handleModal}
+                  />
+                </>
+              )}
             </>
           )}
         </div>
@@ -108,6 +145,7 @@ export default function ProductTemplate({ data }) {
           />
         </div>
       </Grid>
+      {showModal && <Modal dismiss={handleDismiss} content={modalContent} />}
     </Layout>
   );
 }

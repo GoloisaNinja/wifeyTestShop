@@ -34,5 +34,18 @@ export const SelectWrapper = styled.div`
     display: block;
     margin-bottom: 8px;
     font-family: "Lato", sans-serif;
+    color: #c800cf;
   }
+  > select {
+    font-family: "Lato", sans-serif;
+    color: #39009c;
+  }
+`;
+export const Price = styled.div`
+  margin-top: 35px;
+  font-size: 30px;
+  font-family: "Abril Fatface", cursive;
+  font-weight: 900;
+  color: #96009c;
+  letter-spacing: 1.5px;
 `;

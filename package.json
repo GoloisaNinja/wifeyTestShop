@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@reonomy/react-confetti-explosion": "^1.0.3",
     "babel-plugin-styled-components": "^1.13.2",
     "gatsby": "^3.10.1",
     "gatsby-image": "^3.10.0",
