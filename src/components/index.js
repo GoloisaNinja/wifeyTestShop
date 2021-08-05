@@ -16,7 +16,6 @@ export * from "./Input";
 export * from "./HamburgerButton";
 export * from "./Overlay";
 export * from "./MainMenu";
-export * from "./PurpleUnicornLogo";
 export * from "./Footer";
 export * from "./FooterLogo";
 export * from "./BlueUnicornLogo";

@@ -19,6 +19,7 @@ export const HamburgerButtonWrapper = styled.div`
   margin-bottom: 5px;
   transition: all 0.5s ease-in-out;
   z-index: 4;
+  margin-left: 10px;
 `;
 export const Hamburger = styled.div`
   width: 30px;
@@ -28,6 +29,7 @@ export const Hamburger = styled.div`
   background-color: #ff00f7;
   transition: all 0.5s ease-in-out;
   pointer-events: none;
+  margin-right: 5px;
   &.engaged {
     transform: translateX(50px);
     background: transparent;

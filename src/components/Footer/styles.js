@@ -7,8 +7,7 @@ export const FooterWrapper = styled.footer`
   margin-top: 25px;
   padding: 20px;
   min-height: 180px;
-  background-color: #00eeff;
-  border: 3.5px solid #ff00f7;
+  background-color: #eee;
   > div:last-child {
     display: flex;
     align-items: center;

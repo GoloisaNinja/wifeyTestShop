@@ -1,6 +1,6 @@
 import React from "react";
 import { FooterLogo } from "../FooterLogo";
-import { PurpleUnicornLogo } from "../PurpleUnicornLogo";
+import { BlueUnicornLogo } from "../BlueUnicornLogo";
 import {
   FaInstagram,
   FaTwitter,
@@ -30,7 +30,7 @@ export function Footer() {
             </ul>
           </div>
         </FooterInfoWrapper>
-        <PurpleUnicornLogo id="logo" />
+        <BlueUnicornLogo />
         <FooterSocialWrapper>
           <div>
             <p>Follow Us!</p>

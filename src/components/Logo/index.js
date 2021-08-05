@@ -5,14 +5,15 @@ import { useStaticQuery, graphql } from "gatsby";
 export function Logo() {
   const data = useStaticQuery(graphql`
     {
-      file(relativePath: { eq: "shopIconMain.png" }) {
+      file(relativePath: { eq: "shopLogo.png" }) {
         childImageSharp {
-          fixed(width: 250) {
-            ...GatsbyImageSharpFixed_withWebp
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
     }
   `);
-  return <Img fixed={data.file.childImageSharp.fixed} />;
+
+  return <Img fluid={data.file.childImageSharp.fluid} />;
 }
