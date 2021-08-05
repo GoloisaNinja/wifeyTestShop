@@ -11,7 +11,7 @@ export const LineStyle = css`
 export const HamburgerButtonWrapper = styled.div`
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 60px;
   height: 60px;
@@ -29,7 +29,6 @@ export const Hamburger = styled.div`
   background-color: #ff00f7;
   transition: all 0.5s ease-in-out;
   pointer-events: none;
-  margin-right: 5px;
   &.engaged {
     transform: translateX(50px);
     background: transparent;

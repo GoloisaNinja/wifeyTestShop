@@ -5,6 +5,7 @@ export const HeaderWrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 20px 2px;
+  width: 100%;
   > a {
     > div {
       width: 200px;
