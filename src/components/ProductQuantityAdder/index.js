@@ -29,12 +29,12 @@ export function ProductQuantityAdder({ variantId, available, handleModal }) {
           value={quantity}
           onChange={e => handleQuantityChange(e)}
         />
-
         <Button
           type="submit"
           disabled={!available}
           onClick={e => handleSubmit(e)}
           width={`100%`}
+          margin={"0"}
         >
           Add to Bag
         </Button>

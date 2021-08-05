@@ -8,6 +8,7 @@ export const ProductQuantityAdderWrapper = styled.div`
   }
   > form {
     display: flex;
+    align-items: flex-start;
     margin-top: 8px;
   }
 `;

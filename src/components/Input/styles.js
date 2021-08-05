@@ -9,7 +9,7 @@ export const Input = styled.input`
   font-weight: bold;
   color: #9000a3;
   padding: 5px 10px;
-  height: 44px;
+  height: 46px;
   box-sizing: border-box;
   width: 100%;
   &:focus {
