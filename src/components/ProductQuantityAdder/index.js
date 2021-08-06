@@ -5,7 +5,7 @@ import { Button } from "../Button";
 import { ProductQuantityAdderWrapper } from "./styles";
 
 export function ProductQuantityAdder({ variantId, available, handleModal }) {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState("1");
   const { updateLineItem } = useContext(CartContext);
 
   const handleQuantityChange = e => {
@@ -13,8 +13,12 @@ export function ProductQuantityAdder({ variantId, available, handleModal }) {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    //updateLineItem({ variantId, quantity: parseInt(quantity, 10) });
-    handleModal({ variantId, quantity: parseInt(quantity, 10) });
+    if (!isNaN(parseInt(quantity, 10))) {
+      //updateLineItem({ variantId, quantity: parseInt(quantity, 10) });
+      handleModal({ variantId, quantity: parseInt(quantity, 10) });
+    } else {
+      handleModal({ error: true });
+    }
   };
 
   return (
@@ -30,6 +34,7 @@ export function ProductQuantityAdder({ variantId, available, handleModal }) {
           onChange={e => handleQuantityChange(e)}
         />
         <Button
+          inverse
           type="submit"
           disabled={!available}
           onClick={e => handleSubmit(e)}

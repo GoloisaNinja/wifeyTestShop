@@ -55,17 +55,31 @@ export default function ProductTemplate({ data }) {
     );
   };
 
-  const handleModal = ({ variantId, quantity }) => {
-    const addedVariant = product?.variants.find(
-      variant => variant.id === variantId
-    );
-    const content = {
-      product: data.shopifyProduct.title,
-      addedVariant: addedVariant.title,
-      quantity,
-    };
-    setModalContent(content);
-    setShowModal(true);
+  const handleModal = ({ variantId, quantity, error }) => {
+    if (error) {
+      const content = {
+        title: "Whoopsie",
+        product: "Quantity should be a number",
+        addedVariant: "try again",
+        quantity: "error",
+        confetti: false,
+      };
+      setModalContent(content);
+      setShowModal(true);
+    } else {
+      const addedVariant = product?.variants.find(
+        variant => variant.id === variantId
+      );
+      const content = {
+        title: "Added to bag!",
+        product: data.shopifyProduct.title,
+        addedVariant: addedVariant.title,
+        quantity,
+        confetti: true,
+      };
+      setModalContent(content);
+      setShowModal(true);
+    }
   };
 
   const handleDismiss = () => {

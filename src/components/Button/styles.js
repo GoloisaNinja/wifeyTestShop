@@ -12,10 +12,14 @@ export const Button = styled.button`
   line-height: 44px;
   cursor: pointer;
   text-transform: uppercase;
-  background: #fff;
-  color: #c800cf;
-  &:hover {
-    background: #9e00a3;
-    color: #fff;
+  background: ${props => (props.inverse ? "#9e00a3" : "#fff")};
+  color: ${props => (props.inverse ? "#fff" : "#c800cf")};
+  &:hover:not(:disabled) {
+    background: ${props => (props.inverse ? "#fff" : "#9e00a3")};
+    color: ${props => (props.inverse ? "#c800cf" : "#fff")};
+  }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 `;
