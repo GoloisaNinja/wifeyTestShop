@@ -40,3 +40,11 @@ export const SelectWrapper = styled.div`
     font-family: "Lato", sans-serif;
   }
 `;
+export const Price = styled.div`
+  margin-top: 35px;
+  font-size: 30px;
+  font-family: "Abril Fatface", cursive;
+  font-weight: 900;
+  color: #96009c;
+  letter-spacing: 1.5px;
+`;

@@ -6,7 +6,7 @@ export const FiltersWrapper = styled.div`
   right: 0;
   width: 75%;
   height: 100vh;
-  z-index: 5;
+  z-index: 6;
   background-color: #fff;
   padding: 10px;
   border: 1px solid #ddd;

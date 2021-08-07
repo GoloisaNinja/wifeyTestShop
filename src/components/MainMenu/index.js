@@ -60,7 +60,7 @@ export function MainMenu({ handleToggle }) {
           </NavButton>
         </div>
       </MenuWrapper>
-      <OverlayWrapper id="menu-overlay" zvalue={"1"}></OverlayWrapper>
+      <OverlayWrapper id="menu-overlay" zvalue={"2"}></OverlayWrapper>
     </>
   );
 }

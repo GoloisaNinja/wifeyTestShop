@@ -21,3 +21,5 @@ export * from "./FooterLogo";
 export * from "./BlueUnicornLogo";
 export * from "./ProductQuantityAdder";
 export * from "./Modal";
+export * from "./CollectionQuantityAdder";
+export * from "./CollectionModal";

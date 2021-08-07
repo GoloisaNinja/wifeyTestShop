@@ -1,9 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import CartContext from "../../context/CartContext";
+import { CollectionQuantityAdder } from "../CollectionQuantityAdder";
 import { navigate, useLocation } from "@reach/router";
 import queryString from "query-string";
 import { ImageGallery, GradientH2 } from "../../components";
-import { ProductText, Grid, SelectWrapper } from "./styles";
+import { ProductText, Grid, SelectWrapper, Price } from "./styles";
 
 export function CollectionProductTemplate({
   productShopifyId,
@@ -12,6 +13,8 @@ export function CollectionProductTemplate({
   handle,
   handleVariantQueryStrings,
   variantQueryStrings,
+  updateCollectionProductMap,
+  confirmedStatus,
 }) {
   const { getProductById } = useContext(CartContext);
   const [product, setProduct] = useState(null);
@@ -56,6 +59,17 @@ export function CollectionProductTemplate({
       });
     }
   }, [selectedVariant]);
+
+  const handleIndividualProductDetails = ({ quantity, confirmed }) => {
+    updateCollectionProductMap({
+      storefrontId: productStorefrontId,
+      variantId: selectedVariant.id,
+      productTitle: product.title,
+      variantTitle: selectedVariant.title,
+      quantity,
+      confirmed,
+    });
+  };
   return (
     <Grid>
       <div>
@@ -84,6 +98,19 @@ export function CollectionProductTemplate({
                   ))}
                 </select>
               </SelectWrapper>
+            )}
+            {!!selectedVariant && (
+              <>
+                <Price>$ {selectedVariant.price} USD</Price>
+                <CollectionQuantityAdder
+                  variantId={selectedVariant.id}
+                  confirmed={confirmedStatus}
+                  available={selectedVariant.available}
+                  handleIndividualProductDetails={
+                    handleIndividualProductDetails
+                  }
+                />
+              </>
             )}
           </>
         )}

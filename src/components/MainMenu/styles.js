@@ -6,7 +6,7 @@ export const MenuWrapper = styled.div`
   left: 0;
   width: 75%;
   height: 100vh;
-  z-index: 2;
+  z-index: 3;
   background-color: #fff;
   padding: 10px;
   border: 1px solid #ddd;

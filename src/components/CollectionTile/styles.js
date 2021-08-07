@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const CollectionTileWrapper = styled.div`
   display: flex;
   position: relative;
-  margin-bottom: 20px;
   > div {
     flex-grow: 1;
   }

@@ -55,7 +55,7 @@ export function Filters({ toggleFilters }) {
               )
           )}
       </FiltersWrapper>
-      <OverlayWrapper id="overlay" zvalue={"4"}></OverlayWrapper>
+      <OverlayWrapper id="overlay" zvalue={"5"}></OverlayWrapper>
     </>
   );
 }
