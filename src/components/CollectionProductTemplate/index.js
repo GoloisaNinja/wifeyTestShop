@@ -51,6 +51,18 @@ export function CollectionProductTemplate({
     variantId,
     setSelectedVariant,
   ]);
+
+  const handleIndividualProductDetails = ({ quantity, confirmed }) => {
+    updateCollectionProductMap({
+      storefrontId: productStorefrontId,
+      variantId: selectedVariant?.id,
+      productTitle: product?.title,
+      variantTitle: selectedVariant?.title,
+      quantity,
+      confirmed,
+    });
+  };
+
   useEffect(() => {
     const updatedQs = queryString.stringify(variantQueryStrings);
     if (Object.keys(updatedQs).length > 0) {
@@ -58,18 +70,9 @@ export function CollectionProductTemplate({
         replace: true,
       });
     }
+    handleIndividualProductDetails({ quantity: 1, confirmed: false });
   }, [selectedVariant]);
 
-  const handleIndividualProductDetails = ({ quantity, confirmed }) => {
-    updateCollectionProductMap({
-      storefrontId: productStorefrontId,
-      variantId: selectedVariant.id,
-      productTitle: product.title,
-      variantTitle: selectedVariant.title,
-      quantity,
-      confirmed,
-    });
-  };
   return (
     <Grid>
       <div>

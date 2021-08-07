@@ -24,9 +24,11 @@ export function CollectionQuantityAdder({
     }
   };
   useEffect(() => {
-    setQuantity("1");
     setisConfirmed(confirmed);
-  }, [variantId, confirmed]);
+  }, [confirmed, variantId]);
+  useEffect(() => {
+    setQuantity("1");
+  }, [variantId]);
 
   return (
     <CollectionQuantityAdderWrapper>
