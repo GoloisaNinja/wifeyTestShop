@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import CartContext from "../../context/CartContext";
 import { CollectionQuantityAdder } from "../CollectionQuantityAdder";
 import { navigate, useLocation } from "@reach/router";
@@ -30,6 +30,7 @@ export function CollectionProductTemplate({
     setSelectedVariant(newVariant);
     handleVariantQueryStrings(handle, newVariant.id);
   };
+
   useEffect(() => {
     const idResult = async () => {
       try {
@@ -66,9 +67,10 @@ export function CollectionProductTemplate({
   useEffect(() => {
     const updatedQs = queryString.stringify(variantQueryStrings);
     if (Object.keys(updatedQs).length > 0) {
-      navigate(`${origin}${pathname}?${updatedQs}`, {
-        replace: true,
-      });
+      // navigate(`${origin}${pathname}?${updatedQs}`, {
+      //   replace: true,
+      // });
+      window.history.replaceState("", "", `?${updatedQs}`);
     }
     handleIndividualProductDetails({ quantity: 1, confirmed: false });
   }, [selectedVariant]);

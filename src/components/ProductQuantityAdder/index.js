@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import CartContext from "../../context/CartContext";
 import { Input } from "../Input";
 import { Button } from "../Button";
@@ -20,7 +20,9 @@ export function ProductQuantityAdder({ variantId, available, handleModal }) {
       handleModal({ error: true });
     }
   };
-
+  useEffect(() => {
+    setQuantity("1");
+  }, [variantId]);
   return (
     <ProductQuantityAdderWrapper>
       <strong>Quantity</strong>

@@ -49,9 +49,14 @@ export default function ProductTemplate({ data }) {
       variant => variant.id === e.target.value
     );
     setSelectedVariant(newVariant);
-    navigate(
-      `${origin}${pathname}?variant=${encodeURIComponent(newVariant.id)}`,
-      { replace: true }
+    // navigate(
+    //   `${origin}${pathname}?variant=${encodeURIComponent(newVariant.id)}`,
+    //   { replace: true }
+    // );
+    window.history.replaceState(
+      "",
+      "",
+      `?variant=${encodeURIComponent(newVariant.id)}`
     );
   };
 
