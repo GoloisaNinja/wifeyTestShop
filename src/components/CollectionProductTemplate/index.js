@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import CartContext from "../../context/CartContext";
 import { CollectionQuantityAdder } from "../CollectionQuantityAdder";
-import { navigate, useLocation } from "@reach/router";
+import { useLocation } from "@reach/router";
 import queryString from "query-string";
 import { ImageGallery, GradientH2 } from "../../components";
 import { ProductText, Grid, SelectWrapper, Price } from "./styles";
@@ -19,7 +19,7 @@ export function CollectionProductTemplate({
   const { getProductById } = useContext(CartContext);
   const [product, setProduct] = useState(null);
   const [selectedVariant, setSelectedVariant] = useState(null);
-  const { search, origin, pathname } = useLocation();
+  const { search } = useLocation();
 
   const parsedVariantId = queryString.parse(search);
   const variantId = decodeURIComponent(parsedVariantId[handle]);

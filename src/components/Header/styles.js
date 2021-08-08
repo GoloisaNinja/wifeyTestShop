@@ -17,11 +17,13 @@ export const HeaderWrapper = styled.header`
       }
     }
   }
-  > svg {
-    font-size: 30px;
-    color: #ff00f7;
-    margin-right: 10px;
-    cursor: pointer;
-    margin-bottom: 5px;
+  > a:last-child {
+    > svg {
+      font-size: 30px;
+      color: #ff00f7;
+      margin-right: 10px;
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
   }
 `;

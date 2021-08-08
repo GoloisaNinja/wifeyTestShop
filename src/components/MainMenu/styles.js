@@ -13,7 +13,7 @@ export const MenuWrapper = styled.div`
   visibility: hidden;
   overflow-y: auto;
   transform: translate3d(-100%, 0, 0);
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s ease-in-out;
   @media (min-width: 500px) {
     width: 50%;
   }
@@ -52,14 +52,14 @@ export const NavButton = styled.button`
   background: none;
   border: none;
   font-family: "Lato", sans-serif;
-  font-size: 18px;
+  font-size: 14px;
+  padding: 7px 7px;
   color: #c800cf;
-  font-weight: 900;
+  font-weight: 400;
   text-transform: uppercase;
-  margin-top: 15px;
-  margin-bottom: 15px;
   text-align: left;
   cursor: pointer;
+  border-bottom: 1px solid #ff00f7;
   > svg {
     vertical-align: middle;
     margin-bottom: 5px;

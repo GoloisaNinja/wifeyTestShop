@@ -17,7 +17,7 @@ export function MainMenu({ handleToggle }) {
     handleToggle();
     setTimeout(() => {
       navigate(destination);
-    }, 400);
+    }, 200);
   };
   return (
     <>
@@ -43,12 +43,12 @@ export function MainMenu({ handleToggle }) {
             Products
             <FaTshirt />
           </NavButton>
-          <NavButton onClick={e => handleNav("/")} alt="Cart Overview Page">
+          <NavButton onClick={e => handleNav("/cart")} alt="Cart Overview Page">
             Shopping Bag
             <FaShoppingBag />
           </NavButton>
           <NavButton
-            onClick={e => handleNav("/")}
+            onClick={e => handleNav("/about")}
             alt="About Neon Unicorn Page"
           >
             About Neon Unicorn

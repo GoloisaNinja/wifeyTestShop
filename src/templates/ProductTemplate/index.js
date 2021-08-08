@@ -40,7 +40,7 @@ export default function ProductTemplate({ data }) {
   const [selectedVariant, setSelectedVariant] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState({});
-  const { search, origin, pathname } = useLocation();
+  const { search } = useLocation();
 
   const variantId = queryString.parse(search).variant;
 

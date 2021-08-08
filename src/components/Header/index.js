@@ -36,7 +36,9 @@ export function Header() {
         <Link to="/">
           <Logo />
         </Link>
-        <FaShoppingBag />
+        <Link to="/cart">
+          <FaShoppingBag />
+        </Link>
       </HeaderWrapper>
     </>
   );

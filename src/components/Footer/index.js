@@ -23,7 +23,7 @@ export function Footer() {
           <div>
             <ul>
               <li>ABOUT</li>
-              <li>PARTNERS</li>
+              <li>BLOG</li>
               <li>SIZING</li>
               <li>SHIPPING</li>
               <li>CONTACT US</li>
