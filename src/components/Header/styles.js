@@ -19,7 +19,7 @@ export const HeaderWrapper = styled.header`
   }
   > a:last-child {
     > svg {
-      font-size: 30px;
+      font-size: 35px;
       color: #ff00f7;
       margin-right: 10px;
       cursor: pointer;

@@ -46,7 +46,7 @@ export function CollectionProductTemplate({
     };
     idResult();
   }, [
-    getProductById,
+    //getProductById,
     setProduct,
     productStorefrontId,
     variantId,
@@ -59,7 +59,7 @@ export function CollectionProductTemplate({
       variantId: selectedVariant?.id,
       productTitle: product?.title,
       variantTitle: selectedVariant?.title,
-      quantity,
+      quantity: parseInt(quantity, 10),
       confirmed,
     });
   };

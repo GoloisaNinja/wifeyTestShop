@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ConfettiExplosion from "@reonomy/react-confetti-explosion";
 import { Button } from "../Button";
 import { BlueUnicornLogo } from "../BlueUnicornLogo";
 import { ModalWrapper, ModalOverlay } from "./styles";
 
 export function Modal({ dismiss, content }) {
-  const [isExploding, setIsExploding] = useState(content.confetti);
+  const [isExploding, setIsExploding] = useState(false);
   const handleDismiss = () => {
     setIsExploding(false);
     dismiss();
   };
+  useEffect(() => {
+    setIsExploding(content.confetti);
+  }, [setIsExploding]);
   return (
     <>
       <ModalWrapper>

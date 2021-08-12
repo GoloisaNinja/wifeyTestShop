@@ -6,19 +6,22 @@ import { ProductQuantityAdderWrapper } from "./styles";
 
 export function ProductQuantityAdder({ variantId, available, handleModal }) {
   const [quantity, setQuantity] = useState("1");
+  const [addBtnDisabled, setAddBtnDisabled] = useState(false);
   const { updateLineItem } = useContext(CartContext);
 
   const handleQuantityChange = e => {
     setQuantity(e.currentTarget.value);
   };
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
+    setAddBtnDisabled(true);
     if (!isNaN(parseInt(quantity, 10))) {
-      //updateLineItem({ variantId, quantity: parseInt(quantity, 10) });
+      await updateLineItem([{ variantId, quantity: parseInt(quantity, 10) }]);
       handleModal({ variantId, quantity: parseInt(quantity, 10) });
     } else {
       handleModal({ error: true });
     }
+    setAddBtnDisabled(false);
   };
   useEffect(() => {
     setQuantity("1");
@@ -38,7 +41,7 @@ export function ProductQuantityAdder({ variantId, available, handleModal }) {
         <Button
           inverse
           type="submit"
-          disabled={!available}
+          disabled={!available || addBtnDisabled}
           onClick={e => handleSubmit(e)}
           width={`100%`}
           margin={"0"}

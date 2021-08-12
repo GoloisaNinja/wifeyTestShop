@@ -105,7 +105,7 @@ export default function ProductTemplate({ data }) {
     };
     idResult();
   }, [
-    getProductById,
+    //getProductById,
     setProduct,
     setSelectedVariant,
     data.shopifyProduct.storefrontId,

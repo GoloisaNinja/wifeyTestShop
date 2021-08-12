@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ConfettiExplosion from "@reonomy/react-confetti-explosion";
 import { Button } from "../Button";
 import { BlueUnicornLogo } from "../BlueUnicornLogo";
@@ -10,11 +10,15 @@ export function CollectionModal({
   collectionTitle,
   exploding,
 }) {
-  const [isExploding, setIsExploding] = useState(exploding);
+  const [isExploding, setIsExploding] = useState(false);
   const handleDismiss = () => {
     setIsExploding(false);
     dismiss();
   };
+  useEffect(() => {
+    console.log("coll modal ran");
+    setIsExploding(exploding);
+  }, [setIsExploding]);
   return (
     <>
       <ModalWrapper>

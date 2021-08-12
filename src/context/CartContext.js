@@ -37,7 +37,6 @@ export function CartContextProvider({ children }) {
         }
       }
     };
-
     getCheckout();
   }, [setCheckout, setSuccessfulOrder, checkoutId]);
 
@@ -46,37 +45,39 @@ export function CartContextProvider({ children }) {
     return product;
   }
 
-  const updateLineItem = async ({ variantId, quantity }) => {
+  const updateLineItem = async itemArr => {
     // if no checkout id, create a new checkout
     let newCheckout = checkout || (await client.checkout.create());
 
-    // check to see if this variantId exists in storedCheckout
-    const lineItemVariant = newCheckout.lineItems?.find(
-      lineItem => lineItem.variant.id === variantId
-    );
+    for (let i = 0; i < itemArr.length; i++) {
+      // check to see if this variantId exists in storedCheckout
+      const lineItemVariant = newCheckout.lineItems?.find(
+        lineItem => lineItem.variant.id === itemArr[i].variantId
+      );
 
-    if (lineItemVariant) {
-      const newQuantity = lineItemVariant.quantity + quantity;
+      if (lineItemVariant) {
+        const newQuantity = lineItemVariant.quantity + itemArr[i].quantity;
 
-      if (newQuantity) {
-        newCheckout = await client.checkout.updateLineItems(newCheckout.id, [
+        if (newQuantity) {
+          newCheckout = await client.checkout.updateLineItems(newCheckout.id, [
+            {
+              id: lineItemVariant.id,
+              quantity: newQuantity,
+            },
+          ]);
+        } else {
+          newCheckout = await client.checkout.removeLineItems(newCheckout.id, [
+            lineItemVariant.id,
+          ]);
+        }
+      } else {
+        newCheckout = await client.checkout.addLineItems(newCheckout.id, [
           {
-            id: lineItemVariant.id,
-            quantity: newQuantity,
+            variantId: itemArr[i].variantId,
+            quantity: parseInt(itemArr[i].quantity, 10),
           },
         ]);
-      } else {
-        newCheckout = await client.checkout.removeLineItems(newCheckout.id, [
-          lineItemVariant.id,
-        ]);
       }
-    } else {
-      newCheckout = await client.checkout.addLineItems(newCheckout.id, [
-        {
-          variantId,
-          quantity,
-        },
-      ]);
     }
 
     setCheckout(newCheckout);

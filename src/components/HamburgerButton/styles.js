@@ -13,8 +13,8 @@ export const HamburgerButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 60px;
-  height: 60px;
+  width: 3.75rem;
+  height: 3.75rem;
   cursor: pointer;
   margin-bottom: 5px;
   transition: all 0.5s ease-in-out;

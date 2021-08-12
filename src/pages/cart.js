@@ -1,10 +1,10 @@
 import React from "react";
-import { Layout } from "../components";
+import { Layout, CartContents } from "../components";
 
 const Cart = () => {
   return (
     <Layout paddingValues={true}>
-      <h1>Cart Page Here...</h1>
+      <CartContents />
     </Layout>
   );
 };

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import CartContext from "../../context/CartContext";
 import { graphql, navigate } from "gatsby";
 import {
   Layout,
@@ -45,10 +46,12 @@ export const query = graphql`
 `;
 
 export default function CollectionTemplate({ data }) {
+  const { updateLineItem } = useContext(CartContext);
   const [variantQueryStrings, setVariantQueryStrings] = useState({});
   const [readyToAdd, setReadyToAdd] = useState(false);
   const [modalContent, setModalContent] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [addBtnDisabled, setAddBtnDisabled] = useState(false);
 
   const handleVariantQueryStrings = (handle, variant) => {
     setVariantQueryStrings({
@@ -118,17 +121,21 @@ export default function CollectionTemplate({ data }) {
       };
     }
     setCollectionProductMap(resetMap);
-    navigate(
-      `/collection/${encodeURIComponent(data.shopifyCollection.handle)}`
-    );
+    // navigate(
+    //   `/collection/${encodeURIComponent(data.shopifyCollection.handle)}`
+    // );
   };
-  const handleModal = () => {
+
+  const handleModal = async () => {
+    setAddBtnDisabled(true);
     let contentArray = [];
     for (let key in collectionProductMap) {
       contentArray.push(collectionProductMap[key]);
     }
     setModalContent(contentArray);
+    await updateLineItem(contentArray);
     setShowModal(true);
+    setAddBtnDisabled(false);
   };
   return (
     <Layout paddingValues={true}>
@@ -198,9 +205,10 @@ export default function CollectionTemplate({ data }) {
         {readyToAdd && (
           <FloatingButtonWrapper>
             <Button
+              id="addToCartBtn"
               inverse
               width={`100%`}
-              disabled={!readyToAdd}
+              disabled={addBtnDisabled}
               onClick={handleModal}
             >
               Add to Bag
