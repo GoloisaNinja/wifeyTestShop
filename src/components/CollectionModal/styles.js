@@ -6,7 +6,7 @@ export const ModalWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
-  max-width: 95%;
+  max-width: 90%;
   z-index: 1010;
   background-color: white;
   padding: 1.5rem;

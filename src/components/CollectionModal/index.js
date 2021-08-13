@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ConfettiExplosion from "@reonomy/react-confetti-explosion";
 import { Button } from "../Button";
-import wowUnicornSmall from "../../images/wowUnicornSmall.gif";
+import wowUnicornMedium from "../../images/wowUnicornMedium.gif";
 import {
   ModalWrapper,
   ModalOverlay,
@@ -29,7 +29,7 @@ export function CollectionModal({
       <ModalWrapper>
         <UnicornWrapper>
           <img
-            src={wowUnicornSmall}
+            src={wowUnicornMedium}
             width={"100"}
             height={"150"}
             alt="a pretty unicorn that is pleased with your cart addition"
