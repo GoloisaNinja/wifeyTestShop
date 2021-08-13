@@ -207,7 +207,7 @@ export default function CollectionTemplate({ data }) {
             <Button
               id="addToCartBtn"
               inverse
-              width={`100%`}
+              width={"150px"}
               disabled={addBtnDisabled}
               onClick={handleModal}
             >

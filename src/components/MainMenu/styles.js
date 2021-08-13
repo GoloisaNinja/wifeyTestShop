@@ -49,6 +49,8 @@ export const MenuWrapper = styled.div`
   }
 `;
 export const NavButton = styled.button`
+  display: flex;
+  justify-content: space-between;
   background: none;
   border: none;
   font-family: "Lato", sans-serif;

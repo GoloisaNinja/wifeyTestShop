@@ -35,9 +35,16 @@ export const PurchaseWrapper = styled.div`
   }
 `;
 export const FloatingButtonWrapper = styled.div`
-  width: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
-  bottom: 20px;
-  right: 10px;
+  bottom: 40px;
+  transform: translateX(-50%);
+  left: 50%;
   z-index: 1;
+  > button {
+    border-radius: 25px;
+  }
 `;

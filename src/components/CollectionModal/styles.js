@@ -6,7 +6,7 @@ export const ModalWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
-  max-width: 75%;
+  max-width: 95%;
   z-index: 1010;
   background-color: white;
   padding: 1.5rem;
@@ -14,6 +14,12 @@ export const ModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  @media (min-width: 374px) {
+    width: 370px;
+  }
+  @media (min-width: 500px) {
+    width: 450px;
+  }
   > h4 {
     font-family: "Lato", sans-serif;
     font-weight: bold;
@@ -50,4 +56,10 @@ export const ModalOverlay = styled.div`
   height: 100%;
   background-color: #0a0a0a;
   opacity: 80%;
+`;
+export const UnicornWrapper = styled.div`
+  width: 100%;
+  > img {
+    max-width: 100px;
+  }
 `;

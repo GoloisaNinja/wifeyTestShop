@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ConfettiExplosion from "@reonomy/react-confetti-explosion";
 import { Button } from "../Button";
-import { BlueUnicornLogo } from "../BlueUnicornLogo";
-import { ModalWrapper, ModalOverlay } from "./styles";
+import wowUnicornSmall from "../../images/wowUnicornSmall.gif";
+import { ModalWrapper, ModalOverlay, UnicornWrapper } from "./styles";
 
 export function Modal({ dismiss, content }) {
   const [isExploding, setIsExploding] = useState(false);
@@ -16,7 +16,14 @@ export function Modal({ dismiss, content }) {
   return (
     <>
       <ModalWrapper>
-        <BlueUnicornLogo />
+        <UnicornWrapper>
+          <img
+            src={wowUnicornSmall}
+            width={"100"}
+            height={"150"}
+            alt="a unicorn that is very pleased with your cart addition"
+          />
+        </UnicornWrapper>
         {isExploding && (
           <ConfettiExplosion
             force={0.4}
