@@ -6,11 +6,13 @@ import {
   CartFooter,
   Footer,
   ShopifyNoteWrapper,
+  UnicornWrapper,
 } from "./styles";
 import { CartQuantityAdjuster } from "../CartQuantityAdjuster";
 import { CartRemoveLineItem } from "../CartRemoveLineItem";
 import { Button } from "../Button";
 import { GradientH1, GradientH4, GradientP } from "../GradientText";
+import confusedUnicorn from "../../images/confusedUnicorn.gif";
 import { navigate } from "@reach/router";
 
 export function CartContents() {
@@ -77,12 +79,20 @@ export function CartContents() {
         </CartFooter>
       )}
       {(!checkout?.lineItems || checkout?.paymentDue === "0.00") && (
-        <GradientH4
-          font={`'Abril Fatface', cursive`}
-          color={`#035efc, #ff00f7`}
-        >
-          sad unicorn empties...
-        </GradientH4>
+        <>
+          <GradientH4
+            font={`'Abril Fatface', cursive`}
+            color={`#035efc, #ff00f7`}
+          >
+            sad unicorn empties...
+          </GradientH4>
+          <UnicornWrapper>
+            <img
+              src={confusedUnicorn}
+              alt="a blinking unicorn that is confused at why your shopping bag is empty"
+            />
+          </UnicornWrapper>
+        </>
       )}
       <Footer>
         <div>
