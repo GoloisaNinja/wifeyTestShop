@@ -7,7 +7,7 @@ import {
   GradientH1,
   GradientP,
   Button,
-  CollectionModal,
+  Modal,
 } from "../../components";
 import {
   ButtonWrapper,
@@ -49,7 +49,7 @@ export default function CollectionTemplate({ data }) {
   const { updateLineItem } = useContext(CartContext);
   const [variantQueryStrings, setVariantQueryStrings] = useState({});
   const [readyToAdd, setReadyToAdd] = useState(false);
-  const [modalContent, setModalContent] = useState([]);
+  const [modalContent, setModalContent] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [addBtnDisabled, setAddBtnDisabled] = useState(false);
 
@@ -132,7 +132,11 @@ export default function CollectionTemplate({ data }) {
     for (let key in collectionProductMap) {
       contentArray.push(collectionProductMap[key]);
     }
-    setModalContent(contentArray);
+    setModalContent({
+      message: "was added to cart!",
+      product: data.shopifyCollection.title,
+      confetti: true,
+    });
     await updateLineItem(contentArray);
     setShowModal(true);
     setAddBtnDisabled(false);
@@ -194,14 +198,7 @@ export default function CollectionTemplate({ data }) {
           />
         ))}
 
-        {showModal && (
-          <CollectionModal
-            dismiss={handleDismiss}
-            collectionTitle={data.shopifyCollection.title}
-            content={modalContent}
-            exploding={true}
-          />
-        )}
+        {showModal && <Modal dismiss={handleDismiss} content={modalContent} />}
         {readyToAdd && (
           <FloatingButtonWrapper>
             <Button

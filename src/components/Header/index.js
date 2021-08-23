@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Logo } from "../Logo";
 import { Link } from "gatsby";
-import { FaShoppingBag } from "react-icons/fa";
 import { MainMenu } from "../MainMenu";
 import { HamburgerButton } from "../HamburgerButton";
+import { ShoppingBag } from "../ShoppingBag";
 import { HeaderWrapper } from "./styles";
 
 export function Header() {
@@ -36,9 +36,7 @@ export function Header() {
         <Link to="/">
           <Logo />
         </Link>
-        <Link to="/cart">
-          <FaShoppingBag />
-        </Link>
+        <ShoppingBag />
       </HeaderWrapper>
     </>
   );

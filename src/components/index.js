@@ -22,7 +22,7 @@ export * from "./BlueUnicornLogo";
 export * from "./ProductQuantityAdder";
 export * from "./Modal";
 export * from "./CollectionQuantityAdder";
-export * from "./CollectionModal";
 export * from "./CartContents";
 export * from "./CartQuantityAdjuster";
 export * from "./CartRemoveLineItem";
+export * from "./ShoppingBag";

@@ -33,11 +33,12 @@ export function Modal({ dismiss, content }) {
             floorWidth={1000}
           />
         )}
-        <h4>{content.title}</h4>
-        <h5>{content.product}</h5>
-        <h5>{content.addedVariant}</h5>
-        <h6>Item Count: {content.quantity}</h6>
-        <Button onClick={handleDismiss}>Awesome!</Button>
+        <h4>
+          Yesssh! {content.product} {content.message}
+        </h4>
+        <Button inverse={true} onClick={handleDismiss}>
+          DISMISS
+        </Button>
       </ModalWrapper>
       <ModalOverlay></ModalOverlay>
     </>

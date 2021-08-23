@@ -6,41 +6,22 @@ export const ModalWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
-  max-width: 95%;
+  max-width: 75%;
   z-index: 1010;
-  background-color: white;
+  background-color: #ffbdf6;
   padding: 1.5rem;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   text-align: center;
-  @media (min-width: 374px) {
-    width: 370px;
-  }
-  @media (min-width: 500px) {
-    width: 450px;
-  }
   > div:first-child {
     margin: 0 auto;
     filter: drop-shadow(3px 5px 5px #ff00f7);
   }
   > h4 {
     font-family: "Lato", sans-serif;
-    color: #5826ad;
-  }
-  > h5 {
-    margin: 0;
-    color: #ad26ab;
-    font-family: "Abril Fatface", cursive;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  > h6 {
-    font-weight: bold;
-    font-family: "Lato", sans-serif;
-    color: #30818a;
-    font-size: 14px;
-    text-transform: uppercase;
+    //color: #5826ad;
+    color: #007982;
   }
 `;
 

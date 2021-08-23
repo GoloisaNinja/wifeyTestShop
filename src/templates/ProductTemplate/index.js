@@ -60,26 +60,19 @@ export default function ProductTemplate({ data }) {
     );
   };
 
-  const handleModal = ({ variantId, quantity, error }) => {
+  const handleModal = ({ variantId, error }) => {
     if (error) {
       const content = {
-        title: "Whoopsie",
-        product: "Quantity should be a number",
-        addedVariant: "try again",
-        quantity: "error",
+        message: "Quantity should be a number...",
+        product: "Whoopsie!",
         confetti: false,
       };
       setModalContent(content);
       setShowModal(true);
     } else {
-      const addedVariant = product?.variants.find(
-        variant => variant.id === variantId
-      );
       const content = {
-        title: "Added to bag!",
+        message: "was added to bag!",
         product: data.shopifyProduct.title,
-        addedVariant: addedVariant.title,
-        quantity,
         confetti: true,
       };
       setModalContent(content);
