@@ -4,7 +4,8 @@ import { Link } from "gatsby";
 import { MainMenu } from "../MainMenu";
 import { HamburgerButton } from "../HamburgerButton";
 import { ShoppingBag } from "../ShoppingBag";
-import { HeaderWrapper } from "./styles";
+import { Search } from "../Search";
+import { HeaderWrapper, SearchWrapper } from "./styles";
 
 export function Header() {
   const [clicked, setClicked] = useState(true);
@@ -38,6 +39,9 @@ export function Header() {
         </Link>
         <ShoppingBag />
       </HeaderWrapper>
+      <SearchWrapper>
+        <Search />
+      </SearchWrapper>
     </>
   );
 }

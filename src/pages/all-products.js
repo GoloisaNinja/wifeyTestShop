@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import queryString from "query-string";
 import { useLocation } from "@reach/router";
 import ProductContext from "../context/ProductContext";
+import styled from "styled-components";
 import {
   Layout,
   ProductGrid,
@@ -10,7 +11,16 @@ import {
   Selectors,
 } from "../components";
 
-const AllProductsPage = () => {
+const NoMatchWrapper = styled.div`
+  font-family: "Lato", sans-serif;
+  color: #9905f5;
+  > h3 {
+    margin-top: 0;
+    margin-bottom: 25px;
+  }
+`;
+
+export default function AllProductsPage() {
   const { products, collections } = useContext(ProductContext);
   const collectionProductMap = {};
   const { search } = useLocation();
@@ -47,7 +57,16 @@ const AllProductsPage = () => {
     return true;
   };
 
-  const filteredProducts = products.filter(filterByCategory);
+  const filterBySearchTerm = product => {
+    if (searchTerm) {
+      return product.title.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0;
+    }
+    return true;
+  };
+
+  const filteredProducts = products
+    .filter(filterByCategory)
+    .filter(filterBySearchTerm);
   const toggleFilters = () => {
     const filters = document.getElementById("filters");
     const overlay = document.getElementById("overlay");
@@ -93,6 +112,20 @@ const AllProductsPage = () => {
         toggleFilters={toggleFilters}
       />
       <Filters toggleFilters={toggleFilters} />
+      {!filteredProducts.length && (
+        <NoMatchWrapper>
+          <h3>
+            Oops...no matches for &nbsp; <strong>'{searchTerm}'</strong>
+          </h3>
+        </NoMatchWrapper>
+      )}
+      {!!filteredProducts.length && !!searchTerm && (
+        <NoMatchWrapper>
+          <h3>
+            Searching for <strong>'{searchTerm}'</strong>
+          </h3>
+        </NoMatchWrapper>
+      )}
       {!!filteredProducts.length && (
         <div>
           <ProductGrid products={filteredProducts} />
@@ -100,5 +133,4 @@ const AllProductsPage = () => {
       )}
     </Layout>
   );
-};
-export default AllProductsPage;
+}
