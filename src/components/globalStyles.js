@@ -7,6 +7,9 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   html {
+    -webkit-text-size-adjust: 100%;
+	  -moz-text-size-adjust: 100%;
+	  -ms-text-size-adjust: 100%;
     &.menuIsOpen {
       height: 100%;
       overflow-y: hidden
