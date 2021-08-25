@@ -1,10 +1,12 @@
 import React from "react";
-import { Layout } from "../components";
+import { Layout, AboutHero, AboutWhy, AboutUs } from "../components";
 
 const About = () => {
   return (
     <Layout paddingValues={true}>
-      <h1>About Page Here...</h1>
+      <AboutHero />
+      <AboutWhy />
+      <AboutUs />
     </Layout>
   );
 };

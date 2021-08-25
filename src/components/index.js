@@ -27,3 +27,6 @@ export * from "./CartQuantityAdjuster";
 export * from "./CartRemoveLineItem";
 export * from "./ShoppingBag";
 export * from "./Search";
+export * from "./AboutHero";
+export * from "./AboutWhy";
+export * from "./AboutUs";
