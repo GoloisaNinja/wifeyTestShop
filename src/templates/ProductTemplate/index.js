@@ -56,7 +56,7 @@ export default function ProductTemplate({ data }) {
   const [selectedVariant, setSelectedVariant] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState({});
-  const { search } = useLocation();
+  const { search, origin, pathname } = useLocation();
 
   const variantId = queryString.parse(search).variant;
 
@@ -181,14 +181,14 @@ export default function ProductTemplate({ data }) {
       <SocialWrapper>
         <FacebookShareButton
           quote={"OMG 👀 what I found on Neon Unicorn!"}
-          url={window.location.href}
+          url={`${origin}${pathname}`}
           hashtag={"neonunicorn"}
         >
           <FacebookIcon size={42} round={true} />
         </FacebookShareButton>
         <TwitterShareButton
           title={"OMG 👀 what I found on Neon Unicorn!"}
-          url={window.location.href}
+          url={`${origin}${pathname}`}
           via={"Neon Unicorn"}
           hashtags={["neonunicorn", "pretties"]}
         >
@@ -196,7 +196,7 @@ export default function ProductTemplate({ data }) {
         </TwitterShareButton>
         <PinterestShareButton
           description={"OMG 👀 what I found on Neon Unicorn!"}
-          url={window.location.href}
+          url={`${origin}${pathname}`}
           media={selectedVariant?.image.src}
         >
           <PinterestIcon size={42} round={true} />
