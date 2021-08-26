@@ -49,3 +49,14 @@ export const Price = styled.div`
   color: #96009c;
   letter-spacing: 1.5px;
 `;
+export const SocialHeader = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+export const SocialWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  > button:not(:last-child) {
+    margin-right: 15px;
+  }
+`;

@@ -10,8 +10,24 @@ import {
   GradientH2,
   ProductQuantityAdder,
   Modal,
+  GradientH4,
 } from "../../components";
-import { ProductText, Grid, SelectWrapper, Price } from "./styles";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  PinterestShareButton,
+  PinterestIcon,
+} from "react-share";
+import {
+  ProductText,
+  Grid,
+  SelectWrapper,
+  Price,
+  SocialWrapper,
+  SocialHeader,
+} from "./styles";
 
 export const query = graphql`
   query ProductQuery($shopifyId: String) {
@@ -157,6 +173,35 @@ export default function ProductTemplate({ data }) {
           />
         </div>
       </Grid>
+      <SocialHeader>
+        <GradientH4 font={`"Lato", sans-serif`} color={`#c800cf, #035efc`}>
+          You should share this!
+        </GradientH4>
+      </SocialHeader>
+      <SocialWrapper>
+        <FacebookShareButton
+          quote={"OMG 👀 what I found on Neon Unicorn!"}
+          url={window.location.href}
+          hashtag={"neonunicorn"}
+        >
+          <FacebookIcon size={42} round={true} />
+        </FacebookShareButton>
+        <TwitterShareButton
+          title={"OMG 👀 what I found on Neon Unicorn!"}
+          url={window.location.href}
+          via={"Neon Unicorn"}
+          hashtags={["neonunicorn", "pretties"]}
+        >
+          <TwitterIcon size={42} round={true} />
+        </TwitterShareButton>
+        <PinterestShareButton
+          description={"OMG 👀 what I found on Neon Unicorn!"}
+          url={window.location.href}
+          media={selectedVariant?.image.src}
+        >
+          <PinterestIcon size={42} round={true} />
+        </PinterestShareButton>
+      </SocialWrapper>
       {showModal && <Modal dismiss={handleDismiss} content={modalContent} />}
     </Layout>
   );

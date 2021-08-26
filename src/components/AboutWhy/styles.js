@@ -10,8 +10,7 @@ export const AboutWhyWrapper = styled.div`
   > div:nth-child(2) {
     width: 100%;
     float: left;
-    margin: 10px;
-    @media (min-width: 500px) {
+    @media (min-width: 600px) {
       width: 70%;
     }
   }
@@ -20,9 +19,9 @@ export const AboutWhyWrapper = styled.div`
 export const AboutWhyText = styled.div`
   text-align: justify;
   font-family: "Lato", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   color: #780096;
   > p {
-    margin-top: 50px;
+    //margin-top: 50px;
   }
 `;

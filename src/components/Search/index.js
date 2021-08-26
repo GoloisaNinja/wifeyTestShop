@@ -13,7 +13,6 @@ export function Search() {
   const c = queryString.parse(search)?.c || "";
 
   const handleSubmit = e => {
-    console.log(searchTerm);
     e.preventDefault();
     if (c) {
       navigate(

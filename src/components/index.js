@@ -30,3 +30,4 @@ export * from "./Search";
 export * from "./AboutHero";
 export * from "./AboutWhy";
 export * from "./AboutUs";
+export * from "./ScrollToTopButton";
