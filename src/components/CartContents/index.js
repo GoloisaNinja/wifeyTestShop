@@ -96,14 +96,19 @@ export function CartContents() {
       )}
       <Footer>
         <div>
-          <Button onClick={() => navigate(-1)}>Keep Shopping</Button>
+          <Button width={"100%"} onClick={() => navigate(-1)}>
+            Keep Shopping
+          </Button>
         </div>
         <div>
-          {/* {!!checkout?.webUrl && checkout?.paymentDue !== "0.00" && (
-            <Button onClick={() => (window.location.href = checkout.webUrl)}>
+          {!!checkout?.webUrl && checkout?.paymentDue !== "0.00" && (
+            <Button
+              width={"100%"}
+              onClick={() => (window.location.href = checkout.webUrl)}
+            >
               Checkout
             </Button>
-          )} */}
+          )}
         </div>
       </Footer>
     </section>

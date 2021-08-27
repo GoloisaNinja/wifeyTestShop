@@ -23,11 +23,11 @@ export function AboutHero() {
     window.scrollTo({ top: y, behavior: "smooth" });
   };
   return (
-    <AboutHeroWrapper>
+    <AboutHeroWrapper id="noScroll">
       <header>
         <Button onClick={handleScroll}>Why Neon Unicorn</Button>
         <Button onClick={handleScroll}>Beauty and the Nerd</Button>
-        <Button>What we do</Button>
+        <Button onClick={handleScroll}>What we do</Button>
         <Button>Neon Social</Button>
         <Button>Contact Us</Button>
       </header>

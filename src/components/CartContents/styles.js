@@ -64,9 +64,11 @@ export const CartFooter = styled.div`
 export const Footer = styled.footer`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-top: 20px;
+  justify-content: center;
+  grid-gap: 20px;
+  margin-top: 50px;
   > div:last-child {
-    text-align: right;
+    //text-align: right;
   }
 `;
 export const ShopifyNoteWrapper = styled.div`
