@@ -22,7 +22,7 @@ export function AboutWhat() {
           font={`"Abril Fatface", cursive`}
           color={`#035efc, #a8327f`}
         >
-          <FaQuoteLeft /> Shopping should be fun, the pieces should be pretty,
+          <FaQuoteLeft /> Shopping should be fun! The pieces should be pretty,
           show up fast, and shouldn't break the bank. <FaQuoteRight />{" "}
           <span>- Neon Unicorn CEO</span>
         </GradientH2>

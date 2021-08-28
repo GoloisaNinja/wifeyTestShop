@@ -1,7 +1,7 @@
 import React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { useStaticQuery, graphql } from "gatsby";
-import { GradientH2 } from "../GradientText";
+import { GradientH2, GradientP } from "../GradientText";
 import { AboutWhyWrapper, AboutWhyText } from "./styles";
 
 export function AboutWhy() {
@@ -10,6 +10,16 @@ export function AboutWhy() {
       file(relativePath: { eq: "aboutWhy.png" }) {
         childImageSharp {
           gatsbyImageData
+        }
+      }
+      allFile(filter: { relativePath: { regex: "/(undraw)/" } }) {
+        edges {
+          node {
+            childImageSharp {
+              gatsbyImageData(width: 200)
+              id
+            }
+          }
         }
       }
     }
@@ -31,7 +41,7 @@ export function AboutWhy() {
 
       <AboutWhyText>
         <p>
-          The interwebs are full of amazing shops and places to buy pretty
+          "The interwebs are full of amazing shops and places to buy pretty
           things. So why should you shop at Neon Unicorn? What sets us apart
           from all the other shopping experiences out there? At Neon Unicorn,
           we'd like to think we've addressed several of the larger problems that
@@ -43,8 +53,25 @@ export function AboutWhy() {
           checkout with your new pretties, you'll be directed to the Shopify
           Payment Portal, for a secure, streamlined, and trusted checkout
           process that allows you to use whatever payment method works best for
-          you!
+          you!"
         </p>
+        <div>
+          {data.allFile.edges.map(({ node }) => (
+            <GatsbyImage
+              key={node.childImageSharp.id}
+              image={node.childImageSharp.gatsbyImageData}
+              alt="team profile pic"
+            />
+          ))}
+        </div>
+        <div>
+          <GradientP
+            font={`'Abril Fatface', cursive`}
+            color={`#ff00f7, #035efc`}
+          >
+            Team Unicorn
+          </GradientP>
+        </div>
       </AboutWhyText>
     </AboutWhyWrapper>
   );

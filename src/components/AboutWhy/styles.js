@@ -21,6 +21,14 @@ export const AboutWhyText = styled.div`
   font-family: "Lato", sans-serif;
   font-size: 18px;
   color: #780096;
+  > div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  > div:last-child {
+    text-align: center;
+  }
   > p {
     //margin-top: 50px;
   }

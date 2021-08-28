@@ -5,6 +5,7 @@ import {
   AboutWhy,
   AboutUs,
   AboutWhat,
+  AboutSocial,
   ScrollToTopButton,
 } from "../components";
 
@@ -46,6 +47,7 @@ const About = () => {
       <AboutWhy />
       <AboutUs />
       <AboutWhat />
+      <AboutSocial />
       <ScrollToTopButton />
     </Layout>
   );

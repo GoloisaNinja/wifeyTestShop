@@ -28,7 +28,7 @@ export function AboutHero() {
         <Button onClick={handleScroll}>Why Neon Unicorn</Button>
         <Button onClick={handleScroll}>Beauty and the Nerd</Button>
         <Button onClick={handleScroll}>What we do</Button>
-        <Button>Neon Social</Button>
+        <Button onClick={handleScroll}>Neon Social</Button>
         <Button>Contact Us</Button>
       </header>
       <div>

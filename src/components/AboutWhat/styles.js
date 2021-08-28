@@ -4,8 +4,12 @@ export const AboutWhatWrapper = styled.div`
   width: 100%;
   padding: 10px;
   overflow: hidden;
+  margin-bottom: 25px;
   > div:first-child {
     text-align: center;
+    background-color: #eee;
+    padding: 30px;
+    margin-bottom: 25px;
     > h2 {
       > svg {
         color: #ff00f7;
