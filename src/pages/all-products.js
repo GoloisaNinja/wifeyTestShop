@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import queryString from "query-string";
-import { useLocation } from "@reach/router";
+import { useLocation, navigate } from "@reach/router";
 import ProductContext from "../context/ProductContext";
 import styled from "styled-components";
 import {
@@ -9,6 +9,7 @@ import {
   GradientH4,
   Filters,
   Selectors,
+  PaginationButtons,
 } from "../components";
 
 const NoMatchWrapper = styled.div`
@@ -23,11 +24,19 @@ const NoMatchWrapper = styled.div`
 export default function AllProductsPage() {
   const { products, collections } = useContext(ProductContext);
   const collectionProductMap = {};
-  const { search } = useLocation();
+  const { search, origin, pathname } = useLocation();
   const qs = queryString.parse(search);
   const selectedCollectionIds = qs.c?.split(",").filter(c => !!c) || [];
   const selectedCollectionIdsMap = {};
   const searchTerm = qs.s;
+  const queryPage = parseInt(qs.page) || 1;
+  const [page, setPage] = useState(queryPage);
+  // Pagination reqs
+  const limit = 8;
+  let skip = (page - 1) * limit;
+  useEffect(() => {
+    setPage(queryPage);
+  }, [queryPage]);
 
   selectedCollectionIds.forEach(collectionId => {
     selectedCollectionIdsMap[collectionId] = true;
@@ -67,6 +76,42 @@ export default function AllProductsPage() {
   const filteredProducts = products
     .filter(filterByCategory)
     .filter(filterBySearchTerm);
+  // Pagaination pages
+  const totalPages = Math.ceil(filteredProducts.length / limit);
+  const paginatedProducts = filteredProducts.slice(skip, skip + limit);
+  // Pagination functions
+  const handlePageForward = () => {
+    let collectionString = "c=";
+    if (selectedCollectionIds.length > 0) {
+      selectedCollectionIds.forEach(id => {
+        collectionString = `${collectionString.concat(
+          encodeURIComponent(id)
+        )},`;
+      });
+    }
+    setPage(page + 1);
+    if (selectedCollectionIds.length > 0) {
+      navigate(`${origin}${pathname}?${collectionString}&page=${page + 1}`);
+    } else {
+      navigate(`${origin}${pathname}?page=${page + 1}`);
+    }
+  };
+  const handlePageBack = () => {
+    let collectionString = "c=";
+    if (selectedCollectionIds.length > 0) {
+      selectedCollectionIds.forEach(id => {
+        collectionString = `${collectionString.concat(
+          encodeURIComponent(id)
+        )},`;
+      });
+    }
+    setPage(page - 1);
+    if (selectedCollectionIds.length > 0) {
+      navigate(`${origin}${pathname}?${collectionString}&page=${page - 1}`);
+    } else {
+      navigate(`${origin}${pathname}?page=${page - 1}`);
+    }
+  };
   const toggleFilters = () => {
     const filters = document.getElementById("filters");
     const overlay = document.getElementById("overlay");
@@ -128,7 +173,13 @@ export default function AllProductsPage() {
       )}
       {!!filteredProducts.length && (
         <div>
-          <ProductGrid products={filteredProducts} />
+          <ProductGrid products={paginatedProducts} />
+          <PaginationButtons
+            page={page}
+            totalPages={totalPages}
+            handlePageForward={handlePageForward}
+            handlePageBack={handlePageBack}
+          />
         </div>
       )}
     </Layout>

@@ -33,3 +33,4 @@ export * from "./AboutUs";
 export * from "./AboutWhat";
 export * from "./AboutSocial";
 export * from "./ScrollToTopButton";
+export * from "./PaginationButtons";

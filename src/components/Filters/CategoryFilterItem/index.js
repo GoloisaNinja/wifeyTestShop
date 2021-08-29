@@ -24,15 +24,15 @@ export function CategoryFilterItem({ title, id }) {
       newIds = collectionIds.map(cid => encodeURIComponent(cid));
     }
     if (newIds.length && !searchTerm) {
-      navigate(`${navigateTo}?c=${newIds.join(",")}`);
+      navigate(`${navigateTo}?c=${newIds.join(",")}&page=1`);
     } else if (newIds.length && !!searchTerm) {
       navigate(
-        `${navigateTo}?c=${newIds.join(",")}&s=${encodeURIComponent(
+        `${navigateTo}?&c=${newIds.join(",")}&s=${encodeURIComponent(
           searchTerm
-        )}`
+        )}&page=1`
       );
     } else if (!newIds.length && !!searchTerm) {
-      navigate(`${navigateTo}?s=${encodeURIComponent(searchTerm)}`);
+      navigate(`${navigateTo}?s=${encodeURIComponent(searchTerm)}&page=1`);
     } else {
       navigate(`${navigateTo}`);
     }
