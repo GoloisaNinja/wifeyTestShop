@@ -13,7 +13,7 @@ const About = () => {
   useEffect(() => {
     if (typeof window !== undefined) {
       const noScrollTarget = document.getElementById("noScroll");
-      const scrollTargetOne = document.getElementById("Beauty and the Nerd");
+      const scrollTargetOne = document.getElementById("Our Story");
       const scrollTargetTwo = document.getElementById("What we do");
       const myScrollBtn = document.getElementById("myScrollBtn");
       const removeClassFromBtn = entries => {

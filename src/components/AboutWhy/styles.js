@@ -1,35 +1,45 @@
 import styled from "styled-components";
 
 export const AboutWhyWrapper = styled.div`
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
-  overflow: hidden;
   > div:first-child {
     text-align: center;
+    margin-bottom: 25px;
   }
   > div:nth-child(2) {
-    width: 100%;
-    float: left;
-    @media (min-width: 600px) {
-      width: 70%;
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 810px) {
+      flex-direction: row;
     }
   }
 `;
-
-export const AboutWhyText = styled.div`
-  text-align: justify;
+export const BlockWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 810px) {
+    width: 70%;
+  }
+  > div:not(:last-child) {
+    margin-bottom: 15px;
+  }
+`;
+export const BlockContent = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: linear-gradient(45deg, #00bac7, #c800cf, #ff00f7);
+  color: #fff;
+  font-size: 16px;
   font-family: "Lato", sans-serif;
-  font-size: 18px;
-  color: #780096;
-  > div:nth-child(2) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  > div:last-child {
-    text-align: center;
-  }
-  > p {
-    //margin-top: 50px;
+  padding: 20px;
+  > svg {
+    font-size: 30px;
+    margin-right: 10px;
   }
 `;

@@ -10,7 +10,7 @@ export const AboutSocialBanner = styled.header`
   background: #ff00f7;
   text-align: center;
   padding: 30px;
-  margin-bottom: 25px;
+  //margin-bottom: 25px;
   > p {
     font-weight: bold;
   }

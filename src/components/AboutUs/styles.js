@@ -7,6 +7,7 @@ export const AboutUsWrapper = styled.div`
   margin-bottom: 25px;
   > div:first-child {
     text-align: center;
+    margin-bottom: 25px;
   }
   > div:nth-child(2) {
     width: 100%;

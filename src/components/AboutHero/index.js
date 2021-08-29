@@ -26,7 +26,7 @@ export function AboutHero() {
     <AboutHeroWrapper id="noScroll">
       <header>
         <Button onClick={handleScroll}>Why Neon Unicorn</Button>
-        <Button onClick={handleScroll}>Beauty and the Nerd</Button>
+        <Button onClick={handleScroll}>Our Story</Button>
         <Button onClick={handleScroll}>What we do</Button>
         <Button onClick={handleScroll}>Neon Social</Button>
         <Button>Contact Us</Button>
