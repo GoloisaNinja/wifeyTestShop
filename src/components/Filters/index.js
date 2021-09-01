@@ -25,7 +25,7 @@ export function Filters({ toggleFilters }) {
             style={{ marginBottom: "15px" }}
             value={searchTerm}
             onChange={e => setSearchTerm(e.currentTarget.value)}
-            placeholder="Search"
+            placeholder="Search categories"
           />
           <Link
             to={`/all-products`}

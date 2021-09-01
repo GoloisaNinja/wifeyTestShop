@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
 import CartContext from "../../context/CartContext";
 import {
   CartItem,
+  CartItemImageWrapper,
   CartHeader,
   CartFooter,
   Footer,
@@ -16,7 +19,30 @@ import confusedUnicorn from "../../images/confusedUnicorn.gif";
 import { navigate } from "@reach/router";
 
 export function CartContents() {
+  const data = useStaticQuery(graphql`
+    {
+      allShopifyProductImage {
+        edges {
+          node {
+            gatsbyImageData
+            src
+          }
+        }
+      }
+    }
+  `);
   const { checkout, updateLineItem } = useContext(CartContext);
+  const variantImageMap = {};
+  checkout?.lineItems.forEach(lineItem => {
+    variantImageMap[lineItem.variant.image.src] = {};
+  });
+  data.allShopifyProductImage.edges.forEach(({ node }) => {
+    for (let key in variantImageMap) {
+      if (node.src === key) {
+        variantImageMap[key] = node.gatsbyImageData;
+      }
+    }
+  });
   const handleAdjustQuantity = ({ quantity, variantId }) => {
     updateLineItem([{ quantity, variantId }]);
   };
@@ -38,7 +64,7 @@ export function CartContents() {
           </ShopifyNoteWrapper>
           <CartHeader>
             <div>Product</div>
-            <div>Unit price</div>
+            {/* <div>Unit price</div> */}
             <div>Quantity</div>
             <div>Amount</div>
           </CartHeader>
@@ -54,8 +80,16 @@ export function CartContents() {
                 ? ""
                 : lineItem.variant.title}
             </div>
+            <CartItemImageWrapper>
+              <GatsbyImage
+                image={variantImageMap[lineItem.variant.image.src]}
+                alt={`product image for ${lineItem.variant.title}`}
+              />
+            </CartItemImageWrapper>
+
+            <div>${lineItem.variant.price}</div>
           </div>
-          <div>${lineItem.variant.price}</div>
+          {/* <div>${lineItem.variant.price}</div> */}
           <div>
             <CartQuantityAdjuster
               item={lineItem}

@@ -10,7 +10,7 @@ export function CategoryFilterItem({ title, id }) {
   const collectionIds = qs.c?.split(",").filter(c => !!c) || [];
   const checked = collectionIds?.find(cid => cid === id);
   const searchTerm = qs.s;
-
+  const sortByWhat = qs.sort_by;
   const onClick = () => {
     let navigateTo = "/all-products";
 
@@ -23,16 +23,34 @@ export function CategoryFilterItem({ title, id }) {
       collectionIds.push(id);
       newIds = collectionIds.map(cid => encodeURIComponent(cid));
     }
-    if (newIds.length && !searchTerm) {
+    if (newIds.length && !searchTerm && !sortByWhat) {
       navigate(`${navigateTo}?c=${newIds.join(",")}&page=1`);
-    } else if (newIds.length && !!searchTerm) {
+    } else if (newIds.length && !!searchTerm && !!sortByWhat) {
+      navigate(
+        `${navigateTo}?&c=${newIds.join(",")}&s=${encodeURIComponent(
+          searchTerm
+        )}&sort_by=${sortByWhat}&page=1`
+      );
+    } else if (newIds.length && !!searchTerm && !sortByWhat) {
       navigate(
         `${navigateTo}?&c=${newIds.join(",")}&s=${encodeURIComponent(
           searchTerm
         )}&page=1`
       );
-    } else if (!newIds.length && !!searchTerm) {
+    } else if (newIds.length && !searchTerm && !!sortByWhat) {
+      navigate(
+        `${navigateTo}?&c=${newIds.join(",")}&sort_by=${sortByWhat}&page=1`
+      );
+    } else if (!newIds.length && !!searchTerm && !!sortByWhat) {
+      navigate(
+        `${navigateTo}?s=${encodeURIComponent(
+          searchTerm
+        )}&sort_by=${sortByWhat}&page=1`
+      );
+    } else if (!newIds.length && !!searchTerm && !sortByWhat) {
       navigate(`${navigateTo}?s=${encodeURIComponent(searchTerm)}&page=1`);
+    } else if (!newIds.length && !searchTerm && !!sortByWhat) {
+      navigate(`${navigateTo}?&sort_by=${sortByWhat}&page=1`);
     } else {
       navigate(`${navigateTo}`);
     }

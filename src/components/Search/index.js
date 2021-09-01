@@ -11,14 +11,27 @@ export function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const { search } = useLocation();
   const c = queryString.parse(search)?.c || "";
+  const sortByWhat = queryString.parse(search)?.sort_by;
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (c) {
+    if (c && !!sortByWhat) {
+      navigate(
+        `/all-products?c=${encodeURIComponent(c)}&s=${encodeURIComponent(
+          searchTerm
+        )}&sort_by=${sortByWhat}`
+      );
+    } else if (c && !sortByWhat) {
+      navigate(
+        `/all-products?c=${encodeURIComponent(c)}&s=${encodeURIComponent(
+          searchTerm
+        )}`
+      );
+    } else if (!c && !!sortByWhat) {
       navigate(
         `/all-products?s=${encodeURIComponent(
           searchTerm
-        )}&c=${encodeURIComponent(c)}`
+        )}&sort_by=${sortByWhat}`
       );
     } else {
       navigate(`/all-products?s=${encodeURIComponent(searchTerm)}`);

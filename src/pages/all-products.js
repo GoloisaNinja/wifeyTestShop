@@ -29,6 +29,7 @@ export default function AllProductsPage() {
   const selectedCollectionIds = qs.c?.split(",").filter(c => !!c) || [];
   const selectedCollectionIdsMap = {};
   const searchTerm = qs.s;
+  const sortByWhat = qs.sort_by;
   const queryPage = parseInt(qs.page) || 1;
   const [page, setPage] = useState(queryPage);
   // Pagination reqs
@@ -73,41 +74,146 @@ export default function AllProductsPage() {
     return true;
   };
 
-  const filteredProducts = products
+  let filteredProducts = products
     .filter(filterByCategory)
     .filter(filterBySearchTerm);
+
+  if (sortByWhat) {
+    if (sortByWhat === "alphaAsc") {
+      filteredProducts = filteredProducts.sort(function (a, b) {
+        if (a.title.toLowerCase() < b.title.toLowerCase()) {
+          return -1;
+        }
+        if (a.title.toLowerCase() > b.title.toLowerCase()) {
+          return 1;
+        }
+      });
+    }
+  }
   // Pagaination pages
   const totalPages = Math.ceil(filteredProducts.length / limit);
   const paginatedProducts = filteredProducts.slice(skip, skip + limit);
   // Pagination functions
   const handlePageForward = () => {
-    let collectionString = "c=";
+    let cIds = [];
     if (selectedCollectionIds.length > 0) {
       selectedCollectionIds.forEach(id => {
-        collectionString = `${collectionString.concat(
-          encodeURIComponent(id)
-        )},`;
+        cIds.push(encodeURIComponent(id));
       });
     }
     setPage(page + 1);
-    if (selectedCollectionIds.length > 0) {
-      navigate(`${origin}${pathname}?${collectionString}&page=${page + 1}`);
+    if (selectedCollectionIds.length > 0 && !!searchTerm && !!sortByWhat) {
+      navigate(
+        `${origin}${pathname}?c=${cIds.join(
+          ","
+        )}&s=${searchTerm}&sort_by=${sortByWhat}&page=${page + 1}`
+      );
+    } else if (
+      selectedCollectionIds.length > 0 &&
+      !searchTerm &&
+      !!sortByWhat
+    ) {
+      navigate(
+        `${origin}${pathname}?c=${cIds.join(",")}&sort_by=${sortByWhat}&page=${
+          page + 1
+        }`
+      );
+    } else if (selectedCollectionIds.length > 0 && !searchTerm && !sortByWhat) {
+      navigate(`${origin}${pathname}?c=${cIds.join(",")}&page=${page + 1}`);
+    } else if (
+      selectedCollectionIds.length > 0 &&
+      !!searchTerm &&
+      !sortByWhat
+    ) {
+      navigate(
+        `${origin}${pathname}?c=${cIds.join(",")}&s=${searchTerm}&page=${
+          page + 1
+        }`
+      );
+    } else if (
+      !selectedCollectionIds.length > 0 &&
+      !!searchTerm &&
+      !!sortByWhat
+    ) {
+      navigate(
+        `${origin}${pathname}?s=${searchTerm}&sort_by=${sortByWhat}&page=${
+          page + 1
+        }`
+      );
+    } else if (
+      !selectedCollectionIds.length > 0 &&
+      !!searchTerm &&
+      !sortByWhat
+    ) {
+      navigate(`${origin}${pathname}?s=${searchTerm}&page=${page + 1}`);
+    } else if (
+      !selectedCollectionIds.length > 0 &&
+      !searchTerm &&
+      !!sortByWhat
+    ) {
+      navigate(`${origin}${pathname}?sort_by=${sortByWhat}&page=${page + 1}`);
     } else {
       navigate(`${origin}${pathname}?page=${page + 1}`);
     }
   };
   const handlePageBack = () => {
-    let collectionString = "c=";
+    let cIds = [];
     if (selectedCollectionIds.length > 0) {
       selectedCollectionIds.forEach(id => {
-        collectionString = `${collectionString.concat(
-          encodeURIComponent(id)
-        )},`;
+        cIds.push(encodeURIComponent(id));
       });
     }
-    setPage(page - 1);
-    if (selectedCollectionIds.length > 0) {
-      navigate(`${origin}${pathname}?${collectionString}&page=${page - 1}`);
+    setPage(page + 1);
+    if (selectedCollectionIds.length > 0 && !!searchTerm && !!sortByWhat) {
+      navigate(
+        `${origin}${pathname}?c=${cIds.join(
+          ","
+        )}&s=${searchTerm}&sort_by=${sortByWhat}&page=${page - 1}`
+      );
+    } else if (
+      selectedCollectionIds.length > 0 &&
+      !searchTerm &&
+      !!sortByWhat
+    ) {
+      navigate(
+        `${origin}${pathname}?c=${cIds.join(",")}&sort_by=${sortByWhat}&page=${
+          page - 1
+        }`
+      );
+    } else if (selectedCollectionIds.length > 0 && !searchTerm && !sortByWhat) {
+      navigate(`${origin}${pathname}?c=${cIds.join(",")}&page=${page - 1}`);
+    } else if (
+      selectedCollectionIds.length > 0 &&
+      !!searchTerm &&
+      !sortByWhat
+    ) {
+      navigate(
+        `${origin}${pathname}?c=${cIds.join(",")}&s=${searchTerm}&page=${
+          page - 1
+        }`
+      );
+    } else if (
+      !selectedCollectionIds.length > 0 &&
+      !!searchTerm &&
+      !!sortByWhat
+    ) {
+      navigate(
+        `${origin}${pathname}?s=${searchTerm}&sort_by=${sortByWhat}&page=${
+          page - 1
+        }`
+      );
+    } else if (
+      !selectedCollectionIds.length > 0 &&
+      !!searchTerm &&
+      !sortByWhat
+    ) {
+      navigate(`${origin}${pathname}?s=${searchTerm}&page=${page - 1}`);
+    } else if (
+      !selectedCollectionIds.length > 0 &&
+      !searchTerm &&
+      !!sortByWhat
+    ) {
+      navigate(`${origin}${pathname}?sort_by=${sortByWhat}&page=${page - 1}`);
     } else {
       navigate(`${origin}${pathname}?page=${page - 1}`);
     }

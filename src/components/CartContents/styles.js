@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CartItem = styled.div`
   border-bottom: 1px solid #c800cf;
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr 1fr 40px;
+  grid-template-columns: 4fr 2fr 1fr 40px;
   > div {
     padding: 8px;
     display: flex;
@@ -18,11 +18,28 @@ export const CartItem = styled.div`
       align-items: flex-start;
       > div:first-child {
         font-weight: bold;
+        @media (min-width: 500px) {
+          font-size: 18px;
+        }
       }
-      > div:last-child {
+      > div:nth-child(2) {
         color: #9f65a1;
         margin-top: 4px;
         font-size: 12px;
+        @media (min-width: 500px) {
+          font-size: 14px;
+        }
+      }
+      > img:nth-child(3) {
+        margin-top: 5px;
+        width: 50px;
+      }
+      > div:last-child {
+        margin-top: 5px;
+        font-size: 12px;
+        @media (min-width: 500px) {
+          font-size: 14px;
+        }
       }
     }
   }
@@ -34,9 +51,13 @@ export const CartItem = styled.div`
     font-weight: bold;
   }
 `;
+export const CartItemImageWrapper = styled.div`
+  margin-top: 5px;
+  width: 75px;
+`;
 export const CartHeader = styled.div`
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr 1fr 40px;
+  grid-template-columns: 4fr 2fr 1fr 40px;
   border-bottom: 1px solid #c800cf;
   font-family: "Abril Fatface", cursive;
   color: #c800cf;
