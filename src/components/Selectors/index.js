@@ -51,6 +51,11 @@ export function Selectors({ numberOfFilters, toggleFilters }) {
       <SortSelect onChange={handleSelection}>
         <option value="">SORT BY</option>
         <option value="alphaAsc">ALPHABETICALLY A-Z</option>
+        <option value="alphaDesc">ALPHABETICALLY Z-A</option>
+        <option value="priceLow">PRICE LOW-HIGH</option>
+        <option value="priceHigh">PRICE HIGH-LOW</option>
+        <option value="prodNew">PRODUCT NEWEST-OLDEST</option>
+        <option value="prodOld">PRODUCT OLDEST-NEWEST</option>
       </SortSelect>
     </SelectorsWrapper>
   );

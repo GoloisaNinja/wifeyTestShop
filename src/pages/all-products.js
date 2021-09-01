@@ -88,7 +88,65 @@ export default function AllProductsPage() {
           return 1;
         }
       });
+    } else if (sortByWhat === "alphaDesc") {
+      filteredProducts = filteredProducts.sort(function (a, b) {
+        if (a.title.toLowerCase() < b.title.toLowerCase()) {
+          return 1;
+        }
+        if (a.title.toLowerCase() > b.title.toLowerCase()) {
+          return -1;
+        }
+      });
+    } else if (sortByWhat === "priceLow") {
+      filteredProducts = filteredProducts.sort(function (a, b) {
+        if (
+          a.priceRangeV2.minVariantPrice.amount <
+          b.priceRangeV2.minVariantPrice.amount
+        ) {
+          return -1;
+        }
+        if (
+          a.priceRangeV2.minVariantPrice.amount >
+          b.priceRangeV2.minVariantPrice.amount
+        ) {
+          return 1;
+        }
+      });
+    } else if (sortByWhat === "priceHigh") {
+      filteredProducts = filteredProducts.sort(function (a, b) {
+        if (
+          a.priceRangeV2.minVariantPrice.amount <
+          b.priceRangeV2.minVariantPrice.amount
+        ) {
+          return 1;
+        }
+        if (
+          a.priceRangeV2.minVariantPrice.amount >
+          b.priceRangeV2.minVariantPrice.amount
+        ) {
+          return -1;
+        }
+      });
+    } else if (sortByWhat === "prodNew") {
+      filteredProducts = filteredProducts.sort(function (a, b) {
+        if (a.createdAt < b.createdAt) {
+          return 1;
+        }
+        if (a.createdAt > b.createdAt) {
+          return -1;
+        }
+      });
+    } else {
+      filteredProducts = filteredProducts.sort(function (a, b) {
+        if (a.createdAt < b.createdAt) {
+          return -1;
+        }
+        if (a.createdAt > b.createdAt) {
+          return 1;
+        }
+      });
     }
+    console.log(filteredProducts);
   }
   // Pagaination pages
   const totalPages = Math.ceil(filteredProducts.length / limit);

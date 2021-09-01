@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "gatsby";
+import { useLocation } from "@reach/router";
+import queryString from "query-string";
 import { FaTimes } from "react-icons/fa";
 import { CategoryFilterItem } from "./CategoryFilterItem";
 import { OverlayWrapper } from "../Overlay";
@@ -10,6 +12,9 @@ import ProductContext from "../../context/ProductContext";
 export function Filters({ toggleFilters }) {
   const { collections } = useContext(ProductContext);
   const [searchTerm, setSearchTerm] = useState("");
+  const { search } = useLocation();
+  const qs = queryString.parse(search);
+  const sort = qs.sort_by;
   const handleToggle = () => {
     toggleFilters();
   };
@@ -28,7 +33,7 @@ export function Filters({ toggleFilters }) {
             placeholder="Search categories"
           />
           <Link
-            to={`/all-products`}
+            to={sort ? `/all-products?sort_by=${sort}` : `/all-products`}
             alt={`Removes filters and returns all products`}
           >
             Clear Filters

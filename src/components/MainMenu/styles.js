@@ -34,11 +34,12 @@ export const MenuWrapper = styled.div`
       filter: drop-shadow(3px 5px 5px #ff00f7);
     }
     > p {
-      color: #035efc;
+      color: #c800cf;
       font-size: 20px;
       font-weight: 900;
-      font-family: "Lato", sans-serif;
+      font-family: "Abril Fatface", cursive;
       text-transform: uppercase;
+      text-shadow: 0.5px 1px 1px #00eeff;
       text-align: center;
       width: 100%;
       padding-bottom: 5px;
@@ -56,8 +57,9 @@ export const NavButton = styled.button`
   font-family: "Lato", sans-serif;
   font-size: 14px;
   padding: 7px 7px;
-  color: #c800cf;
-  font-weight: 400;
+  //color: #c800cf;
+  color: #035efc;
+  font-weight: 700;
   text-transform: uppercase;
   text-align: left;
   cursor: pointer;

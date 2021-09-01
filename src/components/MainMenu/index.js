@@ -24,7 +24,7 @@ export function MainMenu({ handleToggle }) {
       <MenuWrapper id="menu-drawer">
         <div>
           <BlueUnicornLogo />
-          <p>Site Navigation</p>
+          <p>Neon Navigation</p>
           <NavButton onClick={e => handleNav("/")} alt="Home Page">
             Home
             <FaHome />

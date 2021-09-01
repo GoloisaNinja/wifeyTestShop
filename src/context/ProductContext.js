@@ -19,6 +19,7 @@ const query = graphql`
           description
           shopifyId
           storefrontId
+          createdAt
           title
           images {
             id
