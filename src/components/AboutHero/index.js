@@ -1,4 +1,5 @@
 import React from "react";
+import { navigate } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import smoothscroll from "smoothscroll-polyfill";
 import { useStaticQuery, graphql } from "gatsby";
@@ -29,7 +30,7 @@ export function AboutHero() {
         <Button onClick={handleScroll}>Our Story</Button>
         <Button onClick={handleScroll}>What we do</Button>
         <Button onClick={handleScroll}>Neon Social</Button>
-        <Button>Contact Us</Button>
+        <Button onClick={e => navigate(`/contact`)}>Contact Us</Button>
       </header>
       <div>
         <GatsbyImage

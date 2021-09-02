@@ -55,8 +55,14 @@ export const FooterInfoWrapper = styled.section`
   font-size: 12px;
   font-weight: 700;
   color: #671d80;
+
   > div {
     > ul {
+      > li {
+        > a {
+          text-decoration: none;
+        }
+      }
       > li:not(:last-child) {
         padding-bottom: 12px;
       }

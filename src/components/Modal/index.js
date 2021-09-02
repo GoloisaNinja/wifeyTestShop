@@ -21,7 +21,7 @@ export function Modal({ dismiss, content }) {
             src={wowUnicornMedium}
             width={"100"}
             height={"150"}
-            alt="a unicorn that is very pleased with your cart addition"
+            alt="a unicorn that is very pleased"
           />
         </UnicornWrapper>
         {isExploding && (

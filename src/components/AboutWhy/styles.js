@@ -38,6 +38,14 @@ export const BlockContent = styled.div`
   font-size: 16px;
   font-family: "Lato", sans-serif;
   padding: 20px;
+  @media (min-width: 475px) {
+    justify-content: center;
+    font-size: 24px;
+  }
+  @media (min-width: 809px) {
+    justify-content: flex-start;
+    font-size: 16px;
+  }
   > svg {
     font-size: 30px;
     margin-right: 10px;

@@ -146,7 +146,6 @@ export default function AllProductsPage() {
         }
       });
     }
-    console.log(filteredProducts);
   }
   // Pagaination pages
   const totalPages = Math.ceil(filteredProducts.length / limit);

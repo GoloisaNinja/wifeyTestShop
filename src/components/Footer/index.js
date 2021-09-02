@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "gatsby";
 import { FooterLogo } from "../FooterLogo";
 import { BlueUnicornLogo } from "../BlueUnicornLogo";
 import {
@@ -22,11 +23,15 @@ export function Footer() {
         <FooterInfoWrapper>
           <div>
             <ul>
-              <li>ABOUT</li>
+              <li>
+                <Link to="/about">ABOUT</Link>
+              </li>
               <li>BLOG</li>
               <li>SIZING</li>
               <li>SHIPPING</li>
-              <li>CONTACT US</li>
+              <li>
+                <Link to="/contact">CONTACT US</Link>
+              </li>
             </ul>
           </div>
         </FooterInfoWrapper>
