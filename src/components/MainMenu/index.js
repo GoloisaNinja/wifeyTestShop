@@ -54,7 +54,7 @@ export function MainMenu({ handleToggle }) {
             About Neon Unicorn
             <FaInfoCircle />
           </NavButton>
-          <NavButton onClick={e => handleNav("/")} alt="Contact Us Page">
+          <NavButton onClick={e => handleNav("/contact")} alt="Contact Us Page">
             Contact Us
             <FaEnvelope />
           </NavButton>
