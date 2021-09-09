@@ -26,11 +26,21 @@ export function AboutHero() {
   return (
     <AboutHeroWrapper id="noScroll">
       <header>
-        <Button onClick={handleScroll}>Why Neon Unicorn</Button>
-        <Button onClick={handleScroll}>Our Story</Button>
-        <Button onClick={handleScroll}>What we do</Button>
-        <Button onClick={handleScroll}>Neon Social</Button>
-        <Button onClick={e => navigate(`/contact`)}>Contact Us</Button>
+        <Button onClick={handleScroll} id="animated-btn">
+          Why Neon Unicorn
+        </Button>
+        <Button onClick={handleScroll} id="animated-btn">
+          Our Story
+        </Button>
+        <Button onClick={handleScroll} id="animated-btn">
+          What we do
+        </Button>
+        <Button onClick={handleScroll} id="animated-btn">
+          Neon Social
+        </Button>
+        <Button onClick={e => navigate(`/contact`)} id="animated-btn">
+          Contact Us
+        </Button>
       </header>
       <div>
         <GatsbyImage

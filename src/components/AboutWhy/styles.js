@@ -1,4 +1,18 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+function fadeAnimation() {
+  let styles = "";
+  for (let i = 1; i < 6; i++) {
+    let interval = 1;
+    interval *= i;
+    styles += `&.fade:nth-child(${i}) {
+      transition-delay: ${interval}s;
+    }`;
+  }
+  return css`
+    ${styles}
+  `;
+}
 
 export const AboutWhyWrapper = styled.div`
   display: flex;
@@ -38,6 +52,12 @@ export const BlockContent = styled.div`
   font-size: 16px;
   font-family: "Lato", sans-serif;
   padding: 20px;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+  ${fadeAnimation}
+  &.fade {
+    opacity: 1;
+  }
   @media (min-width: 475px) {
     justify-content: center;
     font-size: 24px;

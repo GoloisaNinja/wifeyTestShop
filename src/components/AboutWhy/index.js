@@ -46,20 +46,20 @@ export function AboutWhy() {
           image={data.file.childImageSharp.gatsbyImageData}
           alt="illustration of women choosing an online shopping experience"
         />
-        <BlockWrapper>
-          <BlockContent>
+        <BlockWrapper id="fadeBlockWrapper">
+          <BlockContent id="fadeBlock">
             <FaUserFriends /> We're Building a Community
           </BlockContent>
-          <BlockContent>
+          <BlockContent id="fadeBlock">
             <FaThumbtack /> Support Small Business
           </BlockContent>
-          <BlockContent>
+          <BlockContent id="fadeBlock">
             <FaGrinHearts /> Gorgeous Products
           </BlockContent>
-          <BlockContent>
+          <BlockContent id="fadeBlock">
             <FaVenus /> Woman-Owned Business
           </BlockContent>
-          <BlockContent>
+          <BlockContent id="fadeBlock">
             <FaCreditCard /> Value and Convenience
           </BlockContent>
         </BlockWrapper>

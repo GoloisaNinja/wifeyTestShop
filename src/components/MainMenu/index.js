@@ -51,7 +51,7 @@ export function MainMenu({ handleToggle }) {
             onClick={e => handleNav("/about")}
             alt="About Neon Unicorn Page"
           >
-            About Neon Unicorn
+            About Us
             <FaInfoCircle />
           </NavButton>
           <NavButton onClick={e => handleNav("/contact")} alt="Contact Us Page">
@@ -60,7 +60,11 @@ export function MainMenu({ handleToggle }) {
           </NavButton>
         </div>
       </MenuWrapper>
-      <OverlayWrapper id="menu-overlay" zvalue={"2"}></OverlayWrapper>
+      <OverlayWrapper
+        id="menu-overlay"
+        zvalue={"2"}
+        onClick={handleToggle}
+      ></OverlayWrapper>
     </>
   );
 }

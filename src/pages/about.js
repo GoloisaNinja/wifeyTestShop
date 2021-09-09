@@ -14,30 +14,72 @@ const About = () => {
     if (typeof window !== undefined) {
       const noScrollTarget = document.getElementById("noScroll");
       const scrollTargetOne = document.getElementById("Our Story");
-      const scrollTargetTwo = document.getElementById("What we do");
       const myScrollBtn = document.getElementById("myScrollBtn");
-      const removeClassFromBtn = entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            myScrollBtn.classList.remove("showBtn");
-          }
-        });
+      const animatedBtns = document.querySelectorAll("#animated-btn");
+      const fadeBlocks = document.querySelectorAll("#fadeBlock");
+      const blockTarget = document.getElementById("fadeBlockWrapper");
+
+      const returnCallback = (elem, methodType, classAsString) => {
+        return function (entries) {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              if (methodType === "add") {
+                elem.classList.add(classAsString);
+              } else {
+                elem.classList.remove(classAsString);
+              }
+            }
+          });
+        };
       };
-      const addClassToBtn = entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            myScrollBtn.classList.add("showBtn");
-          }
-        });
+      const returnLoopCallback = (elements, classAsString) => {
+        return function (entries) {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              if (classAsString === "animate") {
+                elements.forEach(el => {
+                  el?.classList.add("animate");
+                });
+              } else {
+                elements.forEach(el => {
+                  el?.classList.add("fade");
+                });
+              }
+            }
+          });
+        };
       };
-      const createObserverFunction = (elem, callback) => {
-        let observer = new IntersectionObserver(callback);
+      // const addAnimateClass = entries => {
+      //   entries.forEach(entry => {
+      //     if (entry.isIntersecting) {
+      //       animatedBtns.forEach(btn => {
+      //         btn?.classList.add("animate");
+      //       });
+      //     }
+      //   });
+      // };
+
+      const createObserverFunction = (elem, callback, options) => {
+        let observer = new IntersectionObserver(callback, options);
         observer.observe(elem);
         return observer;
       };
-      createObserverFunction(scrollTargetOne, addClassToBtn);
-      createObserverFunction(scrollTargetTwo, addClassToBtn);
-      createObserverFunction(noScrollTarget, removeClassFromBtn);
+      createObserverFunction(
+        scrollTargetOne,
+        returnCallback(myScrollBtn, "add", "showBtn")
+      );
+      createObserverFunction(
+        noScrollTarget,
+        returnCallback(myScrollBtn, "remove", "showBtn")
+      );
+      createObserverFunction(
+        noScrollTarget,
+        returnLoopCallback(animatedBtns, "animate")
+      );
+      createObserverFunction(
+        blockTarget,
+        returnLoopCallback(fadeBlocks, "fade")
+      );
     }
   }, []);
 

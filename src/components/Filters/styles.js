@@ -11,6 +11,7 @@ export const FiltersWrapper = styled.div`
   padding: 10px;
   border: 1px solid #ddd;
   visibility: hidden;
+  overflow-y: auto;
   transform: translate3d(100%, 0, 0);
   transition: all 0.5s ease-in-out;
   @media (min-width: 500px) {

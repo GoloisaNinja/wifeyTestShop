@@ -32,6 +32,7 @@ export default function AllProductsPage() {
   const sortByWhat = qs.sort_by;
   const queryPage = parseInt(qs.page) || 1;
   const [page, setPage] = useState(queryPage);
+  const [clicked, setClicked] = useState(true);
   // Pagination reqs
   const limit = 8;
   let skip = (page - 1) * limit;
@@ -276,6 +277,16 @@ export default function AllProductsPage() {
     }
   };
   const toggleFilters = () => {
+    setClicked(!clicked);
+    const myHtml = document.querySelector("html");
+    const myBody = document.querySelector("body");
+    if (clicked) {
+      myHtml.classList.add("menuIsOpen");
+      myBody.classList.add("menuIsOpen");
+    } else {
+      myHtml.classList.remove("menuIsOpen");
+      myBody.classList.remove("menuIsOpen");
+    }
     const filters = document.getElementById("filters");
     const overlay = document.getElementById("overlay");
     filters.classList.toggle("show");
