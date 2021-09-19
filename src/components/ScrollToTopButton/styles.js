@@ -15,6 +15,7 @@ export const ScrollButton = styled.button`
   transform: translateY(100px);
   transition: all 0.5s ease;
   cursor: pointer;
+  z-index: ${props => props.zNumber || 0};
   > svg {
     margin-top: 2.5px;
   }

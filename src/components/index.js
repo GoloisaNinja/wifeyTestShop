@@ -36,3 +36,4 @@ export * from "./ScrollToTopButton";
 export * from "./PaginationButtons";
 export * from "./ContactHeaderSection";
 export * from "./ContactForm";
+export * from "./CollectionGrid";

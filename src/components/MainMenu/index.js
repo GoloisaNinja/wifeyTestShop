@@ -15,9 +15,7 @@ import { MenuWrapper, NavButton } from "./styles";
 export function MainMenu({ handleToggle }) {
   const handleNav = destination => {
     handleToggle();
-    setTimeout(() => {
-      navigate(destination);
-    }, 200);
+    navigate(destination);
   };
   return (
     <>

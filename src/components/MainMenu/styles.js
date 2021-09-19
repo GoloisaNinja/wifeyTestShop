@@ -13,12 +13,12 @@ export const MenuWrapper = styled.div`
   visibility: hidden;
   overflow-y: auto;
   transform: translate3d(-100%, 0, 0);
-  transition: all 0.2s ease-in-out;
+  transition: all 0.5s ease-in-out;
   @media (min-width: 500px) {
     width: 50%;
   }
   @media (min-width: 700px) {
-    width: 35%;
+    width: 30%;
   }
   &.show {
     visibility: visible;

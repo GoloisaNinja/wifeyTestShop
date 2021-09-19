@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "gatsby";
+import { navigate } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { Button } from "../Button";
 import {
   CollectionTileWrapper,
   Title,
@@ -10,17 +11,23 @@ import {
 
 export function CollectionTile({ collection }) {
   return (
-    <Link to={`/collection/${collection.handle}`}>
-      <CollectionTileWrapper>
-        <GatsbyImage
-          image={collection.image.gatsbyImageData}
-          alt={collection.title}
-        />
-        <CollectionTileContent>
-          <Title>{collection.title}</Title>
-          <Description>{collection.description}</Description>
-        </CollectionTileContent>
-      </CollectionTileWrapper>
-    </Link>
+    <CollectionTileWrapper>
+      <GatsbyImage
+        image={collection.image.gatsbyImageData}
+        alt={collection.title}
+      />
+      <CollectionTileContent>
+        <Title>{collection.title}</Title>
+        <Description>{collection.description}</Description>
+        <div>
+          <Button
+            width={`100%`}
+            onClick={e => navigate(`/collection/${collection.handle}`)}
+          >
+            Shop Collection
+          </Button>
+        </div>
+      </CollectionTileContent>
+    </CollectionTileWrapper>
   );
 }

@@ -18,7 +18,7 @@ export const FiltersWrapper = styled.div`
     width: 50%;
   }
   @media (min-width: 700px) {
-    width: 35%;
+    width: 30%;
   }
   &.show {
     visibility: visible;

@@ -8,8 +8,11 @@ import {
   GradientP,
   Button,
   Modal,
+  ScrollToTopButton,
 } from "../../components";
 import {
+  ScrollElementDiv,
+  ScrollRemoveElementDiv,
   ButtonWrapper,
   CollectionText,
   PurchaseWrapper,
@@ -141,8 +144,45 @@ export default function CollectionTemplate({ data }) {
     setShowModal(true);
     setAddBtnDisabled(false);
   };
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      const scrollTargetAdd = document.getElementById("scrollTargetAdd");
+      const scrollTargetRemove = document.getElementById("scrollTargetRemove");
+      const myScrollBtn = document.getElementById("myScrollBtn");
+
+      const returnCallback = (elem, methodType, classAsString) => {
+        return function (entries) {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              if (methodType === "add") {
+                elem.classList.add(classAsString);
+              } else {
+                elem.classList.remove(classAsString);
+              }
+            }
+          });
+        };
+      };
+
+      const createObserverFunction = (elem, callback, options) => {
+        let observer = new IntersectionObserver(callback, options);
+        observer.observe(elem);
+        return observer;
+      };
+      createObserverFunction(
+        scrollTargetAdd,
+        returnCallback(myScrollBtn, "add", "showBtn")
+      );
+      createObserverFunction(
+        scrollTargetRemove,
+        returnCallback(myScrollBtn, "remove", "showBtn")
+      );
+    }
+  }, []);
   return (
     <Layout paddingValues={true}>
+      <ScrollElementDiv id="scrollTargetAdd"></ScrollElementDiv>
+      <ScrollRemoveElementDiv id="scrollTargetRemove"></ScrollRemoveElementDiv>
       <div style={{ position: "relative" }}>
         <ButtonWrapper>
           <Button onClick={() => navigate(`/all-collections`)}>
@@ -213,6 +253,7 @@ export default function CollectionTemplate({ data }) {
           </FloatingButtonWrapper>
         )}
       </div>
+      <ScrollToTopButton zNumber={2} />
     </Layout>
   );
 }

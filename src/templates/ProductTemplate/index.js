@@ -11,6 +11,7 @@ import {
   ProductQuantityAdder,
   Modal,
   GradientH4,
+  ScrollToTopButton,
 } from "../../components";
 import {
   FacebookShareButton,
@@ -21,6 +22,8 @@ import {
   PinterestIcon,
 } from "react-share";
 import {
+  ScrollElementDiv,
+  ScrollRemoveElementDiv,
   ProductText,
   Grid,
   SelectWrapper,
@@ -114,15 +117,53 @@ export default function ProductTemplate({ data }) {
     };
     idResult();
   }, [
-    //getProductById,
+    getProductById,
     setProduct,
     setSelectedVariant,
     data.shopifyProduct.storefrontId,
     variantId,
   ]);
 
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      const scrollTargetAdd = document.getElementById("scrollTargetAdd");
+      const scrollTargetRemove = document.getElementById("scrollTargetRemove");
+      const myScrollBtn = document.getElementById("myScrollBtn");
+
+      const returnCallback = (elem, methodType, classAsString) => {
+        return function (entries) {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              if (methodType === "add") {
+                elem.classList.add(classAsString);
+              } else {
+                elem.classList.remove(classAsString);
+              }
+            }
+          });
+        };
+      };
+
+      const createObserverFunction = (elem, callback, options) => {
+        let observer = new IntersectionObserver(callback, options);
+        observer.observe(elem);
+        return observer;
+      };
+      createObserverFunction(
+        scrollTargetAdd,
+        returnCallback(myScrollBtn, "add", "showBtn")
+      );
+      createObserverFunction(
+        scrollTargetRemove,
+        returnCallback(myScrollBtn, "remove", "showBtn")
+      );
+    }
+  }, []);
+
   return (
     <Layout paddingValues={true}>
+      <ScrollElementDiv id="scrollTargetAdd"></ScrollElementDiv>
+      <ScrollRemoveElementDiv id="scrollTargetRemove"></ScrollRemoveElementDiv>
       <Button onClick={() => navigate(-1)}>GO BACK</Button>
       <Grid>
         <div>
@@ -203,6 +244,7 @@ export default function ProductTemplate({ data }) {
         </PinterestShareButton>
       </SocialWrapper>
       {showModal && <Modal dismiss={handleDismiss} content={modalContent} />}
+      <ScrollToTopButton />
     </Layout>
   );
 }

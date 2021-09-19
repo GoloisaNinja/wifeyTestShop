@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { GradientH2 } from "../GradientText";
 import {
   FaUserFriends,
-  FaThumbtack,
+  FaShopify,
   FaVenus,
   FaGrinHearts,
   FaCreditCard,
@@ -51,7 +51,7 @@ export function AboutWhy() {
             <FaUserFriends /> We're Building a Community
           </BlockContent>
           <BlockContent id="fadeBlock">
-            <FaThumbtack /> Support Small Business
+            <FaShopify /> Powered by Shopify
           </BlockContent>
           <BlockContent id="fadeBlock">
             <FaGrinHearts /> Gorgeous Products
