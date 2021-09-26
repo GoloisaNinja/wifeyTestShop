@@ -10,6 +10,9 @@ const query = graphql`
         amount
       }
     }
+    variants {
+      compareAtPrice
+    }
   }
   {
     allShopifyProduct {

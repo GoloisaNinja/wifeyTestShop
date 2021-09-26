@@ -7,10 +7,12 @@ import {
   ProductTileTitle,
   ProductTileDescription,
   ProductTilePrice,
+  ProductTileCompareAtPrice,
   ProductTileContentWrapper,
 } from "./styles";
 
 export function ProductTile({ product }) {
+  console.log(product);
   return (
     <ProductTileWrapper>
       <GatsbyImage
@@ -20,10 +22,18 @@ export function ProductTile({ product }) {
       <ProductTileContentWrapper>
         <ProductTileTitle>{product.title}</ProductTileTitle>
         <ProductTileDescription>{product.description}</ProductTileDescription>
-        <ProductTilePrice>
-          from $
-          {parseFloat(product.priceRangeV2.minVariantPrice.amount).toFixed(2)}
-        </ProductTilePrice>
+        <div>
+          <ProductTilePrice>
+            from $
+            {parseFloat(product.priceRangeV2.minVariantPrice.amount).toFixed(2)}
+          </ProductTilePrice>
+          {product.variants[0].compareAtPrice !== null && (
+            <ProductTileCompareAtPrice>
+              ${parseFloat(product.variants[0].compareAtPrice).toFixed(2)}
+            </ProductTileCompareAtPrice>
+          )}
+        </div>
+
         <Button
           width={`100%`}
           onClick={() =>

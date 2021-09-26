@@ -18,6 +18,9 @@ export const MenuWrapper = styled.div`
     width: 50%;
   }
   @media (min-width: 700px) {
+    width: 40%;
+  }
+  @media (min-width: 800px) {
     width: 30%;
   }
   &.show {
