@@ -50,7 +50,7 @@ export default function AllProductsPage() {
   const [page, setPage] = useState(queryPage);
   const [clicked, setClicked] = useState(true);
   // Pagination reqs
-  const limit = 8;
+  const limit = 15;
   let skip = (page - 1) * limit;
   useEffect(() => {
     setPage(queryPage);

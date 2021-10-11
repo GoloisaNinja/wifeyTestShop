@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import ProductContext from "../context/ProductContext";
 import { Layout, GradientP, CollectionGrid, Button } from "../components";
-import { CollectionTile } from "../components/CollectionTile";
 
 const CollectionNoteWrapper = styled.div`
   display: flex;
@@ -38,15 +37,6 @@ export default function AllCollectionPage() {
         </div>
       </CollectionNoteWrapper>
       <CollectionGrid collections={collections} />
-      {/* {collections.map(
-        collection =>
-          collection.title.slice(0, 4) === "Luci" && (
-            <CollectionTile
-              key={collection.storefrontId}
-              collection={collection}
-            />
-          )
-      )} */}
     </Layout>
   );
 }

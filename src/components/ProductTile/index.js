@@ -27,11 +27,14 @@ export function ProductTile({ product }) {
             from $
             {parseFloat(product.priceRangeV2.minVariantPrice.amount).toFixed(2)}
           </ProductTilePrice>
-          {product.variants[0].compareAtPrice !== null && (
-            <ProductTileCompareAtPrice>
-              ${parseFloat(product.variants[0].compareAtPrice).toFixed(2)}
-            </ProductTileCompareAtPrice>
-          )}
+          {product.variants[0].compareAtPrice !== null &&
+            parseFloat(product.priceRangeV2.minVariantPrice.amount).toFixed(
+              2
+            ) !== parseFloat(product.variants[0].compareAtPrice).toFixed(2) && (
+              <ProductTileCompareAtPrice>
+                ${parseFloat(product.variants[0].compareAtPrice).toFixed(2)}
+              </ProductTileCompareAtPrice>
+            )}
         </div>
 
         <Button

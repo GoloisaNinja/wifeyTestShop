@@ -1,8 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import styled from "styled-components";
 import ProductContext from "../context/ProductContext";
 import { graphql, useStaticQuery } from "gatsby";
-import { Layout, HeroTile } from "../components";
+import { Layout, HeroTile, Featured, ScrollToTopButton } from "../components";
 import { Link } from "gatsby";
+
+const ScrollElementDiv = styled.div`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  top: 1500px;
+  left: 0;
+`;
+
+const ScrollRemoveElementDiv = styled.div`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  top: 500px;
+  left: 0;
+`;
 
 const IndexPage = () => {
   const { collections } = useContext(ProductContext);
@@ -44,8 +61,47 @@ const IndexPage = () => {
     subText: `Our prettiest products at drastically reduced prices! Lovely shouldn't break the bank.`,
     overlayColor: `rgba(0, 122, 86, 0.5)`,
   };
+
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      const scrollTargetAdd = document.getElementById("scrollTargetAdd");
+      const scrollTargetRemove = document.getElementById("scrollTargetRemove");
+      const myScrollBtn = document.getElementById("myScrollBtn");
+
+      const returnCallback = (elem, methodType, classAsString) => {
+        return function (entries) {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              if (methodType === "add") {
+                elem.classList.add(classAsString);
+              } else {
+                elem.classList.remove(classAsString);
+              }
+            }
+          });
+        };
+      };
+
+      const createObserverFunction = (elem, callback, options) => {
+        let observer = new IntersectionObserver(callback, options);
+        observer.observe(elem);
+        return observer;
+      };
+      createObserverFunction(
+        scrollTargetAdd,
+        returnCallback(myScrollBtn, "add", "showBtn")
+      );
+      createObserverFunction(
+        scrollTargetRemove,
+        returnCallback(myScrollBtn, "remove", "showBtn")
+      );
+    }
+  }, []);
+
   return (
     <Layout>
+      <ScrollElementDiv id="scrollTargetAdd"></ScrollElementDiv>
+      <ScrollRemoveElementDiv id="scrollTargetRemove"></ScrollRemoveElementDiv>
       <Link to="/all-collections">
         <HeroTile
           image={floralGirl.image.node.childImageSharp.gatsbyImageData}
@@ -77,6 +133,8 @@ const IndexPage = () => {
           overlayColor={celebration.overlayColor}
         />
       </Link>
+      <Featured />
+      <ScrollToTopButton />
     </Layout>
   );
 };
