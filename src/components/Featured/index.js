@@ -1,7 +1,7 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { ProductGrid } from "../ProductGrid";
-import { GradientH2 } from "../GradientText";
+import { GradientH1 } from "../GradientText";
 import { FeaturedWrapper, FeaturedTitle } from "./styles";
 
 export function Featured() {
@@ -43,12 +43,13 @@ export function Featured() {
   return (
     <FeaturedWrapper>
       <FeaturedTitle>
-        <GradientH2
+        <GradientH1
           font={"'Abril Fatface', cursive"}
           color={"#f700ff, #7000a1"}
         >
-          Shop our frontpage staff picks!
-        </GradientH2>
+          Shop our Featured Items
+        </GradientH1>
+        <p>Our Style CEO developed this quick shop collection!</p>
       </FeaturedTitle>
       <ProductGrid products={featuredProducts[0].products} />
     </FeaturedWrapper>
