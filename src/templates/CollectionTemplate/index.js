@@ -75,7 +75,7 @@ export default function CollectionTemplate({ data }) {
       };
     });
     setCollectionProductMap(initialMap);
-  }, [data.shopifyCollection]);
+  }, [data.shopifyCollection, data.allShopifyProduct.edges]);
 
   useEffect(() => {
     let readyCheck = [];
@@ -89,7 +89,7 @@ export default function CollectionTemplate({ data }) {
     } else {
       setReadyToAdd(false);
     }
-  }, [collectionProductMap]);
+  }, [collectionProductMap, data.allShopifyProduct.edges.length]);
 
   const updateCollectionProductMap = ({
     storefrontId,

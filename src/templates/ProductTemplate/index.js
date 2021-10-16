@@ -79,24 +79,13 @@ export default function ProductTemplate({ data }) {
     );
   };
 
-  const handleModal = ({ variantId, error }) => {
-    if (error) {
-      const content = {
-        message: "Quantity should be a number...",
-        product: "Whoopsie!",
-        confetti: false,
-      };
-      setModalContent(content);
-      setShowModal(true);
-    } else {
-      const content = {
-        message: "was added to bag!",
-        product: data.shopifyProduct.title,
-        confetti: true,
-      };
-      setModalContent(content);
-      setShowModal(true);
-    }
+  const handleModal = () => {
+    const content = {
+      message: "was added to bag!",
+      product: data.shopifyProduct.title,
+    };
+    setModalContent(content);
+    setShowModal(true);
   };
 
   const handleDismiss = () => {

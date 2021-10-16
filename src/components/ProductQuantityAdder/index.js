@@ -11,16 +11,21 @@ export function ProductQuantityAdder({ variantId, available, handleModal }) {
 
   const handleQuantityChange = e => {
     setQuantity(e.currentTarget.value);
+    if (
+      e.currentTarget.value === "" ||
+      !e.currentTarget.value ||
+      isNaN(parseInt(e.currentTarget.value))
+    ) {
+      setAddBtnDisabled(true);
+    } else if (addBtnDisabled) {
+      setAddBtnDisabled(false);
+    }
   };
   const handleSubmit = async e => {
     e.preventDefault();
     setAddBtnDisabled(true);
-    if (!isNaN(parseInt(quantity, 10))) {
-      await updateLineItem([{ variantId, quantity: parseInt(quantity, 10) }]);
-      handleModal({ variantId, quantity: parseInt(quantity, 10) });
-    } else {
-      handleModal({ error: true });
-    }
+    await updateLineItem([{ variantId, quantity: parseInt(quantity, 10) }]);
+    handleModal();
     setAddBtnDisabled(false);
   };
   useEffect(() => {

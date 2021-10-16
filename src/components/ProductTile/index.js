@@ -12,7 +12,6 @@ import {
 } from "./styles";
 
 export function ProductTile({ product }) {
-  console.log(product);
   return (
     <ProductTileWrapper>
       <GatsbyImage

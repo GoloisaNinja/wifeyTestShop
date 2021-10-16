@@ -11,7 +11,7 @@ export function Modal({ dismiss, content }) {
     dismiss();
   };
   useEffect(() => {
-    setIsExploding(content.confetti);
+    setIsExploding(true);
   }, [setIsExploding]);
   return (
     <>

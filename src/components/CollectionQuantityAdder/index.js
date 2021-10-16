@@ -12,16 +12,24 @@ export function CollectionQuantityAdder({
 }) {
   const [quantity, setQuantity] = useState("1");
   const [isConfirmed, setisConfirmed] = useState(confirmed);
+  const [disableConfirm, setDisableConfirm] = useState(false);
 
   const handleQuantityChange = e => {
     setQuantity(e.currentTarget.value);
+    if (
+      e.currentTarget.value === "" ||
+      !e.currentTarget.value ||
+      isNaN(parseInt(e.currentTarget.value))
+    ) {
+      setDisableConfirm(true);
+    } else if (disableConfirm) {
+      setDisableConfirm(false);
+    }
   };
   const handleSubmit = e => {
     e.preventDefault();
     setisConfirmed(!isConfirmed);
-    if (!isNaN(parseInt(quantity, 10))) {
-      handleIndividualProductDetails({ quantity, confirmed: !isConfirmed });
-    }
+    handleIndividualProductDetails({ quantity, confirmed: !isConfirmed });
   };
   useEffect(() => {
     setisConfirmed(confirmed);
@@ -35,7 +43,7 @@ export function CollectionQuantityAdder({
       <strong>Quantity</strong>
       <form>
         <Input
-          disabled={!available}
+          disabled={!available || isConfirmed}
           type="number"
           min="1"
           step="1"
@@ -45,7 +53,7 @@ export function CollectionQuantityAdder({
         <Button
           inverse
           type="submit"
-          disabled={!available}
+          disabled={!available || disableConfirm}
           onClick={e => handleSubmit(e)}
           width={`100%`}
           margin={"0"}

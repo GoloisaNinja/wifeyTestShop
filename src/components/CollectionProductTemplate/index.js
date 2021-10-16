@@ -23,12 +23,26 @@ export function CollectionProductTemplate({
 
   const parsedVariantId = queryString.parse(search);
   const variantId = decodeURIComponent(parsedVariantId[handle]);
+  const individualProductBaseStateObject = { quantity: 1, confirmed: false };
+
+  const handleIndividualProductDetails = ({ quantity, confirmed }) => {
+    updateCollectionProductMap({
+      storefrontId: productStorefrontId,
+      variantId: selectedVariant?.id,
+      productTitle: product?.title,
+      variantTitle: selectedVariant?.title,
+      quantity: parseInt(quantity, 10),
+      confirmed,
+    });
+  };
+
   const handleVariantChange = e => {
     const newVariant = product?.variants.find(
       variant => variant.id === e.target.value
     );
     setSelectedVariant(newVariant);
     handleVariantQueryStrings(handle, newVariant.id);
+    handleIndividualProductDetails(individualProductBaseStateObject);
   };
 
   useEffect(() => {
@@ -46,23 +60,12 @@ export function CollectionProductTemplate({
     };
     idResult();
   }, [
-    //getProductById,
+    getProductById,
     setProduct,
     productStorefrontId,
     variantId,
     setSelectedVariant,
   ]);
-
-  const handleIndividualProductDetails = ({ quantity, confirmed }) => {
-    updateCollectionProductMap({
-      storefrontId: productStorefrontId,
-      variantId: selectedVariant?.id,
-      productTitle: product?.title,
-      variantTitle: selectedVariant?.title,
-      quantity: parseInt(quantity, 10),
-      confirmed,
-    });
-  };
 
   useEffect(() => {
     const updatedQs = queryString.stringify(variantQueryStrings);
@@ -72,8 +75,7 @@ export function CollectionProductTemplate({
       // });
       window.history.replaceState("", "", `?${updatedQs}`);
     }
-    handleIndividualProductDetails({ quantity: 1, confirmed: false });
-  }, [selectedVariant]);
+  }, [variantQueryStrings]);
 
   return (
     <Grid>

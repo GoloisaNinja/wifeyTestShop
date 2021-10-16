@@ -100,8 +100,7 @@ export default function AllProductsPage() {
       filteredProducts = filteredProducts.sort(function (a, b) {
         if (a.title.toLowerCase() < b.title.toLowerCase()) {
           return -1;
-        }
-        if (a.title.toLowerCase() > b.title.toLowerCase()) {
+        } else {
           return 1;
         }
       });
@@ -109,8 +108,7 @@ export default function AllProductsPage() {
       filteredProducts = filteredProducts.sort(function (a, b) {
         if (a.title.toLowerCase() < b.title.toLowerCase()) {
           return 1;
-        }
-        if (a.title.toLowerCase() > b.title.toLowerCase()) {
+        } else {
           return -1;
         }
       });
@@ -121,11 +119,7 @@ export default function AllProductsPage() {
           b.priceRangeV2.minVariantPrice.amount
         ) {
           return -1;
-        }
-        if (
-          a.priceRangeV2.minVariantPrice.amount >
-          b.priceRangeV2.minVariantPrice.amount
-        ) {
+        } else {
           return 1;
         }
       });
@@ -136,11 +130,7 @@ export default function AllProductsPage() {
           b.priceRangeV2.minVariantPrice.amount
         ) {
           return 1;
-        }
-        if (
-          a.priceRangeV2.minVariantPrice.amount >
-          b.priceRangeV2.minVariantPrice.amount
-        ) {
+        } else {
           return -1;
         }
       });
@@ -148,8 +138,7 @@ export default function AllProductsPage() {
       filteredProducts = filteredProducts.sort(function (a, b) {
         if (a.createdAt < b.createdAt) {
           return 1;
-        }
-        if (a.createdAt > b.createdAt) {
+        } else {
           return -1;
         }
       });
@@ -157,8 +146,7 @@ export default function AllProductsPage() {
       filteredProducts = filteredProducts.sort(function (a, b) {
         if (a.createdAt < b.createdAt) {
           return -1;
-        }
-        if (a.createdAt > b.createdAt) {
+        } else {
           return 1;
         }
       });

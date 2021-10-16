@@ -15,6 +15,13 @@ export function Filters({ toggleFilters }) {
   const { search } = useLocation();
   const qs = queryString.parse(search);
   const sort = qs.sort_by;
+  const sortedCollectionsArray = collections.sort(function (a, b) {
+    if (a.title.toLowerCase() < b.title.toLowerCase()) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
   const handleToggle = () => {
     toggleFilters();
   };
@@ -39,26 +46,17 @@ export function Filters({ toggleFilters }) {
             Clear Filters
           </Link>
         </div>
-        {collections
-          .sort(function (a, b) {
-            if (a.title.toLowerCase() < b.title.toLowerCase()) {
-              return -1;
-            }
-            if (a.title.toLowerCase() > b.title.toLowerCase()) {
-              return 1;
-            }
-          })
-          .map(
-            collection =>
-              collection.title.toLowerCase().indexOf(searchTerm.toLowerCase()) >
-                -1 && (
-                <CategoryFilterItem
-                  title={collection.title}
-                  id={collection.storefrontId}
-                  key={collection.storefrontId}
-                />
-              )
-          )}
+        {sortedCollectionsArray.map(
+          collection =>
+            collection.title.toLowerCase().indexOf(searchTerm.toLowerCase()) >
+              -1 && (
+              <CategoryFilterItem
+                title={collection.title}
+                id={collection.storefrontId}
+                key={collection.storefrontId}
+              />
+            )
+        )}
       </FiltersWrapper>
       <OverlayWrapper
         id="overlay"
