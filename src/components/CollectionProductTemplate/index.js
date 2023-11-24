@@ -108,7 +108,7 @@ export function CollectionProductTemplate({
             )}
             {!!selectedVariant && (
               <>
-                <Price>$ {selectedVariant.price} USD</Price>
+                <Price>$ {selectedVariant.price.amount} USD</Price>
                 <CollectionQuantityAdder
                   variantId={selectedVariant.id}
                   confirmed={confirmedStatus}

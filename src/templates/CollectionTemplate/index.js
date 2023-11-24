@@ -11,13 +11,16 @@ import {
   ScrollToTopButton,
 } from "../../components";
 import {
-  ScrollElementDiv,
-  ScrollRemoveElementDiv,
   ButtonWrapper,
   CollectionText,
   PurchaseWrapper,
   FloatingButtonWrapper,
 } from "./styles";
+
+import {
+  ScrollElementDiv,
+  ScrollRemoveElementDiv,
+} from "../../globalStyles/globals";
 
 export const query = graphql`
   query CollectionQuery($shopifyId: String) {
@@ -37,10 +40,8 @@ export const query = graphql`
           description
           title
           handle
-          images {
+          media {
             id
-            src
-            gatsbyImageData
           }
         }
       }
@@ -48,7 +49,7 @@ export const query = graphql`
   }
 `;
 
-export default function CollectionTemplate({ data }) {
+export default function CollectionTemplate({ data, pageContext }) {
   const { updateLineItem } = useContext(CartContext);
   const [variantQueryStrings, setVariantQueryStrings] = useState({});
   const [readyToAdd, setReadyToAdd] = useState(false);
@@ -144,41 +145,7 @@ export default function CollectionTemplate({ data }) {
     setShowModal(true);
     setAddBtnDisabled(false);
   };
-  useEffect(() => {
-    if (typeof window !== undefined) {
-      const scrollTargetAdd = document.getElementById("scrollTargetAdd");
-      const scrollTargetRemove = document.getElementById("scrollTargetRemove");
-      const myScrollBtn = document.getElementById("myScrollBtn");
 
-      const returnCallback = (elem, methodType, classAsString) => {
-        return function (entries) {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              if (methodType === "add") {
-                elem.classList.add(classAsString);
-              } else {
-                elem.classList.remove(classAsString);
-              }
-            }
-          });
-        };
-      };
-
-      const createObserverFunction = (elem, callback, options) => {
-        let observer = new IntersectionObserver(callback, options);
-        observer.observe(elem);
-        return observer;
-      };
-      createObserverFunction(
-        scrollTargetAdd,
-        returnCallback(myScrollBtn, "add", "showBtn")
-      );
-      createObserverFunction(
-        scrollTargetRemove,
-        returnCallback(myScrollBtn, "remove", "showBtn")
-      );
-    }
-  }, []);
   return (
     <Layout paddingValues={true}>
       <ScrollElementDiv id="scrollTargetAdd"></ScrollElementDiv>
@@ -224,19 +191,34 @@ export default function CollectionTemplate({ data }) {
             </Button>
           </div>
         </PurchaseWrapper>
-        {data.allShopifyProduct.edges.map(({ node }) => (
-          <CollectionProductTemplate
-            key={node.storefrontId}
-            productShopifyId={node.shopifyId}
-            productStorefrontId={node.storefrontId}
-            images={node.images}
-            handle={node.handle}
-            handleVariantQueryStrings={handleVariantQueryStrings}
-            variantQueryStrings={variantQueryStrings}
-            updateCollectionProductMap={updateCollectionProductMap}
-            confirmedStatus={collectionProductMap[node.storefrontId]?.confirmed}
-          />
-        ))}
+        {data.allShopifyProduct.edges.map(({ node }) => {
+          const mediaIds = [];
+          node.media.forEach(id => {
+            mediaIds.push(id.id);
+          });
+
+          let images = [];
+          pageContext.images.forEach(i => {
+            if (mediaIds.includes(i.id)) {
+              images.push(i);
+            }
+          });
+          return (
+            <CollectionProductTemplate
+              key={node.storefrontId}
+              productShopifyId={node.shopifyId}
+              productStorefrontId={node.storefrontId}
+              images={images}
+              handle={node.handle}
+              handleVariantQueryStrings={handleVariantQueryStrings}
+              variantQueryStrings={variantQueryStrings}
+              updateCollectionProductMap={updateCollectionProductMap}
+              confirmedStatus={
+                collectionProductMap[node.storefrontId]?.confirmed
+              }
+            />
+          );
+        })}
 
         {showModal && <Modal dismiss={handleDismiss} content={modalContent} />}
         {readyToAdd && (

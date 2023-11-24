@@ -7,10 +7,13 @@ export const productFields = graphql`
     description
     title
     handle
-    images {
+    variants {
       id
-      src
-      gatsbyImageData(placeholder: "BLURRED")
+      storefrontId
+      image {
+        src
+        gatsbyImageData
+      }
     }
   }
 `;

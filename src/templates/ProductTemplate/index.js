@@ -3,6 +3,7 @@ import CartContext from "../../context/CartContext";
 import { navigate, useLocation } from "@reach/router";
 import queryString from "query-string";
 import { graphql } from "gatsby";
+
 import {
   Layout,
   ImageGallery,
@@ -22,8 +23,6 @@ import {
   PinterestIcon,
 } from "react-share";
 import {
-  ScrollElementDiv,
-  ScrollRemoveElementDiv,
   ProductText,
   Grid,
   SelectWrapper,
@@ -31,6 +30,11 @@ import {
   SocialWrapper,
   SocialHeader,
 } from "./styles";
+
+import {
+  ScrollElementDiv,
+  ScrollRemoveElementDiv,
+} from "../../globalStyles/globals";
 
 export const query = graphql`
   query ProductQuery($shopifyId: String) {
@@ -40,20 +44,12 @@ export const query = graphql`
       id
       storefrontId
       title
-      images {
-        id
-        src
-        gatsbyImageData(placeholder: "BLURRED")
-      }
-      variants {
-        id
-        storefrontId
-      }
     }
   }
 `;
 
-export default function ProductTemplate({ data }) {
+export default function ProductTemplate({ data, pageContext }) {
+  const images = pageContext.images;
   const { getProductById } = useContext(CartContext);
   const [product, setProduct] = useState(null);
   const [selectedVariant, setSelectedVariant] = useState(null);
@@ -113,42 +109,6 @@ export default function ProductTemplate({ data }) {
     variantId,
   ]);
 
-  useEffect(() => {
-    if (typeof window !== undefined) {
-      const scrollTargetAdd = document.getElementById("scrollTargetAdd");
-      const scrollTargetRemove = document.getElementById("scrollTargetRemove");
-      const myScrollBtn = document.getElementById("myScrollBtn");
-
-      const returnCallback = (elem, methodType, classAsString) => {
-        return function (entries) {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              if (methodType === "add") {
-                elem.classList.add(classAsString);
-              } else {
-                elem.classList.remove(classAsString);
-              }
-            }
-          });
-        };
-      };
-
-      const createObserverFunction = (elem, callback, options) => {
-        let observer = new IntersectionObserver(callback, options);
-        observer.observe(elem);
-        return observer;
-      };
-      createObserverFunction(
-        scrollTargetAdd,
-        returnCallback(myScrollBtn, "add", "showBtn")
-      );
-      createObserverFunction(
-        scrollTargetRemove,
-        returnCallback(myScrollBtn, "remove", "showBtn")
-      );
-    }
-  }, []);
-
   return (
     <Layout paddingValues={true}>
       <ScrollElementDiv id="scrollTargetAdd"></ScrollElementDiv>
@@ -184,7 +144,7 @@ export default function ProductTemplate({ data }) {
               )}
               {!!selectedVariant && (
                 <>
-                  <Price>$ {selectedVariant.price} USD</Price>
+                  <Price>$ {selectedVariant.price.amount} USD</Price>
                   <ProductQuantityAdder
                     variantId={selectedVariant.id}
                     available={selectedVariant.available}
@@ -199,7 +159,14 @@ export default function ProductTemplate({ data }) {
           <ImageGallery
             selectedImageVariantId={selectedVariant?.id}
             selectedImageVariantIdSrc={selectedVariant?.image.src}
-            images={data.shopifyProduct.images}
+            images={images}
+            // images={data.shopifyProduct.variants.map(v => {
+            //   return {
+            //     id: v.id,
+            //     gatsbyImageData: v.image.gatsbyImageData,
+            //     src: v.image.src,
+            //   };
+            // })}
           />
         </div>
       </Grid>

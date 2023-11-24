@@ -21,11 +21,14 @@ import { navigate } from "@reach/router";
 export function CartContents() {
   const data = useStaticQuery(graphql`
     {
-      allShopifyProductImage {
+      allShopifyProductVariant {
         edges {
           node {
-            gatsbyImageData
-            src
+            shopifyId
+            image {
+              src
+              gatsbyImageData
+            }
           }
         }
       }
@@ -36,10 +39,10 @@ export function CartContents() {
   checkout?.lineItems.forEach(lineItem => {
     variantImageMap[lineItem.variant.image.src] = {};
   });
-  data.allShopifyProductImage.edges.forEach(({ node }) => {
+  data.allShopifyProductVariant.edges.forEach(({ node }) => {
     for (let key in variantImageMap) {
-      if (node.src === key) {
-        variantImageMap[key] = node.gatsbyImageData;
+      if (node.image.src === key) {
+        variantImageMap[key] = node.image.gatsbyImageData;
       }
     }
   });
@@ -87,7 +90,7 @@ export function CartContents() {
               />
             </CartItemImageWrapper>
 
-            <div>${lineItem.variant.price}</div>
+            <div>${lineItem.variant.price.amount}</div>
           </div>
           {/* <div>${lineItem.variant.price}</div> */}
           <div>
@@ -96,7 +99,9 @@ export function CartContents() {
               onAdjust={handleAdjustQuantity}
             />
           </div>
-          <div>${(lineItem.quantity * lineItem.variant.price).toFixed(2)}</div>
+          <div>
+            ${(lineItem.quantity * lineItem.variant.price.amount).toFixed(2)}
+          </div>
           <div>
             <CartRemoveLineItem lineItemId={lineItem.id} />
           </div>
@@ -108,7 +113,7 @@ export function CartContents() {
             <strong>Total: </strong>
           </div>
           <div>
-            <span>${checkout?.totalPrice}</span>
+            <span>${checkout?.totalPrice.amount}</span>
           </div>
         </CartFooter>
       )}

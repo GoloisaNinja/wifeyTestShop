@@ -18,18 +18,24 @@ export function Featured() {
               shopifyId
               storefrontId
               title
-              images {
-                gatsbyImageData
-                id
-                src
-              }
+              # images {
+              #   gatsbyImageData
+              #   id
+              #   src
+              # }
               priceRangeV2 {
                 minVariantPrice {
                   amount
                 }
               }
               variants {
+                storefrontId
                 compareAtPrice
+                id
+                image {
+                  src
+                  gatsbyImageData
+                }
               }
             }
           }

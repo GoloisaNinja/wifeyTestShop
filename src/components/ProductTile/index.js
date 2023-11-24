@@ -15,7 +15,7 @@ export function ProductTile({ product }) {
   return (
     <ProductTileWrapper>
       <GatsbyImage
-        image={product.images[0].gatsbyImageData}
+        image={product.variants[0].image.gatsbyImageData}
         alt={product.handle}
       />
       <ProductTileContentWrapper>

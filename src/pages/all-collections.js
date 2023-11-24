@@ -1,7 +1,12 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import ProductContext from "../context/ProductContext";
+import { ScrollToTopButton } from "../components";
 import { Layout, GradientP, CollectionGrid, Button } from "../components";
+import {
+  ScrollElementDiv,
+  ScrollRemoveElementDiv,
+} from "../globalStyles/globals";
 
 const CollectionNoteWrapper = styled.div`
   display: flex;
@@ -21,6 +26,8 @@ export default function AllCollectionPage() {
   const { collections } = useContext(ProductContext);
   return (
     <Layout paddingValues={true}>
+      <ScrollElementDiv id="scrollTargetAdd"></ScrollElementDiv>
+      <ScrollRemoveElementDiv id="scrollTargetRemove"></ScrollRemoveElementDiv>
       <CollectionNoteWrapper>
         <GradientP font={`'Lato', sans-serif`} color={`#035efc, #ff00f7`}>
           Neon Unicorn Collections give you an entire outfit idea that you can
@@ -37,6 +44,7 @@ export default function AllCollectionPage() {
         </div>
       </CollectionNoteWrapper>
       <CollectionGrid collections={collections} />
+      <ScrollToTopButton zNumber={2} />
     </Layout>
   );
 }

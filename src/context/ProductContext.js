@@ -1,7 +1,7 @@
 import React, { createContext } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
-const query = graphql`
+const pquery = graphql`
   fragment ProductTileFields on ShopifyProduct {
     handle
     storefrontId
@@ -24,11 +24,19 @@ const query = graphql`
           storefrontId
           createdAt
           title
-          images {
+          variants {
             id
-            src
-            gatsbyImageData(placeholder: "BLURRED")
+            storefrontId
+            image {
+              src
+              gatsbyImageData
+            }
           }
+          # images {
+          #   id
+          #   src
+          #   gatsbyImageData(placeholder: "BLURRED")
+          # }
         }
       }
     }
@@ -44,8 +52,8 @@ const query = graphql`
           storefrontId
           handle
           image {
-            id
-            gatsbyImageData(placeholder: "BLURRED", width: 1000)
+            src
+            gatsbyImageData(width: 1000)
           }
         }
       }
@@ -61,7 +69,7 @@ const ProductContext = createContext(defaultState);
 export default ProductContext;
 
 export function ProductContextProvider({ children }) {
-  const { allShopifyProduct, allShopifyCollection } = useStaticQuery(query);
+  const { allShopifyProduct, allShopifyCollection } = useStaticQuery(pquery);
   return (
     <ProductContext.Provider
       value={{

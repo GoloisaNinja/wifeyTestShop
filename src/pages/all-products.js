@@ -12,6 +12,10 @@ import {
   PaginationButtons,
   ScrollToTopButton,
 } from "../components";
+import {
+  ScrollElementDiv,
+  ScrollRemoveElementDiv,
+} from "../globalStyles/globals";
 
 const NoMatchWrapper = styled.div`
   font-family: "Lato", sans-serif;
@@ -20,21 +24,6 @@ const NoMatchWrapper = styled.div`
     margin-top: 0;
     margin-bottom: 25px;
   }
-`;
-const ScrollElementDiv = styled.div`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  top: 1200px;
-  left: 0;
-`;
-
-const ScrollRemoveElementDiv = styled.div`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  top: 250px;
-  left: 0;
 `;
 
 export default function AllProductsPage() {
@@ -296,41 +285,6 @@ export default function AllProductsPage() {
     filters.classList.toggle("show");
     overlay.classList.toggle("show");
   };
-  useEffect(() => {
-    if (typeof window !== undefined) {
-      const scrollTargetAdd = document.getElementById("scrollTargetAdd");
-      const scrollTargetRemove = document.getElementById("scrollTargetRemove");
-      const myScrollBtn = document.getElementById("myScrollBtn");
-
-      const returnCallback = (elem, methodType, classAsString) => {
-        return function (entries) {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              if (methodType === "add") {
-                elem.classList.add(classAsString);
-              } else {
-                elem.classList.remove(classAsString);
-              }
-            }
-          });
-        };
-      };
-
-      const createObserverFunction = (elem, callback, options) => {
-        let observer = new IntersectionObserver(callback, options);
-        observer.observe(elem);
-        return observer;
-      };
-      createObserverFunction(
-        scrollTargetAdd,
-        returnCallback(myScrollBtn, "add", "showBtn")
-      );
-      createObserverFunction(
-        scrollTargetRemove,
-        returnCallback(myScrollBtn, "remove", "showBtn")
-      );
-    }
-  }, []);
 
   return (
     <Layout paddingValues={true}>
