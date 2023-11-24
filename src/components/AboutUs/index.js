@@ -15,7 +15,7 @@ export function AboutUs() {
     }
   `);
   return (
-    <AboutUsWrapper id="Our Story">
+    <AboutUsWrapper id="scrollTargetAdd" data-name="Our Story">
       <div>
         <GradientH2
           font={`"Abril Fatface", cursive`}

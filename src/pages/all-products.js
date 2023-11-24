@@ -287,7 +287,7 @@ export default function AllProductsPage() {
   };
 
   return (
-    <Layout paddingValues={true}>
+    <Layout paddingvalues="true">
       <ScrollElementDiv id="scrollTargetAdd"></ScrollElementDiv>
       <ScrollRemoveElementDiv id="scrollTargetRemove"></ScrollRemoveElementDiv>
       <div

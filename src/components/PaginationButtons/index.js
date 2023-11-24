@@ -17,11 +17,11 @@ export function PaginationButtons({
   };
   return (
     <PaginationButtonsWrapper>
-      <Button inverse={true} onClick={handleBack} disabled={page === 1}>
+      <Button inverse="true" onClick={handleBack} disabled={page === 1}>
         <FaChevronLeft />
       </Button>
       <Button
-        inverse={true}
+        inverse="true"
         onClick={handleForward}
         disabled={page === totalPages}
       >

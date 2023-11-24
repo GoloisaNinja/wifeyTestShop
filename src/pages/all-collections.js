@@ -25,7 +25,7 @@ const CollectionNoteWrapper = styled.div`
 export default function AllCollectionPage() {
   const { collections } = useContext(ProductContext);
   return (
-    <Layout paddingValues={true}>
+    <Layout paddingvalues="true">
       <ScrollElementDiv id="scrollTargetAdd"></ScrollElementDiv>
       <ScrollRemoveElementDiv id="scrollTargetRemove"></ScrollRemoveElementDiv>
       <CollectionNoteWrapper>
@@ -44,7 +44,7 @@ export default function AllCollectionPage() {
         </div>
       </CollectionNoteWrapper>
       <CollectionGrid collections={collections} />
-      <ScrollToTopButton zNumber={2} />
+      <ScrollToTopButton znumber={2} />
     </Layout>
   );
 }

@@ -147,7 +147,7 @@ export default function CollectionTemplate({ data, pageContext }) {
   };
 
   return (
-    <Layout paddingValues={true}>
+    <Layout paddingvalues="true">
       <ScrollElementDiv id="scrollTargetAdd"></ScrollElementDiv>
       <ScrollRemoveElementDiv id="scrollTargetRemove"></ScrollRemoveElementDiv>
       <div style={{ position: "relative" }}>
@@ -235,7 +235,7 @@ export default function CollectionTemplate({ data, pageContext }) {
           </FloatingButtonWrapper>
         )}
       </div>
-      <ScrollToTopButton zNumber={2} />
+      <ScrollToTopButton znumber={2} />
     </Layout>
   );
 }

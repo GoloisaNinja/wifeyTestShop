@@ -110,7 +110,7 @@ export default function ProductTemplate({ data, pageContext }) {
   ]);
 
   return (
-    <Layout paddingValues={true}>
+    <Layout paddingvalues="true">
       <ScrollElementDiv id="scrollTargetAdd"></ScrollElementDiv>
       <ScrollRemoveElementDiv id="scrollTargetRemove"></ScrollRemoveElementDiv>
       <Button onClick={() => navigate(-1)}>GO BACK</Button>

@@ -16,26 +16,35 @@ export function AboutHero() {
       }
     }
   `);
-  const handleScroll = e => {
+  const handleScroll = target => {
     smoothscroll.polyfill();
     const yOffset = -5;
-    const navTo = document.getElementById(e.target.innerHTML);
+    const targetMap = {
+      1: "Why Neon Unicorn",
+      2: "Our Story",
+      3: "What we do",
+      4: "Neon Social",
+    };
+    //const target = e.target.innerHtml;
+    console.log(targetMap[target]);
+    const navTo = document.querySelector(`[data-name="${targetMap[target]}"]`);
+    console.log(navTo);
     const y = navTo.getBoundingClientRect().top + window.pageYOffset + yOffset;
     window.scrollTo({ top: y, behavior: "smooth" });
   };
   return (
-    <AboutHeroWrapper id="noScroll">
+    <AboutHeroWrapper id="scrollTargetRemove">
       <header>
-        <Button onClick={handleScroll} id="animated-btn">
+        <Button onClick={() => handleScroll(1)} id="animated-btn">
           Why Neon Unicorn
         </Button>
-        <Button onClick={handleScroll} id="animated-btn">
+        <Button onClick={() => handleScroll(2)} id="animated-btn">
           Our Story
         </Button>
-        <Button onClick={handleScroll} id="animated-btn">
+        <Button onClick={() => handleScroll(3)} id="animated-btn">
           What we do
         </Button>
-        <Button onClick={handleScroll} id="animated-btn">
+        <Button onClick={() => handleScroll(4)} id="animated-btn">
           Neon Social
         </Button>
         <Button onClick={e => navigate(`/contact`)} id="animated-btn">

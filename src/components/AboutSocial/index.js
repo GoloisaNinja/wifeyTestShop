@@ -24,7 +24,7 @@ export function AboutSocial() {
     }
   `);
   return (
-    <AboutSocialWrapper id="Neon Social">
+    <AboutSocialWrapper data-name="Neon Social">
       <AboutSocialBanner>
         <GradientH1 font={`"Abril Fatface", cursive`} color={`#fff, #ccc`}>
           Unicorns are naturally social

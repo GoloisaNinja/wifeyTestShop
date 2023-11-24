@@ -59,7 +59,7 @@ const IndexPage = () => {
           altText={floralGirl.altText}
           titleText={floralGirl.titleText}
           subText={floralGirl.subText}
-          overlayColor={floralGirl.overlayColor}
+          overlaycolor={floralGirl.overlayColor}
         />
       </Link>
       <Link to="/all-products">
@@ -68,7 +68,7 @@ const IndexPage = () => {
           altText={productGirl.altText}
           titleText={productGirl.titleText}
           subText={productGirl.subText}
-          overlayColor={productGirl.overlayColor}
+          overlaycolor={productGirl.overlayColor}
         />
       </Link>
       <Link
@@ -81,7 +81,7 @@ const IndexPage = () => {
           altText={celebration.altText}
           titleText={celebration.titleText}
           subText={celebration.subText}
-          overlayColor={celebration.overlayColor}
+          overlaycolor={celebration.overlayColor}
         />
       </Link>
       <Featured />

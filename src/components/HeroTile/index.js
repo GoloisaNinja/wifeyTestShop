@@ -7,11 +7,11 @@ import {
   HeroSubText,
 } from "./styles";
 
-export function HeroTile({ image, altText, titleText, subText, overlayColor }) {
+export function HeroTile({ image, altText, titleText, subText, overlaycolor }) {
   return (
     <HeroWrapper>
       <GatsbyImage image={image} alt={altText} />
-      <HeroContentWrapper overlayColor={overlayColor}>
+      <HeroContentWrapper overlaycolor={overlaycolor}>
         <div>
           <HeroTitleText>{titleText}</HeroTitleText>
           <HeroSubText>{subText}</HeroSubText>

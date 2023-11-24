@@ -3,7 +3,7 @@ import { Layout, ContactHeaderSection, ContactForm } from "../components";
 
 const Contact = () => {
   return (
-    <Layout paddingValues={true}>
+    <Layout paddingvalues="true">
       <ContactHeaderSection />
       <ContactForm />
     </Layout>

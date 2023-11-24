@@ -16,7 +16,7 @@ export function AboutWhat() {
     }
   `);
   return (
-    <AboutWhatWrapper id="What we do">
+    <AboutWhatWrapper data-name="What we do">
       <div>
         <GradientH2
           font={`"Abril Fatface", cursive`}

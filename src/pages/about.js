@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { createObserverFunction } from "../utils/scrollObservers";
 import {
   Layout,
   AboutHero,
@@ -12,26 +13,10 @@ import {
 const About = () => {
   useEffect(() => {
     if (typeof window !== undefined) {
-      const noScrollTarget = document.getElementById("noScroll");
-      const scrollTargetOne = document.getElementById("Our Story");
-      const myScrollBtn = document.getElementById("myScrollBtn");
       const animatedBtns = document.querySelectorAll("#animated-btn");
       const fadeBlocks = document.querySelectorAll("#fadeBlock");
       const blockTarget = document.getElementById("fadeBlockWrapper");
 
-      const returnCallback = (elem, methodType, classAsString) => {
-        return function (entries) {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              if (methodType === "add") {
-                elem.classList.add(classAsString);
-              } else {
-                elem.classList.remove(classAsString);
-              }
-            }
-          });
-        };
-      };
       const returnLoopCallback = (elements, classAsString) => {
         return function (entries) {
           entries.forEach(entry => {
@@ -49,31 +34,8 @@ const About = () => {
           });
         };
       };
-      // const addAnimateClass = entries => {
-      //   entries.forEach(entry => {
-      //     if (entry.isIntersecting) {
-      //       animatedBtns.forEach(btn => {
-      //         btn?.classList.add("animate");
-      //       });
-      //     }
-      //   });
-      // };
-
-      const createObserverFunction = (elem, callback, options) => {
-        let observer = new IntersectionObserver(callback, options);
-        observer.observe(elem);
-        return observer;
-      };
       createObserverFunction(
-        scrollTargetOne,
-        returnCallback(myScrollBtn, "add", "showBtn")
-      );
-      createObserverFunction(
-        noScrollTarget,
-        returnCallback(myScrollBtn, "remove", "showBtn")
-      );
-      createObserverFunction(
-        noScrollTarget,
+        document.getElementById("scrollTargetRemove"),
         returnLoopCallback(animatedBtns, "animate")
       );
       createObserverFunction(
@@ -84,7 +46,7 @@ const About = () => {
   }, []);
 
   return (
-    <Layout paddingValues={true}>
+    <Layout paddingvalues="true">
       <AboutHero />
       <AboutWhy />
       <AboutUs />

@@ -36,7 +36,7 @@ export function Modal({ dismiss, content }) {
         <h4>
           Yesssh! {content.product} {content.message}
         </h4>
-        <Button inverse={true} onClick={handleDismiss}>
+        <Button inverse="true" onClick={handleDismiss}>
           DISMISS
         </Button>
       </ModalWrapper>

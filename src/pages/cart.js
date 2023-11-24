@@ -3,7 +3,7 @@ import { Layout, CartContents } from "../components";
 
 const Cart = () => {
   return (
-    <Layout paddingValues={true}>
+    <Layout paddingvalues="true">
       <CartContents />
     </Layout>
   );

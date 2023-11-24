@@ -32,7 +32,7 @@ export function AboutWhy() {
     }
   `);
   return (
-    <AboutWhyWrapper id="Why Neon Unicorn">
+    <AboutWhyWrapper data-name="Why Neon Unicorn">
       <div>
         <GradientH2
           font={`"Abril Fatface", cursive`}

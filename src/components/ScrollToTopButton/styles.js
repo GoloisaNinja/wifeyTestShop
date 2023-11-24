@@ -16,7 +16,7 @@ export const ScrollButton = styled.button`
   transition: all 0.5s ease;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-  z-index: ${props => props.zNumber || 0};
+  z-index: ${props => props.znumber || 0};
   > svg {
     margin-top: 2.5px;
     transition: all 0.5s ease-in-out;
