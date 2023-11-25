@@ -4,12 +4,21 @@ import { Input } from "../Input";
 import { Button } from "../Button";
 import { ProductQuantityAdderWrapper } from "./styles";
 
-export function ProductQuantityAdder({ variantId, available, handleModal }) {
+export function ProductQuantityAdder({
+  variantId,
+  available,
+  maxInventory,
+  handleModal,
+}) {
   const [quantity, setQuantity] = useState("1");
   const [addBtnDisabled, setAddBtnDisabled] = useState(false);
   const { updateLineItem } = useContext(CartContext);
-
   const handleQuantityChange = e => {
+    if (e.currentTarget.value > maxInventory) {
+      e.currentTarget.value = maxInventory;
+    } else if (e.currentTarget.value < 1) {
+      e.currentTarget.value = 1;
+    }
     setQuantity(e.currentTarget.value);
     if (
       e.currentTarget.value === "" ||
@@ -39,12 +48,13 @@ export function ProductQuantityAdder({ variantId, available, handleModal }) {
           disabled={!available}
           type="number"
           min="1"
+          max={maxInventory}
           step="1"
           value={quantity}
           onChange={e => handleQuantityChange(e)}
         />
         <Button
-          inverse
+          inverse="false"
           type="submit"
           disabled={!available || addBtnDisabled}
           onClick={e => handleSubmit(e)}

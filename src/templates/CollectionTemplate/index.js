@@ -40,6 +40,11 @@ export const query = graphql`
           description
           title
           handle
+          variants {
+            id
+            shopifyId
+            inventoryQuantity
+          }
           media {
             id
           }
@@ -208,6 +213,7 @@ export default function CollectionTemplate({ data, pageContext }) {
               key={node.storefrontId}
               productShopifyId={node.shopifyId}
               productStorefrontId={node.storefrontId}
+              variants={node.variants}
               images={images}
               handle={node.handle}
               handleVariantQueryStrings={handleVariantQueryStrings}
@@ -225,7 +231,7 @@ export default function CollectionTemplate({ data, pageContext }) {
           <FloatingButtonWrapper>
             <Button
               id="addToCartBtn"
-              inverse
+              inverse="false"
               width={"150px"}
               disabled={addBtnDisabled}
               onClick={handleModal}

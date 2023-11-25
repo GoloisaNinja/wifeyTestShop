@@ -8,13 +8,18 @@ export function CollectionQuantityAdder({
   confirmed,
   variantId,
   available,
+  maxInventory,
   handleIndividualProductDetails,
 }) {
   const [quantity, setQuantity] = useState("1");
   const [isConfirmed, setisConfirmed] = useState(confirmed);
   const [disableConfirm, setDisableConfirm] = useState(false);
-
   const handleQuantityChange = e => {
+    if (e.currentTarget.value > maxInventory) {
+      e.currentTarget.value = maxInventory;
+    } else if (e.currentTarget.value < 1) {
+      e.currentTarget.value = 1;
+    }
     setQuantity(e.currentTarget.value);
     if (
       e.currentTarget.value === "" ||
@@ -46,12 +51,13 @@ export function CollectionQuantityAdder({
           disabled={!available || isConfirmed}
           type="number"
           min="1"
+          max={maxInventory}
           step="1"
           value={quantity}
           onChange={e => handleQuantityChange(e)}
         />
         <Button
-          inverse
+          inverse="false"
           type="submit"
           disabled={!available || disableConfirm}
           onClick={e => handleSubmit(e)}

@@ -3,7 +3,7 @@ import CartContext from "../../context/CartContext";
 import { navigate, useLocation } from "@reach/router";
 import queryString from "query-string";
 import { graphql } from "gatsby";
-
+import useReturnMaxInventory from "../../utils/maxInventory";
 import {
   Layout,
   ImageGallery,
@@ -44,6 +44,11 @@ export const query = graphql`
       id
       storefrontId
       title
+      variants {
+        id
+        shopifyId
+        inventoryQuantity
+      }
     }
   }
 `;
@@ -53,9 +58,11 @@ export default function ProductTemplate({ data, pageContext }) {
   const { getProductById } = useContext(CartContext);
   const [product, setProduct] = useState(null);
   const [selectedVariant, setSelectedVariant] = useState(null);
+  const [maxInventory, setMaxInventory] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState({});
   const { search, origin, pathname } = useLocation();
+  const determineMaxInventoryOfVariant = useReturnMaxInventory();
 
   const variantId = queryString.parse(search).variant;
 
@@ -64,6 +71,9 @@ export default function ProductTemplate({ data, pageContext }) {
       variant => variant.id === e.target.value
     );
     setSelectedVariant(newVariant);
+    setMaxInventory(
+      determineMaxInventoryOfVariant(newVariant, data.shopifyProduct.variants)
+    );
     // navigate(
     //   `${origin}${pathname}?variant=${encodeURIComponent(newVariant.id)}`,
     //   { replace: true }
@@ -92,9 +102,15 @@ export default function ProductTemplate({ data, pageContext }) {
       try {
         const result = await getProductById(data.shopifyProduct.storefrontId);
         setProduct(result);
-        setSelectedVariant(
-          result.variants.find(({ id }) => id === variantId) ||
-            result.variants[0]
+        let variant = result.variants[0];
+        result.variants.forEach(v => {
+          if (v.id === variantId) {
+            variant = v;
+          }
+        });
+        setSelectedVariant(variant);
+        setMaxInventory(
+          determineMaxInventoryOfVariant(variant, data.shopifyProduct.variants)
         );
       } catch (error) {
         console.log(error);
@@ -106,6 +122,8 @@ export default function ProductTemplate({ data, pageContext }) {
     setProduct,
     setSelectedVariant,
     data.shopifyProduct.storefrontId,
+    data.shopifyProduct.variants,
+    determineMaxInventoryOfVariant,
     variantId,
   ]);
 
@@ -144,10 +162,17 @@ export default function ProductTemplate({ data, pageContext }) {
               )}
               {!!selectedVariant && (
                 <>
-                  <Price>$ {selectedVariant.price.amount} USD</Price>
+                  <Price>
+                    ${" "}
+                    {selectedVariant.price.amount.split(".")[1].length < 2
+                      ? selectedVariant.price.amount + "0"
+                      : selectedVariant.price.amount}{" "}
+                    USD
+                  </Price>
                   <ProductQuantityAdder
                     variantId={selectedVariant.id}
                     available={selectedVariant.available}
+                    maxInventory={maxInventory}
                     handleModal={handleModal}
                   />
                 </>
@@ -160,13 +185,6 @@ export default function ProductTemplate({ data, pageContext }) {
             selectedImageVariantId={selectedVariant?.id}
             selectedImageVariantIdSrc={selectedVariant?.image.src}
             images={images}
-            // images={data.shopifyProduct.variants.map(v => {
-            //   return {
-            //     id: v.id,
-            //     gatsbyImageData: v.image.gatsbyImageData,
-            //     src: v.image.src,
-            //   };
-            // })}
           />
         </div>
       </Grid>

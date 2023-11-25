@@ -4,11 +4,13 @@ import { CollectionQuantityAdder } from "../CollectionQuantityAdder";
 import { useLocation } from "@reach/router";
 import queryString from "query-string";
 import { ImageGallery, GradientH2 } from "../../components";
+import useReturnMaxInventory from "../../utils/maxInventory";
 import { ProductText, Grid, SelectWrapper, Price } from "./styles";
 
 export function CollectionProductTemplate({
   productShopifyId,
   productStorefrontId,
+  variants,
   images,
   handle,
   handleVariantQueryStrings,
@@ -19,7 +21,9 @@ export function CollectionProductTemplate({
   const { getProductById } = useContext(CartContext);
   const [product, setProduct] = useState(null);
   const [selectedVariant, setSelectedVariant] = useState(null);
+  const [maxInventory, setMaxInventory] = useState(0);
   const { search } = useLocation();
+  const determineMaxInventoryOfVariant = useReturnMaxInventory();
 
   const parsedVariantId = queryString.parse(search);
   const variantId = decodeURIComponent(parsedVariantId[handle]);
@@ -41,6 +45,7 @@ export function CollectionProductTemplate({
       variant => variant.id === e.target.value
     );
     setSelectedVariant(newVariant);
+    setMaxInventory(determineMaxInventoryOfVariant(newVariant, variants));
     handleVariantQueryStrings(handle, newVariant.id);
     handleIndividualProductDetails(individualProductBaseStateObject);
   };
@@ -50,10 +55,14 @@ export function CollectionProductTemplate({
       try {
         const result = await getProductById(productStorefrontId);
         setProduct(result);
-        setSelectedVariant(
-          result.variants.find(({ id }) => id === variantId) ||
-            result.variants[0]
-        );
+        let variant = result.variants[0];
+        result.variants.forEach(v => {
+          if (v.id === variantId) {
+            variant = v;
+          }
+        });
+        setSelectedVariant(variant);
+        setMaxInventory(determineMaxInventoryOfVariant(variant, variants));
       } catch (error) {
         console.log(error);
       }
@@ -65,6 +74,8 @@ export function CollectionProductTemplate({
     productStorefrontId,
     variantId,
     setSelectedVariant,
+    variants,
+    determineMaxInventoryOfVariant,
   ]);
 
   useEffect(() => {
@@ -108,11 +119,18 @@ export function CollectionProductTemplate({
             )}
             {!!selectedVariant && (
               <>
-                <Price>$ {selectedVariant.price.amount} USD</Price>
+                <Price>
+                  ${" "}
+                  {selectedVariant.price.amount.split(".")[1].length < 2
+                    ? selectedVariant.price.amount + "0"
+                    : selectedVariant.price.amount}{" "}
+                  USD
+                </Price>
                 <CollectionQuantityAdder
                   variantId={selectedVariant.id}
                   confirmed={confirmedStatus}
                   available={selectedVariant.available}
+                  maxInventory={maxInventory}
                   handleIndividualProductDetails={
                     handleIndividualProductDetails
                   }

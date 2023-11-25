@@ -25,6 +25,7 @@ export function CartContents() {
         edges {
           node {
             shopifyId
+            inventoryQuantity
             image {
               src
               gatsbyImageData
@@ -96,6 +97,9 @@ export function CartContents() {
           <div>
             <CartQuantityAdjuster
               item={lineItem}
+              variant={data.allShopifyProductVariant.edges.find(
+                ({ node }) => node.shopifyId === lineItem.variant.id
+              )}
               onAdjust={handleAdjustQuantity}
             />
           </div>

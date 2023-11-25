@@ -38,7 +38,7 @@ export function ImageGallery({
             key={image.id}
             image={image}
             onClick={handleClick}
-            isActive={activeImageThumbnail.id === image.id}
+            isactive={activeImageThumbnail.id === image.id}
           />
         ))}
       </div>
