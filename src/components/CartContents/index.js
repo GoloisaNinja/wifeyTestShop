@@ -91,7 +91,12 @@ export function CartContents() {
               />
             </CartItemImageWrapper>
 
-            <div>${lineItem.variant.price.amount}</div>
+            <div>
+              $
+              {lineItem.variant.price.amount.split(".")[1].length < 2
+                ? lineItem.variant.price.amount + "0"
+                : lineItem.variant.price.amount}
+            </div>
           </div>
           {/* <div>${lineItem.variant.price}</div> */}
           <div>
