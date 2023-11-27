@@ -56,7 +56,7 @@ export function CartContents() {
       <GradientH1 font={`'Abril Fatface', cursive`} color={`#ff00f7, #035efc`}>
         Shopping Bag
       </GradientH1>
-      {!!checkout?.lineItems && checkout?.paymentDue !== "0.00" && (
+      {!!checkout?.lineItems && checkout?.paymentDue.amount + "0" !== "0.00" && (
         <>
           <ShopifyNoteWrapper>
             <GradientP font={`'Lato', sans-serif`} color={`#035efc, #ff00f7`}>
@@ -111,7 +111,7 @@ export function CartContents() {
           </div>
         </CartItem>
       ))}
-      {!!checkout?.lineItems && checkout?.paymentDue !== "0.00" && (
+      {!!checkout?.lineItems && checkout?.paymentDue.amount + "0" !== "0.00" && (
         <CartFooter>
           <div>
             <strong>Total: </strong>
@@ -121,7 +121,8 @@ export function CartContents() {
           </div>
         </CartFooter>
       )}
-      {(!checkout?.lineItems || checkout?.paymentDue === "0.00") && (
+      {(!checkout?.lineItems ||
+        checkout?.paymentDue.amount + "0" === "0.00") && (
         <>
           <GradientH4
             font={`'Abril Fatface', cursive`}
@@ -144,7 +145,7 @@ export function CartContents() {
           </Button>
         </div>
         <div>
-          {!!checkout?.webUrl && checkout?.paymentDue !== "0.00" && (
+          {!!checkout?.webUrl && checkout?.paymentDue.amount + "0" !== "0.00" && (
             <Button
               width={"100%"}
               onClick={() => (window.location.href = checkout.webUrl)}
