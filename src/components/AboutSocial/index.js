@@ -26,10 +26,10 @@ export function AboutSocial() {
   return (
     <AboutSocialWrapper data-name="Neon Social">
       <AboutSocialBanner>
-        <GradientH1 font={`"Abril Fatface", cursive`} color={`#fff, #ccc`}>
+        <GradientH1 $font={`"Abril Fatface", cursive`} color={`#fff, #ccc`}>
           Unicorns are naturally social
         </GradientH1>
-        <GradientP font={`"Lato", sans-serif`} color={`#fff, #ccc`}>
+        <GradientP $font={`"Lato", sans-serif`} color={`#fff, #ccc`}>
           We pride ourselves on our community. Visit our Style Blog for fashion
           tips and upcoming products to be featured on Neon Unicorn. Follow us
           on social media for the latest Neon News and exclusive content!

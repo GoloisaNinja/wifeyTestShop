@@ -18,7 +18,7 @@ export function AboutUs() {
     <AboutUsWrapper id="scrollTargetAdd" data-name="Our Story">
       <div>
         <GradientH2
-          font={`"Abril Fatface", cursive`}
+          $font={`"Abril Fatface", cursive`}
           color={`#c800cf, #297999`}
         >
           Beauty and the Nerd

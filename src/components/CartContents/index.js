@@ -53,13 +53,13 @@ export function CartContents() {
 
   return (
     <section>
-      <GradientH1 font={`'Abril Fatface', cursive`} color={`#ff00f7, #035efc`}>
+      <GradientH1 $font={`'Abril Fatface', cursive`} color={`#ff00f7, #035efc`}>
         Shopping Bag
       </GradientH1>
       {!!checkout?.lineItems && checkout?.paymentDue.amount + "0" !== "0.00" && (
         <>
           <ShopifyNoteWrapper>
-            <GradientP font={`'Lato', sans-serif`} color={`#035efc, #ff00f7`}>
+            <GradientP $font={`'Lato', sans-serif`} color={`#035efc, #ff00f7`}>
               Neon Unicorn uses the extremely powerful and secure Shopify
               Checkout! Purchase with confidence using your preferred payment
               method. Choosing checkout will redirect you to the Shopify Payment
@@ -91,12 +91,7 @@ export function CartContents() {
               />
             </CartItemImageWrapper>
 
-            <div>
-              $
-              {lineItem.variant.price.amount.split(".")[1].length < 2
-                ? lineItem.variant.price.amount + "0"
-                : lineItem.variant.price.amount}
-            </div>
+            <div>${parseFloat(lineItem.variant.price.amount).toFixed(2)}</div>
           </div>
           {/* <div>${lineItem.variant.price}</div> */}
           <div>
@@ -122,7 +117,7 @@ export function CartContents() {
             <strong>Total: </strong>
           </div>
           <div>
-            <span>${checkout?.totalPrice.amount}</span>
+            <span>${parseFloat(checkout?.totalPrice.amount).toFixed(2)}</span>
           </div>
         </CartFooter>
       )}
@@ -130,7 +125,7 @@ export function CartContents() {
         checkout?.paymentDue.amount + "0" === "0.00") && (
         <>
           <GradientH4
-            font={`'Abril Fatface', cursive`}
+            $font={`'Abril Fatface', cursive`}
             color={`#035efc, #ff00f7`}
           >
             sad unicorn empties...

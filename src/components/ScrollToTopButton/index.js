@@ -29,7 +29,7 @@ export function ScrollToTopButton({ znumber }) {
     }
   }, []);
   return (
-    <ScrollButton znumber={znumber} id="myScrollBtn" onClick={handleClick}>
+    <ScrollButton $znumber={znumber} id="myScrollBtn" onClick={handleClick}>
       <FaChevronUp />
     </ScrollButton>
   );

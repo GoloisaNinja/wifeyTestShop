@@ -60,7 +60,7 @@ export function Filters({ toggleFilters }) {
       </FiltersWrapper>
       <OverlayWrapper
         id="overlay"
-        zvalue={"5"}
+        $zvalue={"5"}
         onClick={handleToggle}
       ></OverlayWrapper>
     </>

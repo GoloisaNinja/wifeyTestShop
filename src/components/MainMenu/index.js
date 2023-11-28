@@ -60,7 +60,7 @@ export function MainMenu({ handleToggle }) {
       </MenuWrapper>
       <OverlayWrapper
         id="menu-overlay"
-        zvalue={"2"}
+        $zvalue={"2"}
         onClick={handleToggle}
       ></OverlayWrapper>
     </>

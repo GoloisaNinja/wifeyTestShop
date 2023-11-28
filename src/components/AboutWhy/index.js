@@ -35,7 +35,7 @@ export function AboutWhy() {
     <AboutWhyWrapper data-name="Why Neon Unicorn">
       <div>
         <GradientH2
-          font={`"Abril Fatface", cursive`}
+          $font={`"Abril Fatface", cursive`}
           color={`#c800cf, #ff00f7`}
         >
           So Why Shop with Us?

@@ -18,7 +18,7 @@ export const HeroContentWrapper = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  background: ${props => props.overlaycolor};
+  background: ${props => props.$overlaycolor};
   //background: rgba(189, 0, 164, 0.5);
   > div {
     padding: 20px;

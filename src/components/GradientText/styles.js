@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const GradientText = css`
-  font-family: ${props => props.font};
+  font-family: ${props => props.$font};
   background-image: ${props => `linear-gradient(45deg, ${props.color})`};
   background-clip: text;
   -webkit-background-clip: text;

@@ -19,7 +19,7 @@ export function AboutWhat() {
     <AboutWhatWrapper data-name="What we do">
       <div>
         <GradientH2
-          font={`"Abril Fatface", cursive`}
+          $font={`"Abril Fatface", cursive`}
           color={`#035efc, #a8327f`}
         >
           <FaQuoteLeft /> Shopping should be fun! The pieces should be pretty,

@@ -44,9 +44,9 @@ const About = () => {
       );
     }
   }, []);
-
+  const padding = "20px";
   return (
-    <Layout paddingvalues="true">
+    <Layout padding={padding}>
       <AboutHero />
       <AboutWhy />
       <AboutUs />

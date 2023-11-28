@@ -21,15 +21,15 @@ const CollectionNoteWrapper = styled.div`
     margin-top: 1em;
   }
 `;
-
+const padding = "20px";
 export default function AllCollectionPage() {
   const { collections } = useContext(ProductContext);
   return (
-    <Layout paddingvalues="true">
+    <Layout padding={padding}>
       <ScrollElementDiv id="scrollTargetAdd"></ScrollElementDiv>
       <ScrollRemoveElementDiv id="scrollTargetRemove"></ScrollRemoveElementDiv>
       <CollectionNoteWrapper>
-        <GradientP font={`'Lato', sans-serif`} color={`#035efc, #ff00f7`}>
+        <GradientP $font={`'Lato', sans-serif`} color={`#035efc, #ff00f7`}>
           Neon Unicorn Collections give you an entire outfit idea that you can
           customize, confirm, and add to your cart from one convenient page. Our
           collections are hand picked, fashion forward, clothing gems selected
@@ -44,7 +44,7 @@ export default function AllCollectionPage() {
         </div>
       </CollectionNoteWrapper>
       <CollectionGrid collections={collections} />
-      <ScrollToTopButton znumber={2} />
+      <ScrollToTopButton $znumber={2} />
     </Layout>
   );
 }

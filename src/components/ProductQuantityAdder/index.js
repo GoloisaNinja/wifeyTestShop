@@ -54,12 +54,12 @@ export function ProductQuantityAdder({
           onChange={e => handleQuantityChange(e)}
         />
         <Button
-          inverse="false"
+          $inverse="false"
           type="submit"
           disabled={!available || addBtnDisabled}
           onClick={e => handleSubmit(e)}
           width={`100%`}
-          margin={"0"}
+          $margin={"0"}
         >
           Add to Bag
         </Button>

@@ -150,9 +150,9 @@ export default function CollectionTemplate({ data, pageContext }) {
     setShowModal(true);
     setAddBtnDisabled(false);
   };
-
+  const padding = "20px";
   return (
-    <Layout paddingvalues="true">
+    <Layout padding={padding}>
       <ScrollElementDiv id="scrollTargetAdd"></ScrollElementDiv>
       <ScrollRemoveElementDiv id="scrollTargetRemove"></ScrollRemoveElementDiv>
       <div style={{ position: "relative" }}>
@@ -163,7 +163,7 @@ export default function CollectionTemplate({ data, pageContext }) {
         </ButtonWrapper>
         <GradientH1
           style={{ textAlign: "center", marginBottom: "8px" }}
-          font={`'Abril Fatface', cursive`}
+          $font={`'Abril Fatface', cursive`}
           color={`#ff00f7, #035efc`}
         >
           {data.shopifyCollection.title}
@@ -173,14 +173,14 @@ export default function CollectionTemplate({ data, pageContext }) {
         </CollectionText>
         <PurchaseWrapper>
           <div>
-            <GradientP font={`'Lato', sans-serif`} color={`#035efc, #ff00f7`}>
+            <GradientP $font={`'Lato', sans-serif`} color={`#035efc, #ff00f7`}>
               Getting a new look should be easy. Our style expert has done the
               hard work for you. Just confirm each collection piece below and
               then add to bag to get an entire outfit in one click!
             </GradientP>
           </div>
           <div>
-            <GradientP font={`'Lato', sans-serif`} color={`#ff00f7, #035efc`}>
+            <GradientP $font={`'Lato', sans-serif`} color={`#ff00f7, #035efc`}>
               To purchase items individually click
             </GradientP>
             <Button
@@ -231,7 +231,7 @@ export default function CollectionTemplate({ data, pageContext }) {
           <FloatingButtonWrapper>
             <Button
               id="addToCartBtn"
-              inverse="false"
+              $inverse="false"
               width={"150px"}
               disabled={addBtnDisabled}
               onClick={handleModal}
@@ -241,7 +241,7 @@ export default function CollectionTemplate({ data, pageContext }) {
           </FloatingButtonWrapper>
         )}
       </div>
-      <ScrollToTopButton znumber={2} />
+      <ScrollToTopButton $znumber={2} />
     </Layout>
   );
 }

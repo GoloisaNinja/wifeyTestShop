@@ -45,7 +45,7 @@ export function Search() {
         onChange={e => setSearchTerm(e.currentTarget.value)}
         placeholder="Search products"
       />
-      <Button inverse="true">
+      <Button $inverse="true">
         <FaSearch />
       </Button>
     </SearchForm>

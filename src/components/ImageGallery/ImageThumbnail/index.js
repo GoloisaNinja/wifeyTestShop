@@ -8,7 +8,7 @@ export function ImageThumbnail({ image, isactive, onClick }) {
     onClick(image);
   };
   return (
-    <ImageThumbnailWrapper onClick={handleClick} isactive={isActiveAsStr}>
+    <ImageThumbnailWrapper onClick={handleClick} $isactive={isActiveAsStr}>
       <GatsbyImage image={image.gatsbyImageData} alt="make dynmaic later" />
     </ImageThumbnailWrapper>
   );

@@ -57,12 +57,12 @@ export function CollectionQuantityAdder({
           onChange={e => handleQuantityChange(e)}
         />
         <Button
-          inverse="false"
+          $inverse="false"
           type="submit"
           disabled={!available || disableConfirm}
           onClick={e => handleSubmit(e)}
           width={`100%`}
-          margin={"0"}
+          $margin={"0"}
         >
           {isConfirmed ? <FaCheck /> : "Confirm?"}
         </Button>

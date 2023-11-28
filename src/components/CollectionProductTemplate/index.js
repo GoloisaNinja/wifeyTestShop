@@ -93,7 +93,7 @@ export function CollectionProductTemplate({
       <div>
         <ProductText>
           <GradientH2
-            font={`'Abril Fatface', cursive`}
+            $font={`'Abril Fatface', cursive`}
             color={`#ff00f7, #035efc`}
           >
             {product?.title}

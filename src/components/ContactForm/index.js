@@ -102,8 +102,8 @@ export function ContactForm() {
           <Button
             width={"100%"}
             disabled={!name || !email || !message}
-            margin={"15px 0px 0px 0px"}
-            inverse="true"
+            $margin={"15px 0px 0px 0px"}
+            $inverse="true"
             type="submit"
             onClick={e => handleSubmit}
           >

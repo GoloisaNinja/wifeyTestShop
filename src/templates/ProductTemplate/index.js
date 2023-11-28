@@ -126,9 +126,9 @@ export default function ProductTemplate({ data, pageContext }) {
     determineMaxInventoryOfVariant,
     variantId,
   ]);
-
+  const padding = "20px";
   return (
-    <Layout paddingvalues="true">
+    <Layout padding={padding}>
       <ScrollElementDiv id="scrollTargetAdd"></ScrollElementDiv>
       <ScrollRemoveElementDiv id="scrollTargetRemove"></ScrollRemoveElementDiv>
       <Button onClick={() => navigate(-1)}>GO BACK</Button>
@@ -136,7 +136,7 @@ export default function ProductTemplate({ data, pageContext }) {
         <div>
           <ProductText>
             <GradientH2
-              font={`'Abril Fatface', cursive`}
+              $font={`'Abril Fatface', cursive`}
               color={`#ff00f7, #035efc`}
             >
               {data.shopifyProduct.title}
@@ -163,11 +163,7 @@ export default function ProductTemplate({ data, pageContext }) {
               {!!selectedVariant && (
                 <>
                   <Price>
-                    ${" "}
-                    {selectedVariant.price.amount.split(".")[1].length < 2
-                      ? selectedVariant.price.amount + "0"
-                      : selectedVariant.price.amount}{" "}
-                    USD
+                    $ {parseFloat(selectedVariant.price.amount).toFixed(2)} USD
                   </Price>
                   <ProductQuantityAdder
                     variantId={selectedVariant.id}
@@ -189,7 +185,7 @@ export default function ProductTemplate({ data, pageContext }) {
         </div>
       </Grid>
       <SocialHeader>
-        <GradientH4 font={`"Lato", sans-serif`} color={`#c800cf, #035efc`}>
+        <GradientH4 $font={`"Lato", sans-serif`} color={`#c800cf, #035efc`}>
           You should share this!
         </GradientH4>
       </SocialHeader>

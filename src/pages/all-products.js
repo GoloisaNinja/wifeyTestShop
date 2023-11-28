@@ -285,9 +285,10 @@ export default function AllProductsPage() {
     filters.classList.toggle("show");
     overlay.classList.toggle("show");
   };
+  const padding = "20px";
 
   return (
-    <Layout paddingvalues="true">
+    <Layout padding={padding}>
       <ScrollElementDiv id="scrollTargetAdd"></ScrollElementDiv>
       <ScrollRemoveElementDiv id="scrollTargetRemove"></ScrollRemoveElementDiv>
       <div
@@ -315,7 +316,7 @@ export default function AllProductsPage() {
         </span>{" "}
         <GradientH4
           style={{ marginTop: "0", marginBottom: "0", fontWeight: "bold" }}
-          font={"'Lato', sans-serif"}
+          $font={"'Lato', sans-serif"}
           color={"#f700ff, #7000a1"}
         >
           products

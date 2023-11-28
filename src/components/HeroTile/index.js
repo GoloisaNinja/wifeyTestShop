@@ -11,7 +11,7 @@ export function HeroTile({ image, altText, titleText, subText, overlaycolor }) {
   return (
     <HeroWrapper>
       <GatsbyImage image={image} alt={altText} />
-      <HeroContentWrapper overlaycolor={overlaycolor}>
+      <HeroContentWrapper $overlaycolor={overlaycolor}>
         <div>
           <HeroTitleText>{titleText}</HeroTitleText>
           <HeroSubText>{subText}</HeroSubText>

@@ -3,11 +3,11 @@ import { Header } from "../Header";
 import { Footer } from "../Footer";
 import { LayoutWrapper } from "./styles";
 
-const Layout = ({ children, paddingvalues }) => {
+const Layout = ({ children, padding }) => {
   return (
     <>
       <Header />
-      <LayoutWrapper paddingvalues={paddingvalues}>
+      <LayoutWrapper $padding={padding}>
         <main>{children}</main>
       </LayoutWrapper>
       <Footer />

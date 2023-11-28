@@ -50,7 +50,7 @@ export function Featured() {
     <FeaturedWrapper>
       <FeaturedTitle>
         <GradientH1
-          font={"'Abril Fatface', cursive"}
+          $font={"'Abril Fatface', cursive"}
           color={"#f700ff, #7000a1"}
         >
           Shop our Featured Items
